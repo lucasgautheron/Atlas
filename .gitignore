@@ -1,0 +1,4 @@
+*.ntuple
+*.so
+*.d
+*.pcm
