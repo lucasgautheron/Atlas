@@ -27,6 +27,11 @@ struct photon
    
 };
 
+float quantize(float f, float prec)
+{
+    return prec * float(int(f/prec));
+}
+
 float invMass(photon &p1, photon &p2)
 {
     return TMath::Sqrt(2*p1.E*p2.E*(TMath::CosH(p1.eta-p2.eta)-TMath::Cos(p1.phi-p2.phi)));
@@ -37,7 +42,7 @@ float deltaR(photon &p1, photon &p2)
     return sqrt((p1.eta-p2.eta)*(p1.eta-p2.eta) + (p1.phi-p2.phi)*(p1.phi-p2.phi));
 }
 
-void tests()
+void acceptance()
 {
   TFile* f = TFile::Open("/home/gautheron/Documents/git/Atlas/macros/small.root");  // open the file
   TTree* tree = (TTree*)f->Get("tree");
@@ -83,10 +88,10 @@ void tests()
   tree->SetBranchAddress("ph1_isLoose", &p1.loose);
   tree->SetBranchAddress("ph2_isLoose", &p2.loose);
 
-  //TH1F* h = new TH1F("h", "invariant mass", 500, 50, 250); // create a histogram : 500 bins ranging from 100 to 600 GeV.
-  //TH1F* h2 = new TH1F("h2", "invariant mass", 500, 50, 250);
-  TH1F* h = new TH1F("h", "phi", 500, -5, 5);
-  TH1F* h2 = new TH1F("h2", "eta", 500, -5, 5);  
+  TH1F* h = new TH1F("h", "E", 500, 25, 250); // create a histogram : 500 bins ranging from 100 to 600 GeV.
+  TH1F* h2 = new TH1F("h2", "E", 500, 25, 250);
+  //TH1F* h = new TH1F("h", "phi", 500, -5, 5);
+  //TH1F* h2 = new TH1F("h2", "eta", 500, -5, 5);  
 //TH1F* h2 = new TH1F("h2", "eta_true", 500, -5, 5);
   
   //h2->SetLineColor(kRed);
@@ -101,20 +106,20 @@ void tests()
 
     if(p1.true_mother > 22)
     {
-        h2->Fill(p1.true_phi);
+        h2->Fill(p1.true_E);
     }
     if(p2.true_mother > 22)
     {
-        h2->Fill(p2.true_phi);
+        h2->Fill(p2.true_E);
     }
     if (!p1.loose || !p2.loose) continue;
     if(p1.mother > 22)
     {
-        h->Fill(p1.phi);
+        h->Fill(p1.true_E);
     }
     if(p2.mother > 22)
     {
-        h->Fill(p2.phi);
+        h->Fill(p2.true_E);
     }
 
   }
