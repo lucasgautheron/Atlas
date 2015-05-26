@@ -83,11 +83,7 @@ void tests()
   tree->SetBranchAddress("ph1_isLoose", &p1.loose);
   tree->SetBranchAddress("ph2_isLoose", &p2.loose);
 
-  //TH1F* h = new TH1F("h", "invariant mass", 500, 50, 250); // create a histogram : 500 bins ranging from 100 to 600 GeV.
-  //TH1F* h2 = new TH1F("h2", "invariant mass", 500, 50, 250);
-  TH1F* h = new TH1F("h", "eta", 500, -5, 5);
-  TH1F* h2 = new TH1F("h2", "eta", 500, -5, 5);  
-//TH1F* h2 = new TH1F("h2", "eta_true", 500, -5, 5);
+  TH1F* h = new TH1F("h", "invariant mass", 500, 50, 250); // create a histogram : 500 bins ranging from 100 to 600 GeV.
   
   //h2->SetLineColor(kRed);
 
@@ -98,33 +94,10 @@ void tests()
   for (unsigned int i = 0; i < tree->GetEntries(); i++) {
     //if(p1.true_E < 0) continue;
     tree->GetEntry(i);
-
-    if(p1.true_mother > 22)
-    {
-        h2->Fill(p1.true_phi);
-    }
-    if(p2.true_mother > 22)
-    {
-        h2->Fill(p2.true_phi);
-    }
-    if (!p1.loose || !p2.loose) continue;
-    if(p1.mother > 22)
-    {
-        h->Fill(p1.phi);
-    }
-    if(p2.mother > 22)
-    {
-        h->Fill(p2.phi);
-    }
-
+    if(p1.mother==25 && p2.mother==25) h->Fill(invMass(p1,p2));
   }
 
-  h->Sumw2();
-  h2->Sumw2();
-
-  TH1F *r = (TH1F *)h->Clone();
-  r->Divide(h, h2, 1., 1., "B");
-  r->Draw();
+  h->Draw();
 
   printf("distrib mgg: %.2f %.2f\n", avg_m, sigma_m);
   printf("loose ratio: %.6f\n", float(looseEntries)/float(totalEntries));
