@@ -103,7 +103,7 @@ void tests()
     if(p1.loose && p2.loose) h2->Fill(invMass(p1,p2));
   }
 
-  h->Draw();
+  h2->Draw();
 
   printf("distrib mgg: %.2f %.2f\n", avg_m, sigma_m);
   printf("loose ratio: %.6f\n", float(looseEntries)/float(totalEntries));

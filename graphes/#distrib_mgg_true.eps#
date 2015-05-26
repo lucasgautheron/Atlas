@@ -1,7 +1,3 @@
-65.00 65.00
-65.00 65.00
-75.00 75.00
-65.00 65.00
 55.00 40.00
 65.00 65.00
 60.00 60.00
@@ -2046,3 +2042,7 @@ distrib mgg: 0.00 0.00
 loose ratio: -nan
 root [6] Info in <TCanvas::Print>: ps file c1.ps has been created
 Info in <TCanvas::Print>: eps file ./c1.eps has been created
+.x tests.c
+distrib mgg: 0.00 0.00
+loose ratio: -nan
+root [7] Info in <TCanvas::Print>: eps file ./c1.eps has been created
