@@ -88,11 +88,11 @@ void acceptance()
   tree->SetBranchAddress("ph1_isLoose", &p1.loose);
   tree->SetBranchAddress("ph2_isLoose", &p2.loose);
 
-  TH1F* h = new TH1F("h", "E", 500, 25, 250); // create a histogram : 500 bins ranging from 100 to 600 GeV.
-  TH1F* h2 = new TH1F("h2", "E", 500, 25, 250);
-  //TH1F* h = new TH1F("h", "phi", 500, -5, 5);
-  //TH1F* h2 = new TH1F("h2", "eta", 500, -5, 5);  
-//TH1F* h2 = new TH1F("h2", "eta_true", 500, -5, 5);
+  //TH1F* h = new TH1F("h", "E", 50, 25, 250); // create a histogram : 500 bins ranging from 100 to 600 GeV.
+  //TH1F* h2 = new TH1F("h2", "E", 50, 25, 250);
+  TH1F* h = new TH1F("h", "ph", 75, -3.5, 3.5);
+  TH1F* h2 = new TH1F("h2", "eta", 75, -3.5, 3.5);  
+//TH1F* h2 = new TH1F("h2", "eta_true", 50, -3, 3);
   
   //h2->SetLineColor(kRed);
 
@@ -106,20 +106,20 @@ void acceptance()
 
     if(p1.true_mother > 22)
     {
-        h2->Fill(p1.true_E);
+        h2->Fill(p1.true_phi);
     }
     if(p2.true_mother > 22)
     {
-        h2->Fill(p2.true_E);
+        h2->Fill(p2.true_phi);
     }
     if (!p1.loose || !p2.loose) continue;
     if(p1.mother > 22)
     {
-        h->Fill(p1.true_E);
+        h->Fill(p1.true_phi);
     }
     if(p2.mother > 22)
     {
-        h->Fill(p2.true_E);
+        h->Fill(p2.true_phi);
     }
 
   }

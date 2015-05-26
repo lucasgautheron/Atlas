@@ -1,49 +1,3 @@
-55.00 40.00
-65.00 65.00
-60.00 60.00
-85.00 80.00
-60.00 60.00
-65.00 60.00
-110.00 105.00
-210.00 215.00
-30.00 30.00
-50.00 50.00
-70.00 70.00
-70.00 70.00
-135.00 140.00
-80.00 80.00
-180.00 180.00
-160.00 155.00
-125.00 120.00
-65.00 65.00
-90.00 90.00
-95.00 95.00
-45.00 45.00
-75.00 75.00
-65.00 65.00
-45.00 45.00
-90.00 85.00
-65.00 65.00
-100.00 100.00
-50.00 45.00
-80.00 80.00
-105.00 100.00
-195.00 195.00
-70.00 75.00
-55.00 55.00
-95.00 95.00
-125.00 125.00
-175.00 175.00
-80.00 80.00
-75.00 75.00
-95.00 95.00
-85.00 85.00
-50.00 50.00
-90.00 90.00
-150.00 150.00
-65.00 65.00
-45.00 45.00
-95.00 95.00
 180.00 180.00
 65.00 65.00
 55.00 55.00
@@ -2046,3 +2000,49 @@ Info in <TCanvas::Print>: eps file ./c1.eps has been created
 distrib mgg: 0.00 0.00
 loose ratio: -nan
 root [7] Info in <TCanvas::Print>: eps file ./c1.eps has been created
+.quit
+[gautheron@lappc-p344 bin]$ root
+   ------------------------------------------------------------
+  | Welcome to ROOT 6.02/08                http://root.cern.ch |
+  |                               (c) 1995-2014, The ROOT Team |
+  | Built for linuxx8664gcc                                    |
+  | From tag v6-02-08, 13 April 2015                           |
+  | Try '.help', '.demo', '.license', '.credits', '.quit'/'.q' |
+   ------------------------------------------------------------
+
+root [0] .x acceptance.c
+Info in <TCanvas::MakeDefCanvas>:  created default TCanvas with name c1
+distrib mgg: 0.00 0.00
+loose ratio: -nan
+root [1] Info in <TGFileContainer::AddFile>: Broken symlink of .#distrib_mgg_tru
+e.eps.                                                                         
+Info in <TGFileContainer::AddFile>: Broken symlink of .#distrib_mgg_true.eps.
+Info in <TCanvas::Print>: eps file /home/gautheron/Documents/git/Atlas/graphes/a
+ccep_et_raw.eps has been created                                               
+.x acceptance.c
+distrib mgg: 0.00 0.00
+loose ratio: -nan
+root [2] .x acceptance.c
+distrib mgg: 0.00 0.00
+loose ratio: -nan
+root [3] Info in <TGFileContainer::AddFile>: Broken symlink of .#distrib_mgg_tru
+e.eps.                                                                         
+Info in <TGFileContainer::AddFile>: Broken symlink of .#distrib_mgg_true.eps.
+Info in <TCanvas::Print>: eps file /home/gautheron/Documents/git/Atlas/graphes/a
+cceptance_eta_ph.eps has been created                                          
+.x acceptance.c
+distrib mgg: 0.00 0.00
+loose ratio: -nan
+root [4] Info in <TGFileContainer::AddFile>: Broken symlink of .#distrib_mgg_tru
+e.eps.                                                                         
+Info in <TGFileContainer::AddFile>: Broken symlink of .#distrib_mgg_true.eps.
+Info in <TCanvas::Print>: eps file /home/gautheron/Documents/git/Atlas/graphes/a
+cceptance_eta_ph.eps has been created                                          
+.x acceptance.c
+distrib mgg: 0.00 0.00
+loose ratio: -nan
+root [5] .x acceptance.c
+distrib mgg: 0.00 0.00
+loose ratio: -nan
+root [6] Info in <TGFileContainer::AddFile>: Broken symlink of .#distrib_mgg_tru
+e.eps.                                                                         
