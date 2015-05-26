@@ -85,7 +85,7 @@ void tests()
 
   //TH1F* h = new TH1F("h", "invariant mass", 500, 50, 250); // create a histogram : 500 bins ranging from 100 to 600 GeV.
   //TH1F* h2 = new TH1F("h2", "invariant mass", 500, 50, 250);
-  TH1F* h = new TH1F("h", "eta", 500, -5, 5);
+  TH1F* h = new TH1F("h", "phi", 500, -5, 5);
   TH1F* h2 = new TH1F("h2", "eta", 500, -5, 5);  
 //TH1F* h2 = new TH1F("h2", "eta_true", 500, -5, 5);
   
