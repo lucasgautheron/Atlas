@@ -42,15 +42,17 @@ void tests()
   tree->SetBranchAddress("ph1_isTight", &p1.tight);
   tree->SetBranchAddress("ph2_isTight", &p2.tight);
 
-  TH1F* h = new TH1F("h", "invariant mass", 500, 100, 600); // create a histogram : 500 bins ranging from 100 to 600 GeV.
+  //TH1F* h = new TH1F("h", "invariant mass", 500, 100, 600); // create a histogram : 500 bins ranging from 100 to 600 GeV.
+  TH1F* h = new TH1F("h", "eta", 500, -5, 5);
 
   for (unsigned int i = 0; i < tree->GetEntries(); i++) {
     tree->GetEntry(i);
     if (!p1.tight || !p2.tight) continue;
     if (p1.E < 50 || p2.E < 50) continue; 
     //printf("%.5f %.5f\n", m, inv_mass(p1, p2));
-    if(i%2) printf("%.5f %.5f\n", p1.eta_true, p1.eta);
-    h->Fill(m); // Enter the mass value into the histogram, for the events passing the cuts above
+    //if(i%2) printf("%.5f %.5f\n", p1.eta_true, p1.eta);
+    h->Fill(p1.eta); // Enter the mass value into the histogram, for the events passing the cuts above
+    h->Fill(p2.eta);
   }
   h->Draw(); // plot the histogram
 }
