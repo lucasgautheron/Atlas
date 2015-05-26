@@ -32,6 +32,11 @@ float invMass(photon &p1, photon &p2)
     return TMath::Sqrt(2*p1.E*p2.E*(TMath::CosH(p1.eta-p2.eta)-TMath::Cos(p1.phi-p2.phi)));
 }
 
+float invMassTrue(photon &p1, photon &p2)
+{
+    return TMath::Sqrt(2*p1.true_E*p2.true_E*(TMath::CosH(p1.true_eta-p2.true_eta)-TMath::Cos(p1.true_phi-p2.true_phi)));
+}
+
 float deltaR(photon &p1, photon &p2)
 {
     return sqrt((p1.eta-p2.eta)*(p1.eta-p2.eta) + (p1.phi-p2.phi)*(p1.phi-p2.phi));
@@ -84,7 +89,7 @@ void tests()
   tree->SetBranchAddress("ph2_isLoose", &p2.loose);
 
   TH1F* h = new TH1F("h", "invariant mass", 500, 50, 250); // create a histogram : 500 bins ranging from 100 to 600 GeV.
-  
+  TH1F* h2 = new TH1F("h2", "invariant mass", 500, 50, 250); // create a histogram : 500 bins ranging from 100 to 600 GeV.
   //h2->SetLineColor(kRed);
 
   int totalEntries = 0;
@@ -94,7 +99,8 @@ void tests()
   for (unsigned int i = 0; i < tree->GetEntries(); i++) {
     //if(p1.true_E < 0) continue;
     tree->GetEntry(i);
-    if(p1.mother==25 && p2.mother==25) h->Fill(invMass(p1,p2));
+    if(p1.mother==25 && p2.mother==25) h->Fill(invMassTrue(p1,p2));
+    if(p1.loose && p2.loose) h2->Fill(invMass(p1,p2));
   }
 
   h->Draw();
