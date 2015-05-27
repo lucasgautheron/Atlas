@@ -12,7 +12,7 @@ void electrons()
   photon p1, p2;
   electron e1, e2;
   muon m1, m2;
-  bool true_zee = 0;
+  int true_zee = 0, true_zmm = 0;
   
   bind_attributes(tree, p1, p2, e1, e2, m1, m2);
 
@@ -20,10 +20,11 @@ void electrons()
 
   tree->SetBranchAddress("mgg", &m); 
   tree->SetBranchAddress("mee", &me); 
-  tree->SetBranchAddress("is_true_Znn", &true_zee); 
+  tree->SetBranchAddress("is_true_Zee", &true_zee); 
+  tree->SetBranchAddress("is_true_Zmm", &true_zmm);
 
-  TH1F* h = new TH1F("h", "E", 500, 25, 250); // create a histogram : 500 bins ranging from 100 to 600 GeV.
-  TH1F* h2 = new TH1F("h2", "E", 500, 25, 250);
+  TH1F* h = new TH1F("h", "E", 500, 0, 25); // create a histogram : 500 bins ranging from 100 to 600 GeV.
+  TH1F* h2 = new TH1F("h2", "E", 500, 0, 25);
   //TH1F* h = new TH1F("h", "phi", 500, -5, 5);
   //TH1F* h2 = new TH1F("h2", "eta", 500, -5, 5);  
 //TH1F* h2 = new TH1F("h2", "eta_true", 500, -5, 5);
@@ -37,19 +38,15 @@ void electrons()
   for (unsigned int i = 0; i < tree->GetEntries(); i++) {
     //if(e1.true_E < 0) continue;
     tree->GetEntry(i);
-    if(true_zee) printf("%f\n", e1.p);
-    if(true_zee)
+    if(true_zmm)
     {
-        h2->Fill(e1.p);
-        h2->Fill(e2.p);
+        totalEntries+=2;
+        h2->Fill((double)m1.mother);
+        h2->Fill((double)m2.mother);
     }
-    if(e1.mother == 23)
+    if(m1.mother == 23)
     {
-        h->Fill(e1.p);
-    }
-    if(e2.mother == 23)
-    {
-        h->Fill(e2.p);
+        keptEntries++;
     }
 
   }
@@ -62,7 +59,7 @@ void electrons()
   r->Draw();
 
   printf("distrib mgg: %.2f %.2f\n", avg_m, sigma_m);
-  printf("loose ratio: %.6f\n", float(looseEntries)/float(totalEntries));
+  printf("loose ratio: %.6f\n", float(keptEntries)/float(totalEntries));
  // h->Draw(); // plot the histogram
   //h2->Draw();
 }
