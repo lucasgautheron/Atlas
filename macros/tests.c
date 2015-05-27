@@ -44,7 +44,7 @@ float deltaR(photon &p1, photon &p2)
 
 void tests()
 {
-  TFile* f = TFile::Open("/home/gautheron/Documents/git/Atlas/macros/small.root");  // open the file
+  TFile* f = TFile::Open("small.root");  // open the file
   TTree* tree = (TTree*)f->Get("tree");
 
   float m;
