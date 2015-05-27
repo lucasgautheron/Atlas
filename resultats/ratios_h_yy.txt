@@ -1,0 +1,2 @@
+Critère 'loose' reconstruits : 51%
+Critère 'tight' reconstruits : 41%

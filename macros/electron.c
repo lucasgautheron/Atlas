@@ -2,45 +2,6 @@
 #include "TTree.h"
 #include "TMath.h"
 
-struct params
-{
-    bool enable;
-    float E[2];
-    float eta[2];
-};
-
-struct part
-{
-   float E, eta, phi;
-   float E_true, eta_true, phi_true;
-   float true_E, true_eta, true_phi; // ??
-   int tight, loose;
-   int mother, true_mother;
-
-   bool inBounds(params &p)
-   {
-       if(!p.enable) return true;
-       return (E > p.E[0] && E < p.E[1])
- &&
-              (abs(eta) > p.eta[0] && abs(eta) < p.eta[1]);
-   }
-   
-};
-
-struct photon : part {} ;
-struct electron : part {} ;
-
-
-float invMass(photon &e1, photon &e2)
-{
-    return TMath::Sqrt(2*e1.E*e2.E*(TMath::CosH(e1.eta-e2.eta)-TMath::Cos(e1.phi-e2.phi)));
-}
-
-float deltaR(photon &e1, photon &e2)
-{
-    return sqrt((e1.eta-e2.eta)*(e1.eta-e2.eta) + (e1.phi-e2.phi)*(e1.phi-e2.phi));
-}
-
 void electron()
 {
   TFile* f = TFile::Open("small.root");  // open the file
