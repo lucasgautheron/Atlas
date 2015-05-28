@@ -1,0 +1,9 @@
+                   EDM=1.31297e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     6.07528e+02   1.11537e+01   4.76746e-02  -4.63321e-06
+   2  Mean         1.24713e+02   2.40329e-02   1.36005e-04  -3.41707e-04
+   3  Sigma        1.73316e+00   2.10544e-02   1.61674e-05  -1.43779e-01
+607.53 124.71 1.73 135.322 3.561
+
+

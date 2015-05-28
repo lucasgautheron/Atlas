@@ -1,4 +1,4 @@
-
+// https://root.cern.ch/root/html/tutorials/hist/fillrandom.C.html
 struct params
 {
     bool enable;

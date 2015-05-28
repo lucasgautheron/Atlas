@@ -5,7 +5,7 @@
 
 void electrons()
 {
-  TFile* f = TFile::Open("small.root");  // open the file
+  TFile* f = TFile::Open("Hgg_Moriond2013-Y2012_merge_200804_216432_NoMassCut.root");  // open the file
   TTree* tree = (TTree*)f->Get("tree");
 
   float m, me;
