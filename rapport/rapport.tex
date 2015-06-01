@@ -7,7 +7,27 @@
 \documentclass[11pt]{article} % use larger type; default would be 10pt
 
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+\usepackage{array}
 
+\usepackage{float}
+
+\usepackage{graphicx} % support the \includegraphics command and options
+\usepackage[outdir=./]{epstopdf}
+
+\usepackage{feynmp-auto}
+
+\makeatletter
+\def\endfmffile{%
+  \fmfcmd{\p@rcent\space the end.^^J%
+          end.^^J%
+          endinput;}%
+  \if@fmfio
+    \immediate\closeout\@outfmf
+  \fi
+  \IfFileExists{\thefmffile.mp}{\immediate\write18{mpost \thefmffile}}{}
+  \let\thefmffile\relax
+}
+\makeatother
 %%% Examples of Article customizations
 % These packages are optional, depending whether you want the features they provide.
 % See the LaTeX Companion or other references for full information.
@@ -57,11 +77,162 @@
 %\date{} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed 
 
+% TODO : restructurer ce qui est écrit par avance
+
 \begin{document}
 \maketitle
 
-\section{}
+\section{Le LHC}
 
+\section{Boson de Higgs}
+
+\subsection{Caractéristiques}
+
+Le boson de Higgs est une particule élémentaire du modèle standard de masse $\simeq$ 125 GeV et de spin nul et dont l'existence à été confortée par les résultats des expériences CMS et Atlas.
+
+\subsection{Formation}
+
+Il existe de nombreux processus entrainant la production de boson de Higgs. En voici des exemples envisageables ainsi que leur section efficace associée dans les conditions du LHC (Run1, $\sqrt{s} = $ 8 TeV).
+
+\subsubsection{Fusion gluon gluon ($gg \to H$)}
+
+La fusion gluon gluon est le mode de production du Higgs le plus important. 
+
+\begin{fmffile}{gg_H}
+\begin{figure}[H]
+      \centering
+\begin{fmfgraph*}(175,125)
+\fmfleft{i1,i2}
+\fmfright{o1}
+
+\fmflabel{$g$}{i1}
+\fmflabel{$g$}{i2}
+\fmflabel{$H$}{o1}
+
+\fmf{gluon}{i1,v1}
+\fmf{gluon}{i2,v2}
+\fmf{dashes}{v3,o1}
+\fmf{fermion,label=$q$}{v1,v2}
+\fmf{fermion}{v2,v3}
+\fmf{fermion}{v3,v1}
+\end{fmfgraph*}
+\caption{Formation d'un Higgs par fusion de gluons (avec apparition de quarks virtuels, préférentiellement lourds). La section efficace totale du processus est de 19,23 pb. }
+\end{figure}
+\end{fmffile}
+
+\subsubsection{Vector Boson Fusion (VBF, $ff \to ffH$)}
+
+\begin{fmffile}{VBF}
+\begin{figure}[H]
+      \centering
+\begin{fmfgraph*}(175,125)
+\fmfleft{i1,i2}
+\fmfright{o1,o2,o3}
+
+\fmflabel{$f$}{i1}
+\fmflabel{$f$}{i2}
+\fmflabel{$f$}{o1}
+\fmflabel{$f$}{o3}
+\fmflabel{$H$}{o2}
+\fmflabel{$W,Z$}{v3}
+
+\fmf{fermion}{i1,v1,o1}
+\fmf{fermion}{i2,v2,o3}
+\fmf{photon}{v1,v3}
+\fmf{photon}{v3,v2}
+\fmf{dashes}{v3,o2}
+\end{fmfgraph*}
+\caption{Formation d'un Higgs par échange de boson $W$ ou $Z$ virtuel entre deux fermions. La section efficace du processus VBF est de 1,58 pb. Il s'agit du second mode de production du Higgs le plus probable. }
+\end{figure}
+\end{fmffile}
+
+\subsubsection{Higgs Strahlung ($f\bar{f} \to WH \textrm{ ou } ZH$)}
+
+\begin{fmffile}{HS}
+\begin{figure}[H]
+      \centering
+\begin{fmfgraph*}(175,125)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+
+\fmflabel{$f$}{i1}
+\fmflabel{$\bar{f}$}{i2}
+\fmflabel{$W,Z$}{o1}
+\fmflabel{$H$}{o2}
+
+\fmf{fermion}{i1,v1}
+\fmf{fermion}{v1,i2}
+\fmf{photon,label=$W,,Z$}{v1,v2}
+\fmf{photon}{v2,o1}
+\fmf{dashes}{v2,o2}
+\end{fmfgraph*}
+\caption{La collision d'un fermion avec un antifermion peut produire un boson $W$ ou $Z$ pouvant émettre un $H$. La section efficace totale pour ce processus est $\sigma = \sigma_W + \sigma_Z$ = 0,7 $+$0,4 = 1,1 pb}
+\end{figure}
+\end{fmffile}
+
+\subsubsection{Top/bottom fusion (ex: $gg \to q\bar{q}H$, $q = t,b$)}
+
+\begin{fmffile}{TF}
+\begin{figure}[H]
+      \centering
+\begin{fmfgraph*}(175,125)
+\fmfleft{i1,i2}
+\fmfright{o1,o2,o3}
+
+\fmflabel{$g$}{i1}
+\fmflabel{$g$}{i2}
+\fmflabel{$q$}{o1}
+\fmflabel{$H$}{o2}
+\fmflabel{$\bar{q}$}{o3}
+
+\fmf{gluon}{i1,v1}
+\fmf{gluon}{i2,v2}
+
+\fmf{fermion}{v1,o1}
+\fmf{fermion}{o3,v2}
+\fmf{fermion,label=$q$}{v2,v3}
+\fmf{fermion,label=$\bar{q}$}{v3,v1}
+
+\fmf{dashes}{v3,o2}
+\end{fmfgraph*}
+\caption{Ici, deux gluons produisent deux paires $t\bar{t}$ ou $b\bar{b}$. Une d'entre elles fusionne et produit un $H$. Il s'agit d'un processus mineur ($\sigma = \sigma_b + \sigma_t = $ 0,20 $+$ 0,13 = 0,33 pb)}
+\end{figure}
+\end{fmffile}
+
+\subsection{Désintégration}
+
+La liste suivante n'est pas exhaustive. Elle regroupe certains modes privilégiés (ratio de branche élevé, ou intérêt expérimental).
+
+\begin{tabular}{|l|c|r|} 
+   \hline
+   Type & Exemple & Ratio de branche\\
+    \hline
+    H $\to$ fermions & $H \to b\bar{b} $ & 57,7 \% \\
+    \cline{2-3} 
+        & $H \to \tau\bar{\tau} $ & 6,4 \% \\
+   \cline{2-3} 
+        & $H \to \mu\bar{\mu}$ & 0,02 \%\\
+    \hline
+  H $\to$ bosons de jauge & $H \to WW$ &21,5 \% \\
+   \cline{2-3}
+      & $H \to \gamma \gamma$ & 0,23 \% \\
+  \hline
+\end{tabular}
+
+% différentes voies, par importance et BR
+% expliquer contraintes de détections et pq H->yy privilégié malgré faible BR etc..
+
+
+\section{Atlas}
+
+\subsection{Objectifs de l'expérience}
+
+% à relier a ce qui a été dit précédemment sur H
+\subsection{Détecteurs}
+% inclure schémas
+
+\subsection{Performance}
+% efficacité (à relier aux schémas)
 \subsection{}
 
 \end{document}
