@@ -82,6 +82,8 @@
 \begin{document}
 \maketitle
 
+\abstract{brouillon}
+
 \section{Le LHC}
 
 \section{Boson de Higgs}
@@ -234,5 +236,66 @@ La liste suivante n'est pas exhaustive. Elle regroupe certains modes privilégi�
 \subsection{Performance}
 % efficacité (à relier aux schémas)
 \subsection{}
+
+\section{Données}
+
+\subsection{Calcul de la masse du Higgs}
+
+En connaissant l'énergie des photons produits de la désintégration du Higgs selon la forme $H\to \gamma \gamma$, on peut retrouver sa masse. Elle est en effet égale à la masse invariante du système 
+
+\begin{equation}
+m_{\textrm{inv}}^2 = E^2 - \textbf{p}^2
+\end{equation}
+
+Pour deux photons, $E_{\gamma_1} = p_{\gamma_1}$ et $E_{\gamma_2} = p_{\gamma_2}$, et alors :
+
+\begin{equation}
+m_{\gamma \gamma}^2 = 2 \left ( p_{\gamma_1} p_{\gamma_2} - \textbf{p}_{\gamma_1} . \textbf{p}_{\gamma_2} \right )
+\end{equation}
+
+Soit, en travaillant en coordonnées $(\eta, \phi)$ :
+
+\begin{equation}
+m_{\gamma \gamma}^2 = 2 E_{\gamma_1} E_{\gamma_2} \left [ \cosh {\left( \eta_{\gamma_1} - \eta_{\gamma_1} \right)} - \cos{\left( \phi_{\gamma_1} - \phi_{\gamma_1} \right)} \right ]
+\end{equation}
+
+Il s'agit alors de calculer cette masse pour tous les évènements contenant une paire de photons susceptible d'être issue d'un Higgs. Et 
+
+\subsection{Calcul}
+
+Parmi un échantillon de 310 000 évènements (constitués uniquement de paires de photons vérifiant le critère 'tight'), on calcule la distribution de masse invariante $m_{\gamma \gamma}$. On obtient le résultat suivant :
+
+\begin{figure}[H]
+  \caption{Distribution m$_{\gamma \gamma}$. On observe un bruit important avec un pic aux alentours de 90 GeV. Le signal correspondait au Higgs est à première vue difficilement distinguable. }
+\includegraphics{../graphes/mgg_medium}
+\end{figure}
+
+Afin d'extraire le signal correspondant au Higgs, on se restreint à la plage où il est attendu (110 - 140 GeV). Le 'background' y suit une forme exponentielle. On en réalise alors un fit sur une zone ou le signal est considéré nul : ici on a choisi [110;120] $\cup$  [130;140]. On obtient une fonction de la forme $\textrm{background} = E \mapsto \exp(\xi + \epsilon E)$.
+
+Puis, sur la plage complète ([110, 140]), on réalise un fit des données à partir d'une fonction de la forme signal+background : $E \mapsto  A \exp\left(-(E-E_0)^2/2\sigma^2\right) + \exp(\xi + \epsilon E)$
+
+On obtient la figure suivante :
+
+\begin{figure}[H]
+  \caption{Distribution m$_\gamma \gamma$ et fit background+signal. }
+\includegraphics{../graphes/mgg_30GeV}
+\end{figure}
+
+On peut en déduire les paramètres physiquement intéressants suivants :
+
+\begin{tabular}{|l|c|r|} 
+   \hline
+   Paramètre & Valeur & Erreur \\
+    \hline
+   $E_0$ & 126,3 GeV & 0,3 GeV\\
+  \hline
+   $\sigma$ & 2,0 GeV & 0,9 GeV \\
+  \hline
+\end{tabular}
+
+La valeur $E_0$ doit correspondre à la masse du Higgs. On remarque qu'elle en est en effet bien proche (126 au lieu de 125 GeV). La valeur $\sigma$ doit correspondre à la largeur de la résonance, dont la valeur théorique attendue n'est pas nulle.
+
+On calcule de plus $\chi^2 = $ 68,8 pour un nombre de degrés de liberté égal à 99, ce qui correspond à une p-value de 99,0 \% (2$\sigma$?)
+
 
 \end{document}
