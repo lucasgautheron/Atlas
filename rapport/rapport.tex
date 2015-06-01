@@ -13,6 +13,7 @@
 
 \usepackage{graphicx} % support the \includegraphics command and options
 \usepackage[outdir=./]{epstopdf}
+\usepackage{psfrag}
 
 \usepackage{feynmp-auto}
 
@@ -100,6 +101,8 @@ Il existe de nombreux processus entrainant la production de boson de Higgs. En v
 
 La fusion gluon gluon est le mode de production du Higgs le plus important. 
 
+La section efficace totale du processus est de 19,23 pb à $\sqrt{s} =$ 8 TeV et 43,94 pb à $\sqrt{s} =$ 13 TeV
+
 \begin{fmffile}{gg_H}
 \begin{figure}[H]
       \centering
@@ -118,11 +121,13 @@ La fusion gluon gluon est le mode de production du Higgs le plus important.
 \fmf{fermion}{v2,v3}
 \fmf{fermion}{v3,v1}
 \end{fmfgraph*}
-\caption{Formation d'un Higgs par fusion de gluons (avec apparition de quarks virtuels, préférentiellement lourds). La section efficace totale du processus est de 19,23 pb. }
+\caption{Formation d'un Higgs par fusion de gluons (avec apparition de quarks virtuels, préférentiellement lourds).  }
 \end{figure}
 \end{fmffile}
 
 \subsubsection{Vector Boson Fusion (VBF, $ff \to ffH$)}
+
+La section efficace du processus VBF est de 1,58 pb à $\sqrt{s} =$ 8 TeV et 3,75 à $\sqrt{s} =$ 13 TeV. Il s'agit du second mode de production du Higgs le plus probable.
 
 \begin{fmffile}{VBF}
 \begin{figure}[H]
@@ -144,11 +149,13 @@ La fusion gluon gluon est le mode de production du Higgs le plus important.
 \fmf{photon}{v3,v2}
 \fmf{dashes}{v3,o2}
 \end{fmfgraph*}
-\caption{Formation d'un Higgs par échange de boson $W$ ou $Z$ virtuel entre deux fermions. La section efficace du processus VBF est de 1,58 pb. Il s'agit du second mode de production du Higgs le plus probable. }
+\caption{Formation d'un Higgs par fusion de bosons $W$ ou $Z$ virtuels échangés entre deux fermions.  }
 \end{figure}
 \end{fmffile}
 
 \subsubsection{Higgs Strahlung ($f\bar{f} \to WH \textrm{ ou } ZH$)}
+
+La section efficace totale pour ce processus est $\sigma = \sigma_W + \sigma_Z$ = 0,7 $+$0,4 = 1,1 pb à $\sqrt{s} =$ 8 TeV et $\sigma =$ 2,3 à $\sqrt{s}$ = 13 TeV
 
 \begin{fmffile}{HS}
 \begin{figure}[H]
@@ -168,7 +175,7 @@ La fusion gluon gluon est le mode de production du Higgs le plus important.
 \fmf{photon}{v2,o1}
 \fmf{dashes}{v2,o2}
 \end{fmfgraph*}
-\caption{La collision d'un fermion avec un antifermion peut produire un boson $W$ ou $Z$ pouvant émettre un $H$. La section efficace totale pour ce processus est $\sigma = \sigma_W + \sigma_Z$ = 0,7 $+$0,4 = 1,1 pb}
+\caption{La collision d'un fermion avec un antifermion peut produire un boson $W$ ou $Z$ pouvant émettre un $H$. }
 \end{figure}
 \end{fmffile}
 
@@ -198,6 +205,33 @@ La fusion gluon gluon est le mode de production du Higgs le plus important.
 \fmf{dashes}{v3,o2}
 \end{fmfgraph*}
 \caption{Ici, deux gluons produisent deux paires $t\bar{t}$ ou $b\bar{b}$. Une d'entre elles fusionne et produit un $H$. Il s'agit d'un processus mineur ($\sigma = \sigma_b + \sigma_t = $ 0,20 $+$ 0,13 = 0,33 pb)}
+\end{figure}
+\end{fmffile}
+
+\begin{fmffile}{TF_2}
+\begin{figure}[H]
+      \centering
+\begin{fmfgraph*}(175,125)
+\fmfleft{i1,i2}
+\fmfright{o1,o2,o3,o4}
+
+\fmflabel{$q$}{i1}
+\fmflabel{$\bar{q}$}{i2}
+\fmflabel{$\over{b}$}{o1}
+\fmflabel{$H$}{o2}
+\fmflabel{$b$}{o3}
+
+\fmf{fermion}{i1,v1}
+\fmf{fermion}{v1,i2}
+\fmf{gluon}{v1,v2}
+
+\fmf{fermion}{v2,o3}
+
+\fmf{fermion}{o1,v3}
+\fmf{fermion}{v3,v2}
+\fmf{dashes}{v3,o2}
+\end{fmfgraph*}
+\caption{Un autre exemple de production $q\bar{q}H$ (ici $q\bar{q} \to b\bar{b}H$)}
 \end{figure}
 \end{fmffile}
 
@@ -266,19 +300,49 @@ Il s'agit alors de calculer cette masse pour tous les évènements contenant une
 Parmi un échantillon de 310 000 évènements (constitués uniquement de paires de photons vérifiant le critère 'tight'), on calcule la distribution de masse invariante $m_{\gamma \gamma}$. On obtient le résultat suivant :
 
 \begin{figure}[H]
+\centering
   \caption{Distribution m$_{\gamma \gamma}$. On observe un bruit important avec un pic aux alentours de 90 GeV. Le signal correspondait au Higgs est à première vue difficilement distinguable. }
-\includegraphics{../graphes/mgg_medium}
+\includegraphics[width=500pt]{../graphes/mgg_medium}
 \end{figure}
 
-Afin d'extraire le signal correspondant au Higgs, on se restreint à la plage où il est attendu (110 - 140 GeV). Le 'background' y suit une forme exponentielle. On en réalise alors un fit sur une zone ou le signal est considéré nul : ici on a choisi [110;120] $\cup$  [130;140]. On obtient une fonction de la forme $\textrm{background} = E \mapsto \exp(\xi + \epsilon E)$.
+%Afin d'extraire le signal correspondant au Higgs, on se restreint à la plage où il est attendu (110 - 140 GeV). Le 'background' y suit une forme exponentielle. On en réalise alors un fit sur une zone ou le signal est considéré nul : ici on a choisi [110;120] $\cup$  [130;140]. On obtient une fonction de la forme $\textrm{background} = E \mapsto \exp(\xi + \epsilon E)$.
+%
+%Puis, sur la plage complète ([110, 140]), on réalise un fit des données à partir d'une fonction de la forme signal+background : $E \mapsto  A \exp\left(-(E-E_0)^2/2\sigma^2\right) + \exp(\xi + \epsilon E)$
+%
+%On obtient la figure suivante :
+%
+%\begin{figure}[H]
+%  \caption{Distribution $m_{\gamma \gamma}$ et fit background+signal. }
+%\includegraphics{../graphes/mgg_30GeV}
+%\end{figure}
+%
+%On peut en déduire les paramètres physiquement intéressants suivants :
+%
+%\begin{tabular}{|l|c|r|} 
+%   \hline
+%   Paramètre & Valeur & Erreur \\
+%    \hline
+%   $E_0$ & 126,3 GeV & 0,3 GeV\\
+%  \hline
+%   $\sigma$ & 2,0 GeV & 0,9 GeV \\
+%  \hline
+%\end{tabular}
+%
+%La valeur $E_0$ doit correspondre à la masse du Higgs. On remarque qu'elle en est en effet bien proche (126 au lieu de 125 GeV). La valeur $\sigma$ doit correspondre à la largeur du signal, dont la valeur théorique attendue n'est pas nulle.
+%
+%On calcule de plus $\chi^2 = $ 68,8 pour un nombre de degrés de liberté égal à 99, ce qui correspond à une p-value de 99,0 \% (2,5$\sigma$?)
+%$\Delta \chi^2 = \chi^2_{\textrm{background}} - \chi^2{\textrm{signal+background} \simeq 120-70 \simeq 50$ soit une significance à $\sqrt{\Delta \chi^2} \sigma = 7 \sigma$
 
-Puis, sur la plage complète ([110, 140]), on réalise un fit des données à partir d'une fonction de la forme signal+background : $E \mapsto  A \exp\left(-(E-E_0)^2/2\sigma^2\right) + \exp(\xi + \epsilon E)$
+Afin d'extraire le signal correspondant au Higgs, on se restreint à la plage où il est attendu (100 - 150 GeV). Le 'background' y suit une forme exponentielle. On en réalise alors un fit sur une zone ou le signal est considéré nul : ici on a choisi [100;120] $\cup$  [130;150]. On obtient une fonction de la forme $\textrm{background} = E \mapsto \exp(\xi + \epsilon E)$.
+
+Puis, sur la plage complète ([100, 150]), on réalise un fit des données à partir d'une fonction de la forme signal+background : $E \mapsto  A \exp\left(-(E-E_0)^2/2\sigma^2\right) + \exp(\xi + \epsilon E)$
 
 On obtient la figure suivante :
 
 \begin{figure}[H]
-  \caption{Distribution m$_\gamma \gamma$ et fit background+signal. }
-\includegraphics{../graphes/mgg_30GeV}
+\centering
+  \caption{Distribution $m_{\gamma \gamma}$ et fit background+signal. }
+\includegraphics[width=500pt]{../graphes/mgg_50GeV}
 \end{figure}
 
 On peut en déduire les paramètres physiquement intéressants suivants :
@@ -293,9 +357,9 @@ On peut en déduire les paramètres physiquement intéressants suivants :
   \hline
 \end{tabular}
 
-La valeur $E_0$ doit correspondre à la masse du Higgs. On remarque qu'elle en est en effet bien proche (126 au lieu de 125 GeV). La valeur $\sigma$ doit correspondre à la largeur de la résonance, dont la valeur théorique attendue n'est pas nulle.
+La valeur $E_0$ doit correspondre à la masse du Higgs. On remarque qu'elle en est en effet bien proche (126 au lieu de 125 GeV). La valeur $\sigma$ doit correspondre à la largeur du signal, dont la valeur théorique attendue n'est pas nulle.
 
-On calcule de plus $\chi^2 = $ 68,8 pour un nombre de degrés de liberté égal à 99, ce qui correspond à une p-value de 99,0 \% (2$\sigma$?)
+On calcule d'autre part la significance statistique d'après ces fits : $\Delta \chi^2 = \chi^2_{\textrm{background}} - \chi^2_{\textrm{signal+background}} \simeq 155-107 \simeq 50$ soit une significance à $\sqrt{\Delta \chi^2} \ \sigma = 7 \sigma$
 
 
 \end{document}
