@@ -8,6 +8,7 @@
 
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
 \usepackage{array}
+\usepackage{tikz}
 
 \usepackage{float}
 
@@ -36,7 +37,7 @@
 %%% PAGE DIMENSIONS
 \usepackage{geometry} % to change the page dimensions
 \geometry{a4paper} % or letterpaper (US) or a5paper or....
-% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+\geometry{margin=1in} % for example, change the margins to 2 inches all round
 % \geometry{landscape} % set up the page for landscape
 %   read geometry.pdf for detailed page layout information
 
@@ -83,7 +84,11 @@
 \begin{document}
 \maketitle
 
-\abstract{brouillon}
+\abstract{brouillon ; TODO :
+partie personnelle : travail avec root : étude préliminaire sim MC, travail données etc
+partie générale : présentation LHC/atlas
+...
+}
 
 \section{Le LHC}
 
@@ -251,9 +256,23 @@ La liste suivante n'est pas exhaustive. Elle regroupe certains modes privilégi�
     \hline
   H $\to$ bosons de jauge & $H \to WW$ &21,5 \% \\
    \cline{2-3}
+     & $H \to ZZ$ & \\
+   \cline{2-3}
       & $H \to \gamma \gamma$ & 0,23 \% \\
   \hline
 \end{tabular}
+
+\subsection{Produits de désintégration et choix de méthode d'observation}
+
+Pour détecter la présence d'un boson de Higgs parmi un évènements il faut étudier ses produits de désintégrations et vérifier qu'ils sont compatibles avec un $H$. Il faut pour cela que les particules produites soient détéctables et que l'on puisse mesurer leurs paramètres cinématiques avec suffisamment de précision.
+
+\subsubsection{$H \to \gamma \gamma$}
+
+La désintégration du Higgs en deux photons est une méthode d'observation privilégiée. Bien que le ratio associé à cette branche soit très faible (2 pour 1000), ce qui implique que peu de Higgs formés seront observables de cette façon, il est plus facile de détecter de tels photons avec une grande précision sur leur énergie. La connaissance précise de l'impulsion de la paire de photons permet alors de remonter à la masse d'un Higgs dont ils seraient issus simplement (il s'agit de la masse invariante du système formé par la paire).
+
+\subsubsection{$H \to ZZ \to \ell \ell \ell \ell$}
+
+
 
 % différentes voies, par importance et BR
 % expliquer contraintes de détections et pq H->yy privilégié malgré faible BR etc..
@@ -273,7 +292,16 @@ La liste suivante n'est pas exhaustive. Elle regroupe certains modes privilégi�
 
 \section{Données}
 
-\subsection{Calcul de la masse du Higgs}
+\subsection{Etude de données simulées}
+
+Afin de mieux comprendre les caractéristiques du signal attendu et les celles du détecteur, on travaille sur un échantillon de données comprenant des évènements simulés (méthode de Monte Carlo) et les évènements associés tels qu'ils seraient reconstruits par Atlas.
+
+L'échantillon étudié ici se restreint à la production de $ZH$ et à leur désintégration.
+
+Dans ce cas, on s'intéresse d'une part aux paires de photons issues des désintégrations de Higgs, et aux paires de leptons ($e^+e^-$, $\mu^+\mu^-$)
+
+
+\subsection{Calcul de la masse invariante d'un système à deux particules.}
 
 En connaissant l'énergie des photons produits de la désintégration du Higgs selon la forme $H\to \gamma \gamma$, on peut retrouver sa masse. Elle est en effet égale à la masse invariante du système 
 
@@ -281,7 +309,7 @@ En connaissant l'énergie des photons produits de la désintégration du Higgs s
 m_{\textrm{inv}}^2 = E^2 - \textbf{p}^2
 \end{equation}
 
-Pour deux photons, $E_{\gamma_1} = p_{\gamma_1}$ et $E_{\gamma_2} = p_{\gamma_2}$, et alors :
+Pour deux photons,  ou par approximation pour des particules très énergétiques, $E_{\gamma_1} = p_{\gamma_1}$ et $E_{\gamma_2} = p_{\gamma_2}$, et alors :
 
 \begin{equation}
 m_{\gamma \gamma}^2 = 2 \left ( p_{\gamma_1} p_{\gamma_2} - \textbf{p}_{\gamma_1} . \textbf{p}_{\gamma_2} \right )
@@ -293,16 +321,18 @@ Soit, en travaillant en coordonnées $(\eta, \phi)$ :
 m_{\gamma \gamma}^2 = 2 E_{\gamma_1} E_{\gamma_2} \left [ \cosh {\left( \eta_{\gamma_1} - \eta_{\gamma_1} \right)} - \cos{\left( \phi_{\gamma_1} - \phi_{\gamma_1} \right)} \right ]
 \end{equation}
 
-Il s'agit alors de calculer cette masse pour tous les évènements contenant une paire de photons susceptible d'être issue d'un Higgs. Et 
+Il s'agit alors de calculer cette masse pour tous les évènements contenant une paire de photons susceptible d'être issue d'un Higgs. 
 
-\subsection{Calcul}
+Puisque cette relation est vraie y compris pour des particules massives à haute énergie, on peut déterminer la masse du $Z$ à partir des impulsions des leptons issus de sa désintégration.
+
+\subsection{Calcul en situation}
 
 Parmi un échantillon de 310 000 évènements (constitués uniquement de paires de photons vérifiant le critère 'tight'), on calcule la distribution de masse invariante $m_{\gamma \gamma}$. On obtient le résultat suivant :
 
 \begin{figure}[H]
 \centering
   \caption{Distribution m$_{\gamma \gamma}$. On observe un bruit important avec un pic aux alentours de 90 GeV. Le signal correspondait au Higgs est à première vue difficilement distinguable. }
-\includegraphics[width=500pt]{../graphes/mgg_medium}
+ \resizebox{.9\linewidth}{!}{\input{../graphes/mgg_medium}}
 \end{figure}
 
 %Afin d'extraire le signal correspondant au Higgs, on se restreint à la plage où il est attendu (110 - 140 GeV). Le 'background' y suit une forme exponentielle. On en réalise alors un fit sur une zone ou le signal est considéré nul : ici on a choisi [110;120] $\cup$  [130;140]. On obtient une fonction de la forme $\textrm{background} = E \mapsto \exp(\xi + \epsilon E)$.
@@ -342,7 +372,7 @@ On obtient la figure suivante :
 \begin{figure}[H]
 \centering
   \caption{Distribution $m_{\gamma \gamma}$ et fit background+signal. }
-\includegraphics[width=500pt]{../graphes/mgg_50GeV}
+ \resizebox{.9\linewidth}{!}{\input{../graphes/mgg_50GeV}}
 \end{figure}
 
 On peut en déduire les paramètres physiquement intéressants suivants :
