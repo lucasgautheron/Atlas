@@ -9,6 +9,7 @@
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
 \usepackage{array}
 \usepackage{tikz}
+\usepackage{amsmath}
 
 \usepackage{float}
 
@@ -348,8 +349,76 @@ Une autre voie privilégiée est la désintégration successive d'un $H$ en une 
 % inclure schémas
 
 \subsection{Performance}
+\subsubsection{Résolution en énergie du calorimètre EM}
+
+TODO: expliquer les facteurs limitant la résolution et justifier 
+
+\begin{equation}
+\dfrac{\sigma_E}{E} \simeq \dfrac{a}{\sqrt{E}} \oplus \dfrac{b}{E} \oplus c
+\end{equation}
+
+Puisque $b \ll $ 10 GeV :
+
+\begin{equation}
+\dfrac{\sigma_E}{E} \sim \dfrac{a}{\sqrt{E}} \oplus c
+\end{equation}
+
+\begin{tabular}{|l|c|r|r|} 
+   \hline
+   Photons convertis inclus &$\eta$ & $a$(GeV${ }^{1/2}$) & $c$ \\
+    \hline
+   Oui & tous & 17,5 \% $\pm$ 0,8 \% &0,64 \% $\pm$ 0,04  \\
+  \hline
+   Non & tous & 13,4 \% $\pm$ 0,8 \% &0,79 \% $\pm$ 0,04  \\
+  \hline
+   Oui &$|\eta| < $ 1 & 9,6 \% $\pm$ 0,6 \% &0,92 \% $\pm$ 0,04  \\
+\hline
+   Oui & $|\eta| >$ 1,5 & 12,6 \% $\pm$ 2,4 \% &1,8 \% $\pm$ 0,2  \\
+\hline
+\end{tabular}
+
+TODO: $\pm$ peu pertinents (uniquement err fit) et valeurs en fct de $\eta$ peu pertinentes
+
+
+
+\begin{figure}[H]
+\centering
+  \caption{Les énergies des photons 'tight' (convertis ou non) reconstruits sont comparées aux photons réels. }
+ \resizebox{.9\linewidth}{!}{\input{../graphes/resolution_energie_globale+conv}}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+  \caption{Les énergies des photons 'tight' non convertis reconstruits sont comparées aux photons réels. }
+ \resizebox{.9\linewidth}{!}{\input{../graphes/resolution_energie_globale}}
+\end{figure}
+
 % efficacité (à relier aux schémas)
-\subsection{}
+\subsection{Efficacite reco $\gamma$}
+
+\begin{figure}[H]
+\centering
+  \caption{}
+ \resizebox{.9\linewidth}{!}{\input{../graphes/acceptance_eta}}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+  \caption{}
+ \resizebox{.9\linewidth}{!}{\input{../graphes/acceptance_eta_tight}}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+  \caption{}
+ \resizebox{.9\linewidth}{!}{\input{../graphes/acceptance_E}}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+  \caption{}
+ \resizebox{.9\linewidth}{!}{\input{../graphes/acceptance_phi}}
+\end{figure}
 
 \section{Données}
 
@@ -373,7 +442,7 @@ m_{\textrm{inv}}^2 = E^2 - \textbf{p}^2
 Pour deux photons,  ou par approximation pour des particules très énergétiques, $E_{\gamma_1} = p_{\gamma_1}$ et $E_{\gamma_2} = p_{\gamma_2}$, et alors :
 
 \begin{equation}
-m_{\gamma \gamma}^2 = 2 \left ( p_{\gamma_1} p_{\gamma_2} - \textbf{p}_{\gamma_1} . \textbf{p}_{\gamma_2} \right )
+m_{\gamma \gamma}^2 = 2 \left ( p_{\gamma_1} p_{\gamma_2} - \textbf{p}_{\gamma_1} \cdot \textbf{p}_{\gamma_2} \right )
 \end{equation}
 
 Soit, en travaillant en coordonnées $(\eta, \phi)$ :
@@ -469,7 +538,7 @@ On réalise un fit gaussien dans l'intervalle [86-96] GeV
 
 \begin{tabular}{|l|c|r|} 
    \hline
-   Paramètre & Valeur & Erreur \\
+   Paramètre & Valeur & Erreur fit \\
     \hline
    $m_Z$ & 89,9 GeV & 0,3 GeV\\
   \hline
