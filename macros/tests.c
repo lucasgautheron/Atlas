@@ -39,13 +39,13 @@ void tests()
   tree->SetBranchAddress("mgg", &m); 
   tree->SetBranchAddress("mee", &me); 
   
-  const int n = 100;
+  const int n = 50;
   float E_min = 100, E_max = 150;
-  TH1F* h = new TH1F("h", "m_{ee} \\mbox{ distribution};m_{ee} \\mbox{ (GeV)};\\mbox{Count}", n, E_min, E_max); // create a histogram : 500 bins ranging from 100 to 600 GeV.
+  TH1F* h = new TH1F("h", "m_{\\gamma\\gamma} \\mbox{ distribution};m_{\\gamma\\gamma} \\mbox{ (GeV)};\\mbox{Ev/GeV}", n, E_min, E_max); // create a histogram : 500 bins ranging from 100 to 600 GeV.
   //TH1F* h2 = new TH1F("h2", "invariant mass gamma gamma", 500, 50, 250); // create a histogram : 500 bins ranging from 100 to 600 GeV.
   //h2->SetLineColor(kRed);
   
-  TF1 *fitgauss = new TF1("fitexpo", "gaus", 86, 96);
+ // TF1 *fitgauss = new TF1("fitexpo", "gaus", 86, 96);
 
   int totalEntries = 0;
   int looseEntries = 0;
@@ -78,9 +78,7 @@ void tests()
             //printf("%.2f\n", imp1.z - eta);
             //float theta = 2*atan(exp(-imp1.z));
             
-            if(abs(p1.E - 200) < 20 || abs(p2.E - 200) < 20) continue;
-            
-            h->Fill(invMass(p1,p2));
+            if(p1.E > 0 && p2.E > 0) h->Fill(invMass(p1,p2));
             //h->Fill(invMass(p1, p2));
 
         }
@@ -102,12 +100,13 @@ void tests()
     }*/
   }
   
-  h->Fit(fitgauss, "R");
+  //h->Fit(fitgauss, "R");
   
   /*TGraph *gr = new TGraph(n,x,y);
   gr->Draw("ACP");*/
   
     TF1 *fitexpo = new TF1("fitexpo", expon, E_min, E_max, 2);
+    fitexpo->SetLineStyle(2);
     reject = true;
    h->Fit(fitexpo);
    reject = false;
@@ -146,7 +145,10 @@ void tests()
    printf("%.3f %.3f %.3f %.3f\n", chi_bg, chi_bg/float(n-1), chi_tot, chi_tot/float(n-1));
     
       printf("%.3f %.3f\n",  fit->GetChisquare(), fit->GetChisquare()/fit->GetNDF());
+       h->SetMarkerStyle(20);
+       h->SetMarkerSize(0.8);
     h->Draw("E");
+   fitexpo->Draw("same");
  // h->Draw(); // plot the histogram
   //h2->Draw();
 }

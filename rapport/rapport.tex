@@ -210,7 +210,7 @@ La section efficace totale pour ce processus est $\sigma = \sigma_W + \sigma_Z$ 
 
 \fmf{dashes}{v3,o2}
 \end{fmfgraph*}
-\caption{Ici, deux gluons produisent deux paires $t\bar{t}$ ou $b\bar{b}$. Une d'entre elles fusionne et produit un $H$. Il s'agit d'un processus mineur ($\sigma = \sigma_b + \sigma_t = $ 0,20 $+$ 0,13 = 0,33 pb)}
+\caption{Ici, deux gluons produisent deux paires $t\bar{t}$ ou $b\bar{b}$. Une d'entre elles fusionne et produit un $H$. Il s'agit d'un processus mineur ($\sigma = \sigma_b + \sigma_t = $ 0,20 $+$ 0,13 = 0,33 pb à 8 TeV et $\sigma = \sigma_b + \sigma_t = $ 0,6 $+$ 0,6 = 1,2 pb à 14 TeV)}
 \end{figure}
 \end{fmffile}
 
@@ -240,6 +240,8 @@ La section efficace totale pour ce processus est $\sigma = \sigma_W + \sigma_Z$ 
 \caption{Un autre exemple de production $q\bar{q}H$ (ici $q\bar{q} \to b\bar{b}H$)}
 \end{figure}
 \end{fmffile}
+
+Ces processus sont l'objet d'une attention particulière, malgré leur faible section efficace. En effet, ils introduisent un couplage direct entre $H$ et des quarks lourds. L'intensité de ce couplage étant proportionnelle à la masse des quarks, elle est très forte dans le cas des top. Etudier ces évènements permettrait donc une mesure directe du couplage $H$ - fermion à des masses élevées. 
 
 \subsubsection{Section efficace totale $pp \to H$}
 
@@ -287,11 +289,18 @@ La section efficace totale pour ce processus est $\sigma = \sigma_W + \sigma_Z$ 
 
 \subsection{Produits de désintégration et choix de méthode d'observation}
 
-Pour détecter la présence d'un boson de Higgs parmi un évènements il faut étudier ses produits de désintégrations et vérifier qu'ils sont compatibles avec un $H$. Il faut pour cela que les particules produites soient détéctables et que l'on puisse mesurer leurs paramètres cinématiques avec suffisamment de précision.
+Pour détecter la présence d'un boson de Higgs parmi un évènement il faut étudier ses produits de désintégrations et vérifier qu'ils sont compatibles avec un $H$. Il faut pour cela que les particules produites soient détéctables et que l'on puisse mesurer leurs paramètres cinématiques avec suffisamment de précision.
+
+\begin{figure}[H]
+\centering
+  \caption{Résultats des expériences CMS et Atlas concernant l'évaluation de la masse du boson de Higgs pour différents canaux de désintégration attendus}
+ \includegraphics[width=0.9\textwidth]{../images/fig_02.png}
+\end{figure}
+
 
 \subsubsection{$H \to \gamma \gamma$}
 
-La désintégration du Higgs en deux photons est une méthode d'observation privilégiée. Bien que le ratio associé à cette branche soit très faible (2 pour 1000), ce qui implique que peu de Higgs formés seront observables de cette façon, il est plus facile de détecter de tels photons avec une grande précision sur leur énergie. La connaissance précise de l'impulsion de la paire de photons permet alors de remonter à la masse d'un Higgs dont ils seraient issus simplement (il s'agit de la masse invariante du système formé par la paire).
+La désintégration du Higgs en deux photons est une méthode d'observation privilégiée. Bien que le ratio associé à cette branche soit très faible (2 pour 1000), ce qui implique que peu de Higgs formés seront observables de cette façon, il est plus facile de détecter de tels photons avec une grande précision sur leur énergie et direction. La connaissance précise de l'impulsion de la paire de photons permet alors de remonter à la masse d'un Higgs dont ils seraient issus simplement (il s'agit de la masse invariante du système formé par la paire).
 
 \begin{figure}[H]
 \centering
@@ -332,6 +341,13 @@ Une autre voie privilégiée est la désintégration successive d'un $H$ en une 
 \end{tabular}
 \caption{Sections efficaces associées à la désintégration d'un Higgs en $ZZ$ puis 4$\ell$, en fonction de l'énergie du faisceau.}
 \end{figure}
+
+\begin{figure}[H]
+\centering
+  \caption{Signal et bruit de fond attendus pour différentes masses du Higgs dans le canal $4\ell$}
+ \includegraphics[width=0.9\textwidth]{../images/atlas_llll_events.png}
+\end{figure}
+
 
 \subsubsection{$H \to \tau \tau \to$}
 
@@ -528,11 +544,11 @@ On peut en déduire les paramètres physiquement intéressants suivants :
     \hline
    $E_0$ & 126,3 GeV & 0,3 GeV\\
   \hline
-   $\sigma$ & 2,0 GeV & 0,9 GeV \\
+   $\sigma$ & 2,0 GeV & 0,2 GeV \\
   \hline
 A & 88 & 17\\
  \hline
-$N = \sqrt{2\pi} \sigma A$ & 440 & 200\\
+$N = \sqrt{2\pi} \sigma A$ & 440 & 90\\
 \hline
 \end{tabular}
 
@@ -551,20 +567,20 @@ Cette valeur est raisonnablement proche de la valeur réelle (20,3 fb ${}^{-1}$)
 
 \begin{figure}[H]
 \centering
-  \caption{Distribution $m_{ee}$ et fit sur un intervalle ou le signal domine. On observe  un autre signal à 84-85 GeV }
+  \caption{Distribution $m_{ee}$ et fit sur un intervalle ou le signal domine (background plat).  }
  \resizebox{.9\linewidth}{!}{\input{../graphes/mee_sample}}
 \end{figure}
 
 
-On réalise un fit gaussien dans l'intervalle [86-96] GeV
+On trouve alors :
 
 \begin{tabular}{|l|c|r|} 
    \hline
-   Paramètre & Valeur & Erreur fit \\
+   Paramètre & Valeur & Valeur attendue \\
     \hline
-   $m_Z$ & 89,9 GeV & 0,3 GeV\\
+   $m_Z$ & 89,6 $\pm$ 0,3 GeV & 91,2 GeV\\
   \hline
-   $\sigma$ & 2,4 GeV & 0,2 GeV \\
+   $\sigma_Z$ & 8,0 $\pm$ 1,6 GeV & 2,5 GeV \\
   \hline
 A & & \\
  \hline
