@@ -7,9 +7,11 @@
 \documentclass[11pt]{article} % use larger type; default would be 10pt
 
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+\usepackage[french]{babel}
 \usepackage{array}
 \usepackage{tikz}
 \usepackage{amsmath}
+\usepackage{url}
 
 \usepackage{float}
 
@@ -93,11 +95,18 @@ partie générale : présentation LHC/atlas
 
 \section{Le LHC}
 
+\begin{figure}[H]
+\centering
+  \caption{Statut du LHC et des faisceaux pour chaque expérience. \og Physics \fg signifie que l'expérience collecte actuellement des données qui seront utilisées dans l'analyse des résultats.  Le graphe représente l'énergie de fonctionnement du LHC ($\dfrac{\sqrt{s}}{2}$) et la luminosité des faisceaux. }
+ \includegraphics[width=0.9\textwidth]{../images/lhc3.png}
+\end{figure}
+
 \section{Boson de Higgs}
 
 \subsection{Caractéristiques}
 
 Le boson de Higgs est une particule élémentaire du modèle standard de masse $\simeq$ 125 GeV et de spin nul et dont l'existence à été confortée par les résultats des expériences CMS et Atlas.
+Son existence a été suggérée en 1964 afin de proposer une explication cohérente avec le modèle standard d'une masse non nulle pour les bosons de jauge $W^{\pm}$ et $Z$.
 
 \subsection{Formation}
 
@@ -107,7 +116,7 @@ Il existe de nombreux processus entrainant la production de boson de Higgs. En v
 
 La fusion gluon gluon est le mode de production du Higgs le plus important. 
 
-La section efficace totale du processus est de 19,23 pb à $\sqrt{s} =$ 8 TeV et 43,94 pb à $\sqrt{s} =$ 13 TeV
+La section efficace totale du processus est de 19,23 pb à $\sqrt{s} =$ 8 TeV et 43,94 pb à $\sqrt{s} =$ 13 TeV\cite{twiki_cern_higgs_cross_sections}
 
 \begin{fmffile}{gg_H}
 \begin{figure}[H]
@@ -241,7 +250,7 @@ La section efficace totale pour ce processus est $\sigma = \sigma_W + \sigma_Z$ 
 \end{figure}
 \end{fmffile}
 
-Ces processus sont l'objet d'une attention particulière, malgré leur faible section efficace. En effet, ils introduisent un couplage direct entre $H$ et des quarks lourds. L'intensité de ce couplage étant proportionnelle à la masse des quarks, elle est très forte dans le cas des top. Etudier ces évènements permettrait donc une mesure directe du couplage $H$ - fermion à des masses élevées. 
+Ces processus sont l'objet d'une attention particulière, malgré leur faible section efficace. En effet, ils introduisent un couplage direct entre $H$ et des quarks lourds. L'intensité de ce couplage étant proportionnelle à la masse des quarks, elle est très forte dans le cas des top. Etudier ces évènements permettrait donc une mesure directe du couplage $H$ - fermion à des masses élevées. \cite{yukawa_coupling}
 
 \subsubsection{Section efficace totale $pp \to H$}
 
@@ -358,6 +367,12 @@ Une autre voie privilégiée est la désintégration successive d'un $H$ en une 
 
 \section{Atlas}
 
+\begin{figure}[H]
+\centering
+  \caption{Schéma du détecteur}
+ \includegraphics[width=0.9\textwidth]{../images/figures_AtlasDetectorLabelled.png}
+\end{figure}
+
 \subsection{Objectifs de l'expérience}
 
 % à relier a ce qui a été dit précédemment sur H
@@ -419,37 +434,31 @@ Il est nécessaire de tester l'efficacité du détecteur (c'est-à-dire sa capac
 \item{Cela peut renseigner sur l'influence de certains paramètres sur les performances des détecteurs et éventuellement de corriger des biais}
 \end{itemize}
 
-TODO : introduire les graphes
 
 \begin{figure}[H]
 \centering
-  \caption{}
- \resizebox{.9\linewidth}{!}{\input{../graphes/acceptance_eta}}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-  \caption{}
+  \caption{Efficacité de sélection des paires de photons 'tight' en fonction de $\eta$. La zone de \og crack \fg est bien apparente sur cette figure. }
  \resizebox{.9\linewidth}{!}{\input{../graphes/acceptance_eta_tight}}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-  \caption{}
- \resizebox{.9\linewidth}{!}{\input{../graphes/acceptance_E}}
+  \caption{Efficacité de sélection des photons enfonction de l'énergie transverse $E_t$.}
+ \resizebox{.9\linewidth}{!}{\input{../graphes/acceptance_Et}}
 \end{figure}
 
 \begin{figure}[H]
 \centering
   \caption{}
  \resizebox{.9\linewidth}{!}{\input{../graphes/acceptance_phi}}
+  \caption{Efficacité de sélection des photons en fonction de $\phi$. On constate que celle ci est constante sur $[-\pi,\pi]$ ce qui est attendu pour des raisons de symétrie.}
 \end{figure}
 
-\begin{figure}[H]
-\centering
-  \caption{Efficacité 'normalisée' ($\xi_{\mbox{globale}} \xi(\eta,E_T)/\left(\xi(\eta)\xi(E_T)\right)$. (Devrait être constante et égale à 1)}
- \resizebox{.9\linewidth}{!}{\input{../graphes/efficacite_normalisee}}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%  \caption{Efficacité 'normalisée' ($\xi_{\mbox{globale}} \xi(\eta,E_T)/\left(\xi(\eta)\xi(E_T)\right)$. (Devrait être constante et égale à 1)}
+% \resizebox{.9\linewidth}{!}{\input{../graphes/efficacite_normalisee}}
+%\end{figure}
 
 \section{Données}
 
@@ -470,7 +479,7 @@ En connaissant l'énergie des photons produits de la désintégration du Higgs s
 m_{\textrm{inv}}^2 = E^2 - \textbf{p}^2
 \end{equation}
 
-Pour deux photons,  ou par approximation pour des particules très énergétiques, $E_{\gamma_1} = p_{\gamma_1}$ et $E_{\gamma_2} = p_{\gamma_2}$, et alors :
+Pour deux photons,  ou par approximation pour des particules très énergétiques\footnote{Ici, les particules les plus massives utilisées dans les calculs de masse invariante sont les muons, or $m_\mu = $ 100 MeV $\ll $ 10 GeV, l'ordre de grandeur des énergies des particules considérées}, $E_{\gamma_1} = p_{\gamma_1}$ et $E_{\gamma_2} = p_{\gamma_2}$, et alors :
 
 \begin{equation}
 m_{\gamma \gamma}^2 = 2 \left ( p_{\gamma_1} p_{\gamma_2} - \textbf{p}_{\gamma_1} \cdot \textbf{p}_{\gamma_2} \right )
@@ -524,9 +533,9 @@ Parmi un échantillon de 310 000 évènements (constitués uniquement de paires 
 %On calcule de plus $\chi^2 = $ 68,8 pour un nombre de degrés de liberté égal à 99, ce qui correspond à une p-value de 99,0 \% (2,5$\sigma$?)
 %$\Delta \chi^2 = \chi^2_{\textrm{background}} - \chi^2{\textrm{signal+background} \simeq 120-70 \simeq 50$ soit une significance à $\sqrt{\Delta \chi^2} \sigma = 7 \sigma$
 
-Afin d'extraire le signal correspondant au Higgs, on se restreint à la plage où il est attendu (100 - 150 GeV). Le 'background' y suit une forme exponentielle. On en réalise alors un fit sur une zone ou le signal est considéré nul : ici on a choisi [100;120] $\cup$  [130;150]. On obtient une fonction de la forme $\textrm{background} = E \mapsto \exp(\xi + \epsilon E)$.
+Afin d'extraire le signal correspondant au Higgs, on se restreint à la plage où il est attendu (100 - 150 GeV). Le 'background' y suit une forme exponentielle. On en réalise alors un fit sur une zone ou le signal est considéré nul : ici on a choisi [100;120] $\cup$  [130;150]. On obtient une fonction de la forme $\textrm{background} = m_{\gamma\gamma} \mapsto \exp(\xi + \epsilon m_{\gamma\gamma})$.
 
-Puis, sur la plage complète ([100, 150]), on réalise un fit des données à partir d'une fonction de la forme signal+background : $E \mapsto  A \exp\left(-(E-E_0)^2/2\sigma^2\right) + \exp(\xi + \epsilon E)$
+Puis, sur la plage complète ([100, 150]), on réalise un fit des données à partir d'une fonction de la forme signal+background : $m_{\gamma\gamma} \mapsto  A \exp\left(-(m_{\gamma\gamma}-m_H)^2/2\sigma^2\right) + \exp(\xi + \epsilon m_{\gamma\gamma})$
 
 On obtient la figure suivante :
 
@@ -542,7 +551,7 @@ On peut en déduire les paramètres physiquement intéressants suivants :
    \hline
    Paramètre & Valeur & Erreur \\
     \hline
-   $E_0$ & 126,3 GeV & 0,3 GeV\\
+   $m_H$ & 126,3 GeV & 0,3 GeV\\
   \hline
    $\sigma$ & 2,0 GeV & 0,2 GeV \\
   \hline
@@ -552,7 +561,7 @@ $N = \sqrt{2\pi} \sigma A$ & 440 & 90\\
 \hline
 \end{tabular}
 
-La valeur $E_0$ doit correspondre à la masse du Higgs. On remarque qu'elle en est en effet bien proche (126 au lieu de 125 GeV). La valeur $\sigma$ doit correspondre à la largeur du signal, dont la valeur théorique attendue n'est pas nulle.
+La valeur $m_H$ est la masse du Higgs ainsi mesurée. La valeur $\sigma$ doit correspondre à la largeur du signal, dont la valeur théorique attendue n'est pas nulle.
 
 On calcule d'autre part la significance statistique d'après ces fits : $\Delta \chi^2 = \chi^2_{\textrm{background}} - \chi^2_{\textrm{signal+background}} \simeq 155-107 \simeq 50$ soit une significance à $\sqrt{\Delta \chi^2} \ \sigma = 7 \sigma$
 
@@ -581,10 +590,11 @@ On trouve alors :
    $m_Z$ & 89,6 $\pm$ 0,3 GeV & 91,2 GeV\\
   \hline
    $\sigma_Z$ & 8,0 $\pm$ 1,6 GeV & 2,5 GeV \\
-  \hline
-A & & \\
  \hline
 \end{tabular}
 
+
+\bibliographystyle{plain}
+\bibliography{references}
 
 \end{document}
