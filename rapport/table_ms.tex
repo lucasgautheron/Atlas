@@ -24,9 +24,10 @@
 %Thanks to Jerome
 %-------------------------------------------------------------
 
-\documentclass[]{article}
+\documentclass[12pt]{article}
 
 \usepackage[utf8]{inputenc}
+\usepackage{amsmath}
 %%%<
 \usepackage{verbatim}
 %%%>
@@ -52,11 +53,11 @@
 
 \newcommand{\CommonElementTextFormat}[5]
 {
-  \begin{minipage}{3.1cm}
+  \begin{minipage}{3.5cm}
     \centering
-      {\textbf{#3} \hfill #2}%
+      {\ #3\hfill #1}%
       \linebreak
-      {#1 \hfill \ }
+      {\ \hfill #2}
        \linebreak \linebreak
       {\textbf{#4}}%
       \linebreak \linebreak
@@ -66,7 +67,7 @@
 
 \newcommand{\EmptyNode}
 {
-  \begin{minipage}{3.1cm}
+  \begin{minipage}{3.3cm}
    
   \end{minipage}
 }
@@ -112,8 +113,8 @@
 \begin{tikzpicture}[font=\sffamily, scale=0.8, transform shape]
 
 %% Fill Color Styles
-   \tikzstyle{ElementFill} = [fill=yellow!15]
-  \tikzstyle{QuarksFill} = [fill=yellow!15]
+   \tikzstyle{ElementFill} = [fill=yellow!5]
+  \tikzstyle{QuarksFill} = [fill=yellow!35]
   \tikzstyle{BosonsFill} = [fill=orange!55]
   \tikzstyle{LeptonsFill} = [fill=green!40]
   \tikzstyle{NeutrinosFill} = [fill=blue!25]
@@ -124,8 +125,9 @@
   \tikzstyle{Bosons} = [Element, BosonsFill]
   \tikzstyle{Leptons} = [Element, LeptonsFill]
   \tikzstyle{Neutrinos} = [Element,NeutrinosFill]
+  \tikzstyle{Dummy} = [Element,ElementFill,scale=0.8]
   \tikzstyle{PeriodLabel} = [font={\sffamily\LARGE}, node distance=2.0cm]
-  \tikzstyle{GroupLabel} = [font={\sffamily\LARGE}, minimum width=4cm, node distance=3.0cm]
+  \tikzstyle{GroupLabel} = [font={\sffamily\LARGE}, minimum width=2.5cm, node distance=2.5cm]
   \tikzstyle{TitleLabel} = [font={\sffamily\Huge\bfseries}, node distance=7.0cm]
   \tikzstyle{Empty} = [  minimum width=4cm, minimum height=4cm, node distance=4cm  ]
 
@@ -141,29 +143,31 @@
    
    \node[name=EU, below of=D, Empty]{\EmptyNode};
    
+      \node[name=UD, left of=U, Empty]{\EmptyNode};
+   
    %% leptons
   \node[name=E, below of=EU, Leptons] {\NaturalElementTextFormat{-1}{511 keV}{1/2}{e}{electron}};
-   \node[name=M, right of=E, Leptons] {\NaturalElementTextFormat{-1}{105,66 MeV}{1/2}{$\mu$}{muon}};
-   \node[name=TA, right of=M, Leptons] {\NaturalElementTextFormat{-1}{1,777 GeV}{1/2}{$\tau$}{tau}};
+   \node[name=M, right of=E, Leptons] {\NaturalElementTextFormat{-1}{105,66 MeV}{1/2}{$\boldsymbol{\mu}$}{muon}};
+   \node[name=TA, right of=M, Leptons] {\NaturalElementTextFormat{-1}{1,777 GeV}{1/2}{$\boldsymbol{\tau}$}{tau}};
    
       %% neutrinos
-  \node[name=NE, below of=E, Neutrinos] {\NaturalElementTextFormat{0}{$<$2,5 eV}{1/2}{$\nu_e$}{neutrino e}};
-   \node[name=NM, below of=M,  Neutrinos] {\NaturalElementTextFormat{0}{$<$170 keV}{1/2}{$\nu_\mu$}{neutrino $\mu$}};
-   \node[name=NT, below of=TA, Neutrinos] {\NaturalElementTextFormat{0}{$<$18 MeV}{1/2}{$\nu_\tau$}{neutrino $\tau$}};
+  \node[name=NE, below of=E, Neutrinos] {\NaturalElementTextFormat{0}{$<$2,5 eV}{1/2}{$\boldsymbol{\nu_e}$}{neutrino e}};
+   \node[name=NM, below of=M,  Neutrinos] {\NaturalElementTextFormat{0}{$<$170 keV}{1/2}{$\boldsymbol{\nu_\mu}$}{neutrino $\mu$}};
+   \node[name=NT, below of=TA, Neutrinos] {\NaturalElementTextFormat{0}{$<$18 MeV}{1/2}{$\boldsymbol{\nu_\tau}$}{neutrino $\tau$}};
 
    \node[name=TY, right of=T, Empty]{\EmptyNode};
    
          %% bosons
-  \node[name=Y, right of=TY, Bosons] {\NaturalElementTextFormat{0}{0}{0}{$\gamma$}{photon}};
+  \node[name=Y, right of=TY, Bosons] {\NaturalElementTextFormat{0}{0}{0}{$\boldsymbol{\gamma}$}{photon}};
 
    \node[name=G, below of=Y, Bosons] {\NaturalElementTextFormat{0}{0}{1}{g}{gluon}};
    
        \node[name=H, below of=G, Bosons] {\NaturalElementTextFormat{0}{125,36$\pm$0,41 GeV}{0}{H}{Higgs}};
      
 
-     \node[name=W, below of=H, Bosons] {\NaturalElementTextFormat{$\pm$1}{80,385$\pm$0,015}{1}{W}{Weak}};
+     \node[name=W, below of=H, Bosons] {\NaturalElementTextFormat{$\pm$1}{80,385$\pm$0,015 GeV}{1}{W}{Weak}};
      
-     \node[name=W, below of=W, Bosons] {\NaturalElementTextFormat{0}{91,187$\pm$0,002}{1}{Z}{}};
+     \node[name=W, below of=W, Bosons] {\NaturalElementTextFormat{0}{91,187$\pm$0,002 GeV}{1}{Z}{}};
 
 %% Group
  \node[name=Quarks, above of=U, GroupLabel] {Quarks};
@@ -172,11 +176,14 @@
  \node[name=Bosons, above of=Y, GroupLabel] {Bosons};
  
  \node[name=UT, above of=T,Empty]{\EmptyNode};
-
-
+ 
 %
 %%% Diagram Title
 \node at (UT.north)[name=diagramTitle, TitleLabel]    {Particules élémentaires du modèle standard};
+
+ \node at (diagramTitle.west -| UD.north) [name=D,Dummy] {\NaturalElementTextFormat{charge/e}{masse $  \cdot \ c^2$}{spin}{symbole}{nom}};
+
+
 
 \end{tikzpicture}
 \end{preview}
