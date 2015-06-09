@@ -1,0 +1,183 @@
+%% Copyright 2009 Ivan Griffin
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Ivan Griffin
+%
+% This work consists of the files periodic_table.tex
+
+%Description
+%-----------
+%periodic_table.tex - an example file illustrating the Periodic
+%                     Table of Chemical Elements using TikZ
+
+%Created 2009-12-08 by Ivan Griffin.  Last updated: 2010-01-11
+%
+%Thanks to Jerome
+%-------------------------------------------------------------
+
+\documentclass[]{article}
+
+\usepackage[utf8]{inputenc}
+%%%<
+\usepackage{verbatim}
+%%%>
+
+\begin{comment}
+:Title: Periodic Table of Chemical Elements
+
+\end{comment}
+
+\usepackage{ifpdf}
+\usepackage{tikz}
+\usepackage[active,tightpage]{preview}
+\usetikzlibrary{shapes,calc}
+
+\ifpdf
+  %
+\else
+  % Implement Outline text using pstricks if regular LaTeX->dvi->ps->pdf route
+  \usepackage{pst-all}
+\fi
+
+\begin{document}
+
+\newcommand{\CommonElementTextFormat}[5]
+{
+  \begin{minipage}{3.1cm}
+    \centering
+      {\textbf{#3} \hfill #2}%
+      \linebreak
+      {#1 \hfill \ }
+       \linebreak \linebreak
+      {\textbf{#4}}%
+      \linebreak \linebreak
+      {{#5}}
+  \end{minipage}
+}
+
+\newcommand{\EmptyNode}
+{
+  \begin{minipage}{3.1cm}
+   
+  \end{minipage}
+}
+
+
+\newcommand{\NaturalElementTextFormat}[5]
+{
+  \CommonElementTextFormat{#1}{#2}{#3}{\LARGE {#4}}{#5}
+}
+
+\newcommand{\OutlineText}[1]
+{
+\ifpdf
+  % Couldn't find a nicer way of doing an outline font with TikZ
+  % other than using pdfliteral 1 Tr
+  %
+  \pdfliteral direct {0.5 w 1 Tr}{#1}%
+  \pdfliteral direct {1 w 0 Tr}%
+\else
+  % pstricks can do this with \pscharpath from pstricks
+  %
+  \pscharpath[shadow=false,
+    fillstyle=solid,
+    fillcolor=white,
+    linestyle=solid,
+    linecolor=black,
+    linewidth=.2pt]{#1} 
+\fi
+}
+
+\newcommand{\SyntheticElementTextFormat}[4]
+{
+\ifpdf
+  \CommonElementTextFormat{#1}{#2}{\OutlineText{\LARGE #3}}{#4}
+\else
+  % pstricks approach results in slightly larger box
+  % that doesn't break, so fudge here
+  \CommonElementTextFormat{#1}{#2}{\OutlineText{\Large #3}}{#4}
+\fi
+}
+
+\begin{preview}
+\begin{tikzpicture}[font=\sffamily, scale=0.8, transform shape]
+
+%% Fill Color Styles
+   \tikzstyle{ElementFill} = [fill=yellow!15]
+  \tikzstyle{QuarksFill} = [fill=yellow!15]
+  \tikzstyle{BosonsFill} = [fill=orange!55]
+  \tikzstyle{LeptonsFill} = [fill=green!40]
+  \tikzstyle{NeutrinosFill} = [fill=blue!25]
+%% Element Styles
+  \tikzstyle{Element} = [draw=black, ElementFill,
+    minimum width=4cm, minimum height=4cm, node distance=4cm]
+  \tikzstyle{Quarks} = [Element, QuarksFill]
+  \tikzstyle{Bosons} = [Element, BosonsFill]
+  \tikzstyle{Leptons} = [Element, LeptonsFill]
+  \tikzstyle{Neutrinos} = [Element,NeutrinosFill]
+  \tikzstyle{PeriodLabel} = [font={\sffamily\LARGE}, node distance=2.0cm]
+  \tikzstyle{GroupLabel} = [font={\sffamily\LARGE}, minimum width=4cm, node distance=3.0cm]
+  \tikzstyle{TitleLabel} = [font={\sffamily\Huge\bfseries}, node distance=7.0cm]
+  \tikzstyle{Empty} = [  minimum width=4cm, minimum height=4cm, node distance=4cm  ]
+
+%% quarks
+  \node[name=U, Quarks] {\NaturalElementTextFormat{+2/3}{1,5-4 MeV}{1/2}{u}{up}};
+   \node[name=D, below of=U, Quarks] {\NaturalElementTextFormat{-1/3}{4-8 MeV}{1/2}{d}{down}};
+
+  \node[name=C, right of=U, Quarks] {\NaturalElementTextFormat{+2/3}{1,15-1,35 GeV}{1/2}{c}{charm}};
+   \node[name=S, below of=C, Quarks] {\NaturalElementTextFormat{-1/3}{80-130 MeV}{1/2}{s}{strange}};
+
+ \node[name=T, right of=C, Quarks] {\NaturalElementTextFormat{+2/3}{173,3$\pm$0,8 GeV}{1/2}{t}{top}};
+   \node[name=B, below of=T, Quarks] {\NaturalElementTextFormat{-1/3}{4,1-4,4 GeV}{1/2}{s}{bottom}};
+   
+   \node[name=EU, below of=D, Empty]{\EmptyNode};
+   
+   %% leptons
+  \node[name=E, below of=EU, Leptons] {\NaturalElementTextFormat{-1}{511 keV}{1/2}{e}{electron}};
+   \node[name=M, right of=E, Leptons] {\NaturalElementTextFormat{-1}{105,66 MeV}{1/2}{$\mu$}{muon}};
+   \node[name=TA, right of=M, Leptons] {\NaturalElementTextFormat{-1}{1,777 GeV}{1/2}{$\tau$}{tau}};
+   
+      %% neutrinos
+  \node[name=NE, below of=E, Neutrinos] {\NaturalElementTextFormat{0}{$<$2,5 eV}{1/2}{$\nu_e$}{neutrino e}};
+   \node[name=NM, below of=M,  Neutrinos] {\NaturalElementTextFormat{0}{$<$170 keV}{1/2}{$\nu_\mu$}{neutrino $\mu$}};
+   \node[name=NT, below of=TA, Neutrinos] {\NaturalElementTextFormat{0}{$<$18 MeV}{1/2}{$\nu_\tau$}{neutrino $\tau$}};
+
+   \node[name=TY, right of=T, Empty]{\EmptyNode};
+   
+         %% bosons
+  \node[name=Y, right of=TY, Bosons] {\NaturalElementTextFormat{0}{0}{0}{$\gamma$}{photon}};
+
+   \node[name=G, below of=Y, Bosons] {\NaturalElementTextFormat{0}{0}{1}{g}{gluon}};
+   
+       \node[name=H, below of=G, Bosons] {\NaturalElementTextFormat{0}{125,36$\pm$0,41 GeV}{0}{H}{Higgs}};
+     
+
+     \node[name=W, below of=H, Bosons] {\NaturalElementTextFormat{$\pm$1}{80,385$\pm$0,015}{1}{W}{Weak}};
+     
+     \node[name=W, below of=W, Bosons] {\NaturalElementTextFormat{0}{91,187$\pm$0,002}{1}{Z}{}};
+
+%% Group
+ \node[name=Quarks, above of=U, GroupLabel] {Quarks};
+ \node[name=Leptons, above of=E, GroupLabel] {Leptons};
+ \node[name=Neutrinos, below of=NE, GroupLabel] {Neutrinos};
+ \node[name=Bosons, above of=Y, GroupLabel] {Bosons};
+ 
+ \node[name=UT, above of=T,Empty]{\EmptyNode};
+
+
+%
+%%% Diagram Title
+\node at (UT.north)[name=diagramTitle, TitleLabel]    {Particules élémentaires du modèle standard};
+
+\end{tikzpicture}
+\end{preview}
+\end{document}
