@@ -23,7 +23,7 @@ void tests()
   double expected_mass = 125;
    TFile* f = TFile::Open("Hgg_Moriond2013-Y2012_merge_200804_216432_NoMassCut.root");  // open the file
  // TFile* f = TFile::Open("Hgg_Moriond2013-Y2012_ZH600_Pythia_NoMassCut.root");
-   // TFile* f = TFile::Open("Hgg_Moriond2013-Y2012_merge_200804_216432_Presel_1lepton.root");
+    //TFile* f = TFile::Open("Hgg_Moriond2013-Y2012_merge_200804_216432_Presel_1lepton.root");
   //  TFile* f = TFile::Open("small.root");  // open the file
   TTree* tree = (TTree*)f->Get("tree");
 
@@ -39,8 +39,8 @@ void tests()
   tree->SetBranchAddress("mgg", &m); 
   tree->SetBranchAddress("mee", &me); 
   
-  const int n = 50;
-  float E_min = 100, E_max = 150;
+  const int n = 150;
+  float E_min = 100, E_max = 250;
   TH1F* h = new TH1F("h", "m_{\\gamma\\gamma} \\mbox{ distribution};m_{\\gamma\\gamma} \\mbox{ (GeV)};\\mbox{Ev/GeV}", n, E_min, E_max); // create a histogram : 500 bins ranging from 100 to 600 GeV.
   //TH1F* h2 = new TH1F("h2", "invariant mass gamma gamma", 500, 50, 250); // create a histogram : 500 bins ranging from 100 to 600 GeV.
   //h2->SetLineColor(kRed);
@@ -146,7 +146,7 @@ void tests()
     
       printf("%.3f %.3f\n",  fit->GetChisquare(), fit->GetChisquare()/fit->GetNDF());
        h->SetMarkerStyle(20);
-       h->SetMarkerSize(0.8);
+       h->SetMarkerSize(1);
     h->Draw("E");
    fitexpo->Draw("same");
  // h->Draw(); // plot the histogram

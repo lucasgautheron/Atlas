@@ -5,11 +5,11 @@
 #include "common.h"
 #include "maths.h"
 
-  float E_min = 150, E_max = 500;
+  float E_min = 150, E_max = 480; // 150 ; 475; 14
 
 bool keep_photon(photon &p)
 {
-    return p.tight && p.E > E_min && p.E < E_max && p.convFlag <= 0 && abs(p.E-p.true_E) < 50;
+    return p.tight && p.E > E_min && p.E < E_max /*&& p.convFlag <= 0*/ && abs(p.E-p.true_E) < 50 && abs(float(p.true_eta)) > 1.5f;
 }
 
 void eta()
@@ -41,7 +41,7 @@ void eta()
       bind_attributes(trees[k], p1, p2, e1, e2, m1, m2);
   }
   
-  const int n = 15;
+  const int n = 12;
   
   TF1 *fa = new TF1("fa1","(cos(x/2)/sin(x/2)  ) / ((cos(x/2)/sin(x/2)) *(cos(x/2)/sin(x/2)) + 1)",0,3.142);
 
@@ -228,7 +228,7 @@ void eta()
    TF1 *energy = new TF1("energy", " [0]/sqrt(x) + [1]", 100, 1000);
    TGraphErrors *gr = new TGraphErrors(n,en,den,xerr,yerr);
    gr->Fit("energy");
-   gr->SetTitle("\\mbox{Resolution en energie};E\\mbox{ (GeV) };\\sigma_{E} / \\Delta E \\mbox{ \% }");
+   gr->SetTitle("\\mbox{Resolution en energie};E\\mbox{ (GeV) };\\sigma_{E} / E \\mbox{ \\% }");
    gr->SetLineStyle(0);
    gr->SetLineWidth(0);
    /* h->Sumw2();

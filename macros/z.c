@@ -31,6 +31,7 @@ void z()
   photon p1, p2;
   electron e1, e2;
   muon m1, m2;
+  bool dielectron = 0;
   
   bind_attributes(tree, p1, p2, e1, e2, m1, m2);
 
@@ -38,6 +39,7 @@ void z()
 
   tree->SetBranchAddress("mgg", &m); 
   tree->SetBranchAddress("mee", &me); 
+  tree->SetBranchAddress("isDielectron", &dielectron);
   
   const int n = 35;
   float E_min = 70, E_max = 105;
@@ -79,7 +81,7 @@ void z()
             //float theta = 2*atan(exp(-imp1.z));
             
             
-            if(e1.p > 0 && e2.p > 0)
+            if(e1.p > 0 && e2.p > 0 && dielectron)
             {
                 e1.E = e1.p;
                 e2.E = e2.p;
@@ -151,7 +153,7 @@ void z()
     
       printf("%.3f %.3f\n",  fit->GetChisquare(), fit->GetChisquare()/fit->GetNDF());
        h->SetMarkerStyle(20);
-       h->SetMarkerSize(0.7);
+       h->SetMarkerSize(1.5);
     h->Draw("E");
    fitexpo->Draw("same");
  // h->Draw(); // plot the histogram

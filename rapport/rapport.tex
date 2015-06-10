@@ -95,6 +95,9 @@ partie générale : présentation LHC/atlas
 
 \section{Le LHC}
 
+\subsection{Schedule}
+Run1, 2, .., HL...
+
 \begin{figure}[H]
 \centering
   \caption{Statut du LHC et des faisceaux pour chaque expérience. \og Physics \fg signifie que l'expérience collecte actuellement des données qui seront utilisées dans l'analyse des résultats.  Le graphe représente l'énergie de fonctionnement du LHC ($\dfrac{\sqrt{s}}{2}$) et la luminosité des faisceaux. }
@@ -102,6 +105,8 @@ partie générale : présentation LHC/atlas
 \end{figure}
 
 \section{Le modèle standard}
+
+\subsection{Généralités}
 
 \begin{figure}[H]
 \centering
@@ -165,12 +170,12 @@ La section efficace du processus VBF est de 1,58 pb à $\sqrt{s} =$ 8 TeV et 3,7
 \fmflabel{$f$}{o1}
 \fmflabel{$f$}{o3}
 \fmflabel{$H$}{o2}
-\fmflabel{$W,Z$}{v3}
+%\fmflabel{$W,Z$}{v3}
 
 \fmf{fermion}{i1,v1,o1}
 \fmf{fermion}{i2,v2,o3}
-\fmf{photon}{v1,v3}
-\fmf{photon}{v3,v2}
+\fmf{photon,label=$W,,Z$}{v1,v3}
+\fmf{photon,label=$W,,Z$}{v3,v2}
 \fmf{dashes}{v3,o2}
 \end{fmfgraph*}
 \caption{Formation d'un Higgs par fusion de bosons $W$ ou $Z$ virtuels échangés entre deux fermions.  }
@@ -311,14 +316,14 @@ Pour détecter la présence d'un boson de Higgs parmi un évènement il faut ét
 
 \begin{figure}[H]
 \centering
-  \caption{Résultats des expériences CMS et Atlas sur la détection du Higgs à travers sa désintégration par différents modes. Les signaux extraits sont comparés aux valeurs attendues selon le modèle standard. }
- \includegraphics[width=0.9\textwidth]{../images/hcp_atlas_cms_higgs.png}
+  \caption{Résultats de l'expérience Atlas sur la détection du Higgs à travers sa désintégration par différents modes. Les signaux extraits sont comparés aux valeurs attendues selon le modèle standard. }
+ \includegraphics[width=0.9\textwidth]{../images/fig_02.png}
 \end{figure}
 
 
 \subsubsection{$H \to \gamma \gamma$}
 
-La désintégration du Higgs en deux photons est une méthode d'observation privilégiée. Bien que le ratio associé à cette branche soit très faible (2 pour 1000), ce qui implique que peu de Higgs formés seront observables de cette façon, il est plus facile de détecter de tels photons avec une grande précision sur leur énergie et direction. La connaissance précise de l'impulsion de la paire de photons permet alors de remonter à la masse d'un Higgs dont ils seraient issus simplement (il s'agit de la masse invariante du système formé par la paire).
+La désintégration du Higgs en deux photons est une méthode d'observation privilégiée. Bien que le ratio associé à cette branche soit très faible (2 pour 1000), ce qui implique que peu de Higgs formés seront observables de cette façon, il est plus facile de détecter de tels photons avec une grande précision sur leur énergie et direction. La connaissance précise de l'impulsion de la paire de photons permet alors de remonter à la masse d'un Higgs dont ils seraient issus simplement (il s'agit de la masse invariante du système formé par la paire). Un inconvénient de ce canal est qu'il n'aurait pas permis de détecter un Higgs lourd (> 200 GeV).
 
 \begin{figure}[H]
 \centering
@@ -338,9 +343,11 @@ La désintégration du Higgs en deux photons est une méthode d'observation priv
 \caption{Sections efficaces associées à la désintégration d'un Higgs en $\gamma \gamma$, en fonction de l'énergie du faisceau.}
 \end{figure}
 
+
+
 \subsubsection{$H \to ZZ \to \ell \ell \ell \ell$}
 
-Une autre voie privilégiée est la désintégration successive d'un $H$ en une paire de $Z$ puis 4 leptons (4$e$, 4$\mu$ ou 2$e$2$\mu$). Bien que la section efficace totale d'un tel processus soit encore inférieure à celle de la voie $\gamma \gamma$ (la probabilité qu'un Z se désintégrant en paire $ee$ ou $\mu \mu$ étant de 3,4 \% seulement), cette méthode est très intéressante en raison d'un excellent rapport signal/bruit et d'une précision correcte sur la masse reconstruite.
+Une autre voie privilégiée est la désintégration successive d'un $H$ en une paire de $Z$ puis 4 leptons (4$e$, 4$\mu$ ou 2$e$2$\mu$). Bien que la section efficace totale d'un tel processus soit encore inférieure à celle de la voie $\gamma \gamma$ aux alentours de 125 GeV  (la probabilité qu'un Z se désintégrant en paire $ee$ ou $\mu \mu$ étant de 3,4 \% seulement), cette méthode est très intéressante en raison d'un excellent rapport signal/bruit et d'une précision correcte sur la masse reconstruite. De plus, dans l'hypothèse d'un Higgs lourd, les désintégrations d'un Higgs en paire de Z deviennent très probablent, et le bruit de fond très faible.
 
 \begin{figure}[H]
 \centering
@@ -367,7 +374,10 @@ Une autre voie privilégiée est la désintégration successive d'un $H$ en une 
 \end{figure}
 
 
-\subsubsection{$H \to \tau^+ \tau^- \to \ell\ell$, $\ell$-jet ou jet-jet}
+\subsubsection{$H \to W^+W^-$}
+
+
+\subsubsection{$H \to \tau^+\tau^- \to \ell\ell$, $\ell$-jet ou jet-jet}
 
 La désintégration d'un H en paire $\tau^+ \tau^-$ offre une autre voie d'observation du Higgs. Elle pose cependant des difficultés : les particules $\tau$ ne sont pas détectables directement. Elles sont donc reconstruites à partir de leurs produits de désintégrations. Ces produits sont des hadrons (identifiables par des 'jets') dans 65 \% des cas environ et des leptons dans les 35 \% des cas restants. Cela implique une reconstruction à partir d'au moins un jet dans 90  \% des cas, qui sont soumis à un bruit de  background important. De plus, au moins un neutrino est émis (en vertu de la conservation du nombre tauonique) lors d'une désintégration d'un $\tau$, et un de plus lorsqu'il se désintègre en un autre lepton, ce qui pose problème pour la reconstruction des masses et impulsions puisque les neutrinos ne sont pas détectables.
 
@@ -379,17 +389,20 @@ La désintégration d'un H en paire $\tau^+ \tau^-$ offre une autre voie d'obser
 
 \section{Atlas}
 
-\begin{figure}[H]
-\centering
-  \caption{Schéma du détecteur}
- \includegraphics[width=0.9\textwidth]{../images/figures_AtlasDetectorLabelled.png}
-\end{figure}
+
 
 \subsection{Objectifs de l'expérience}
 
 % à relier a ce qui a été dit précédemment sur H
 \subsection{Détecteurs}
-% inclure schémas
+
+\begin{figure}[H]
+\centering
+  \caption{Schéma du détecteur Atlas}
+ \includegraphics[width=0.9\textwidth]{../images/figures_AtlasDetectorLabelled.png}
+\end{figure}
+
+TODO: tableau : composant, fonction, fonctionnement.
 
 \subsection{Performance}
 \subsubsection{Résolution en énergie du calorimètre EM}
@@ -400,11 +413,13 @@ TODO: expliquer les facteurs limitant la résolution et justifier
 \dfrac{\sigma_E}{E} \simeq \dfrac{a}{\sqrt{E}} \oplus \dfrac{b}{E} \oplus c
 \end{equation}
 
-Puisque $b \ll $ 10 GeV :
+Puisque $b \ll $ 10 GeV, aux énergies qui nous intéressent :
 
 \begin{equation}
 \dfrac{\sigma_E}{E} \sim \dfrac{a}{\sqrt{E}} \oplus c
 \end{equation}
+
+A l'aide des simulations Monte-Carlo, on estime la résolution en énergie en fonction de l'énergie des photons mesurés, afin de vérifier si ce comportement est bien reproduit. (fig. \ref{fig:resolution_energie_photons}).
 
 \begin{tabular}{|l|c|r|r|} 
    \hline
@@ -426,7 +441,7 @@ TODO: $\pm$ peu pertinents (uniquement err fit) et valeurs en fct de $\eta$ peu 
 
 \begin{figure}[H]
 \centering
-  \caption{Les énergies des photons 'tight' (convertis ou non) reconstruits sont comparées aux photons réels. }
+  \caption{\label{fig:resolution_energie_photons} Les énergies des photons 'tight' (convertis ou non) reconstruits sont comparées aux photons réels. }
  \resizebox{.9\linewidth}{!}{\input{../graphes/resolution_energie_globale+conv}}
 \end{figure}
 
@@ -507,13 +522,25 @@ Il s'agit alors de calculer cette masse pour tous les évènements contenant une
 
 Puisque cette relation est vraie y compris pour des particules massives à haute énergie, on peut déterminer la masse du $Z$ à partir des impulsions des leptons issus de sa désintégration.
 
+Afin  de déterminer l'impact de la limite en résolution énergétique et angulaire, on estime $\Delta m_{\gamma\gamma})$, en négligeant l'erreur sur $\phi$ :
+
+\begin{equation}
+\Delta m_{\gamma\gamma} \simeq \dfrac{1}{2}m_{\gamma \gamma}\left( \dfrac{\sigma_{E_1}}{E_1} +  \dfrac{\sigma_{E_2}}{E_2}\right) + \dfrac{E_1E_2 \sinh {(\eta_1 - \eta_2)}}{m_{\gamma \gamma}} \left( \sigma_{\eta_1} + \sigma_{\eta_2} \right)
+\end{equation}
+
+Si un ordre de grandeur suffit :
+
+\begin{equation}
+\Delta m_{\gamma\gamma} \sim m_{\gamma \gamma}\left ( \dfrac{\sigma_E}{E} +  \sigma_{\eta} \right )
+\end{equation}
+
 \subsection{Calcul en situation}
 
 Parmi un échantillon de 310 000 évènements (constitués uniquement de paires de photons vérifiant le critère 'tight'), on calcule la distribution de masse invariante $m_{\gamma \gamma}$. On obtient le résultat suivant :
 
 \begin{figure}[H]
 \centering
-  \caption{Distribution m$_{\gamma \gamma}$. On observe un bruit important avec un pic aux alentours de 90 GeV. Le signal correspondait au Higgs est à première vue difficilement distinguable. }
+  \caption{Distribution m$_{\gamma \gamma}$. On observe un bruit important avec un pic aux alentours de 90 GeV (Z). Le signal correspondant au Higgs est à première vue difficilement distinguable. ($\sqrt{s} =$ 8 TeV,  $\int L dt$ = 20,3 fb$^{-1}$) }
  \resizebox{.9\linewidth}{!}{\input{../graphes/mgg_medium}}
 \end{figure}
 
@@ -553,7 +580,7 @@ On obtient la figure suivante :
 
 \begin{figure}[H]
 \centering
-  \caption{Distribution $m_{\gamma \gamma}$ et fit background+signal. }
+  \caption{Distribution $m_{\gamma \gamma}$ et fit background+signal. ($\sqrt{s} =$ 8 TeV,  $\int L dt$ = 20,3 fb$^{-1}$) }
  \resizebox{.9\linewidth}{!}{\input{../graphes/mgg_50GeV}}
 \end{figure}
 
@@ -567,28 +594,31 @@ On peut en déduire les paramètres physiquement intéressants suivants :
   \hline
    $\sigma$ & 2,0 GeV & 0,2 GeV \\
   \hline
-A & 88 & 17\\
+A & 180 GeV ${}^{-1}$ & 30\\
+
  \hline
-$N = \sqrt{2\pi} \sigma A$ & 440 & 90\\
+$N = \sqrt{2\pi} \sigma A$ & 900 & 150\\
 \hline
 \end{tabular}
 
-La valeur $m_H$ est la masse du Higgs ainsi mesurée. La valeur $\sigma$ doit correspondre à la largeur du signal, dont la valeur théorique attendue n'est pas nulle.
+La valeur $m_H$ est la masse du Higgs ainsi mesurée. La valeur $\sigma$ doit correspondre à la largeur du signal, mais elle est bien supérieure à la valeur théorique. Aux énergies considérées (environ 100 GeV), $\sigma_{\eta} \sim 0,3 \%$ \cite{resolution_position_photons} et $\sigma_{E} \sim 1,5 \%$, soit une incertitude $\Delta m_{\gamma\gamma}$ d'environ 2 GeV. C'est bien la largeur du signal mesuré. 
 
 On calcule d'autre part la significance statistique d'après ces fits : $\Delta \chi^2 = \chi^2_{\textrm{background}} - \chi^2_{\textrm{signal+background}} \simeq 155-107 \simeq 50$ soit une significance à $\sqrt{\Delta \chi^2} \ \sigma = 7 \sigma$
 
 A partir de la quantité d'évènements $H \to \gamma \gamma$ détectés estimée, on peut calculer la luminosité intégrée associée :
 \begin{equation}
-\int L dt = \dfrac{N}{\xi \sigma} = \dfrac{\mbox{400}}{\mbox{0,41} \times \mbox{51} \times \mbox{10} {}^{-15}} = \mbox{21 fb} {}^{-1}
+\int L dt = \dfrac{N}{\xi \sigma} = \dfrac{\mbox{900}}{\mbox{0,41} \times \mbox{51} \times \mbox{10} {}^{-15}} = \mbox{21 fb} {}^{-1} \pm 20 \%
 \end{equation}
 
 Cette valeur est raisonnablement proche de la valeur réelle (20,3 fb ${}^{-1}$)
 
 \subsection{Masse du $Z$}
 
+On s'intéresse cette fois aux évènements comprenant une paire $e^+e^-$ (et deux photons 'loose'). On calcule la masse invariante de la paire d'électrons et on obtient le graphe \ref{fig:distribution_mee}, après un fit du signal sous forme gaussienne et un bruit uniforme. 
+
 \begin{figure}[H]
 \centering
-  \caption{Distribution $m_{ee}$ et fit sur un intervalle ou le signal domine (background plat).  }
+  \caption{\label{fig:distribution_mee}Distribution $m_{ee}$ et fit sur un intervalle ou le signal domine (background plat).  }
  \resizebox{.9\linewidth}{!}{\input{../graphes/mee_sample}}
 \end{figure}
 
@@ -601,9 +631,22 @@ On trouve alors :
     \hline
    $m_Z$ & 89,6 $\pm$ 0,3 GeV & 91,2 GeV\\
   \hline
-   $\sigma_Z$ & 8,0 $\pm$ 1,6 GeV & 2,5 GeV \\
+   $\sigma_Z$ & 8,5 $\pm$ 1,6 GeV & 2,5 GeV \\
  \hline
 \end{tabular}
+
+La masse ainsi calculée est correcte. La largeur est bien plus importante que la valeur théorique. On s'attend à une largeur de la forme $\sigma_{exp} \sim \sqrt{(\Delta m_{\gamma \gamma})^2 + \sigma_{SM}^2}$ qui aurait une valeur d'environ 4 GeV. 
+
+TODO: expliquer différence !
+
+\subsection{Recherche de Higgs à des masses différentes }
+
+En connaissant les sections efficaces et ratios de branche du Higgs en fonction de sa masse, et en extrapolant le fit de bruit de fond mesuré à des masses élevées, on peut estimer le ratio signal/bruit de fond pour des scénarios avec un boson de Higgs plus lourd. Cela permet de montrer que le canal $H \to \gamma \gamma$ n'est pas approprié à la détection de Higgs lourd. Sur la figure  \ref{higgs_lourds_gg}, on peut en effet constater que le ratio S/B ne dépasse pas 0,01. De plus, le run 1 du LHC n'aurait pas produit plus de 8 évènements $H \to \gamma \gamma$ pour $m_H =$ 200 GeV (et aucun pour 300+GeV).
+\begin{figure}[H]
+\centering
+  \caption{\label{fig:higgs_lourds_gg} Pour $\sqrt{s}$ = 8 TeV, on calcule le rapport entre le signal attendu (monte-carlo) et le bruit de fond, pour $m_H =$200, 300, 400, 500 et 600 GeV.  }
+ \resizebox{.9\linewidth}{!}{\input{../graphes/higgs_lourds_gg}}
+\end{figure}
 
 
 \bibliographystyle{plain}
