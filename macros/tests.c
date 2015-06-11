@@ -39,8 +39,8 @@ void tests()
   tree->SetBranchAddress("mgg", &m); 
   tree->SetBranchAddress("mee", &me); 
   
-  const int n = 150;
-  float E_min = 100, E_max = 250;
+  const int n = 40;
+  float E_min = 160, E_max = 200;
   TH1F* h = new TH1F("h", "m_{\\gamma\\gamma} \\mbox{ distribution};m_{\\gamma\\gamma} \\mbox{ (GeV)};\\mbox{Ev/GeV}", n, E_min, E_max); // create a histogram : 500 bins ranging from 100 to 600 GeV.
   //TH1F* h2 = new TH1F("h2", "invariant mass gamma gamma", 500, 50, 250); // create a histogram : 500 bins ranging from 100 to 600 GeV.
   //h2->SetLineColor(kRed);

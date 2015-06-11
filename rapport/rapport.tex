@@ -592,25 +592,25 @@ On peut en déduire les paramètres physiquement intéressants suivants :
     \hline
    $m_H$ & 126,3 GeV & 0,3 GeV\\
   \hline
-   $\sigma$ & 2,0 GeV & 0,2 GeV \\
+   $\sigma$ & 1,3 GeV & 0,4 GeV \\
   \hline
 A & 180 GeV ${}^{-1}$ & 30\\
 
  \hline
-$N = \sqrt{2\pi} \sigma A$ & 900 & 150\\
+$N = \sqrt{2\pi} \sigma A$ & 586 & 200\\
 \hline
 \end{tabular}
 
-La valeur $m_H$ est la masse du Higgs ainsi mesurée. La valeur $\sigma$ doit correspondre à la largeur du signal, mais elle est bien supérieure à la valeur théorique. Aux énergies considérées (environ 100 GeV), $\sigma_{\eta} \sim 0,3 \%$ \cite{resolution_position_photons} et $\sigma_{E} \sim 1,5 \%$, soit une incertitude $\Delta m_{\gamma\gamma}$ d'environ 2 GeV. C'est bien la largeur du signal mesuré. 
+La valeur $m_H$ est la masse du Higgs ainsi mesurée. La valeur $\sigma$ doit correspondre à la largeur du signal, mais elle est bien supérieure à la valeur théorique. Aux énergies considérées (environ 100 GeV), $\sigma_{\eta} \sim 0,3 \%$ \cite{resolution_position_photons} et $\sigma_{E} \sim 1,5 \%$, soit une incertitude $\Delta m_{\gamma\gamma}$ d'environ 2 GeV, du même ordre de grandeur que la largeur mesurée.
 
 On calcule d'autre part la significance statistique d'après ces fits : $\Delta \chi^2 = \chi^2_{\textrm{background}} - \chi^2_{\textrm{signal+background}} \simeq 155-107 \simeq 50$ soit une significance à $\sqrt{\Delta \chi^2} \ \sigma = 7 \sigma$
 
 A partir de la quantité d'évènements $H \to \gamma \gamma$ détectés estimée, on peut calculer la luminosité intégrée associée :
 \begin{equation}
-\int L dt = \dfrac{N}{\xi \sigma} = \dfrac{\mbox{900}}{\mbox{0,41} \times \mbox{51} \times \mbox{10} {}^{-15}} = \mbox{21 fb} {}^{-1} \pm 20 \%
+\int L dt = \dfrac{N}{\xi \sigma} = \dfrac{\mbox{586}}{\mbox{0,41} \times \mbox{51} \times \mbox{10} {}^{-15}} = \mbox{28,7} \pm 9,8 \mbox{  fb}{}^{-1}
 \end{equation}
 
-Cette valeur est raisonnablement proche de la valeur réelle (20,3 fb ${}^{-1}$)
+Cette résultat est compatible avec la valeur réelle (20,3 fb ${}^{-1}$)
 
 \subsection{Masse du $Z$}
 
@@ -631,21 +631,29 @@ On trouve alors :
     \hline
    $m_Z$ & 89,6 $\pm$ 0,3 GeV & 91,2 GeV\\
   \hline
-   $\sigma_Z$ & 8,5 $\pm$ 1,6 GeV & 2,5 GeV \\
+   $\sigma_Z$ & 2,9 $\pm$ 1,2 GeV & 2,5 GeV \\
  \hline
 \end{tabular}
 
-La masse ainsi calculée est correcte. La largeur est bien plus importante que la valeur théorique. On s'attend à une largeur de la forme $\sigma_{exp} \sim \sqrt{(\Delta m_{\gamma \gamma})^2 + \sigma_{SM}^2}$ qui aurait une valeur d'environ 4 GeV. 
+La masse ainsi calculée est correcte. La largeur est bien plus importante que la valeur théorique. On s'attend à une largeur de la forme $\sigma_{exp} \sim \sqrt{(\Delta m_{\gamma \gamma})^2 + \sigma_{SM}^2}$. Les performances de résolution en énergie et directions étant similaires pour les électrons et photons dans le cas $H \to \gamma \gamma$ et $Z\to e^+e^-$, on peut considérer que $\Delta m_{\gamma \gamma} $ vaut environ 1,3 GeV également, donc la valeur de $\sigma_{exp}$ attendue est de 2,8 GeV ce qui est proche de la valeur trouvée (2,9 GeV).
 
-TODO: expliquer différence !
+\subsection{Recherche de résonances à des masses supérieures }
 
-\subsection{Recherche de Higgs à des masses différentes }
+\subsubsection{Hypothèse $m_H >$ 125 GeV selon le modèle standard}
 
-En connaissant les sections efficaces et ratios de branche du Higgs en fonction de sa masse, et en extrapolant le fit de bruit de fond mesuré à des masses élevées, on peut estimer le ratio signal/bruit de fond pour des scénarios avec un boson de Higgs plus lourd. Cela permet de montrer que le canal $H \to \gamma \gamma$ n'est pas approprié à la détection de Higgs lourd. Sur la figure  \ref{higgs_lourds_gg}, on peut en effet constater que le ratio S/B ne dépasse pas 0,01. De plus, le run 1 du LHC n'aurait pas produit plus de 8 évènements $H \to \gamma \gamma$ pour $m_H =$ 200 GeV (et aucun pour 300+GeV).
+En connaissant les sections efficaces et ratios de branche du Higgs en fonction de sa masse, et en extrapolant le fit de bruit de fond mesuré à des masses élevées, on peut estimer le ratio signal/bruit de fond pour des scénarios avec un boson de Higgs plus lourd. Cela permet de montrer que le canal $H \to \gamma \gamma$ n'est pas approprié à la détection de Higgs lourd. Sur la figure  \ref{higgs_lourds_gg}, on peut en effet constater que le ratio S/B ne dépasse pas 0,01. De plus, le run 1 du LHC n'aurait produit qu'environ 8 évènements $H \to \gamma \gamma$ pour $m_H =$ 200 GeV (et aucun pour 300+GeV).
 \begin{figure}[H]
 \centering
   \caption{\label{fig:higgs_lourds_gg} Pour $\sqrt{s}$ = 8 TeV, on calcule le rapport entre le signal attendu (monte-carlo) et le bruit de fond, pour $m_H =$200, 300, 400, 500 et 600 GeV.  }
  \resizebox{.9\linewidth}{!}{\input{../graphes/higgs_lourds_gg}}
+\end{figure}
+
+\subsubsection{Recherches de résonances supplémentaires}
+
+\begin{figure}[H]
+\centering
+  \caption{p-value associée à l'hypothèse signal nul. On observe un minimum aux alentours de 125 GeV (correspondant au Higgs). Aucune fluctuation significative n'est repérable pour d'autres masses.  }
+ \resizebox{.9\linewidth}{!}{\input{../graphes/pvalue_resonances}}
 \end{figure}
 
 
