@@ -18,6 +18,7 @@
 \usepackage{graphicx} % support the \includegraphics command and options
 \usepackage[outdir=./]{epstopdf}
 \usepackage{psfrag}
+\usepackage{subcaption}
 
 \usepackage{feynmp-auto}
 
@@ -147,7 +148,7 @@ La section efficace totale du processus est de 19,23 pb à $\sqrt{s} =$ 8 TeV et
 \begin{fmffile}{gg_H}
 \begin{figure}[H]
       \centering
-\begin{fmfgraph*}(175,125)
+\begin{fmfgraph*}(140,100)
 \fmfleft{i1,i2}
 \fmfright{o1}
 
@@ -173,7 +174,7 @@ La section efficace du processus VBF est de 1,58 pb à $\sqrt{s} =$ 8 TeV et 3,7
 \begin{fmffile}{VBF}
 \begin{figure}[H]
       \centering
-\begin{fmfgraph*}(175,125)
+\begin{fmfgraph*}(140,100)
 \fmfleft{i1,i2}
 \fmfright{o1,o2,o3}
 
@@ -201,7 +202,7 @@ La section efficace totale pour ce processus est $\sigma = \sigma_W + \sigma_Z$ 
 \begin{fmffile}{HS}
 \begin{figure}[H]
       \centering
-\begin{fmfgraph*}(175,125)
+\begin{fmfgraph*}(140,100)
 \fmfleft{i1,i2}
 \fmfright{o1,o2}
 
@@ -222,10 +223,12 @@ La section efficace totale pour ce processus est $\sigma = \sigma_W + \sigma_Z$ 
 
 \subsubsection{Top/bottom fusion (ex: $gg \to q\bar{q}H$, $q = t,b$)}
 
-\begin{fmffile}{TF}
+
 \begin{figure}[H]
+\begin{subfigure}{.45\textwidth}
+\begin{fmffile}{TF}
       \centering
-\begin{fmfgraph*}(175,125)
+\begin{fmfgraph*}(140,100)
 \fmfleft{i1,i2}
 \fmfright{o1,o2,o3}
 
@@ -245,14 +248,13 @@ La section efficace totale pour ce processus est $\sigma = \sigma_W + \sigma_Z$ 
 
 \fmf{dashes}{v3,o2}
 \end{fmfgraph*}
-\caption{Ici, deux gluons produisent deux paires $t\bar{t}$ ou $b\bar{b}$. Une d'entre elles fusionne et produit un $H$. Il s'agit d'un processus mineur ($\sigma = \sigma_b + \sigma_t = $ 0,20 $+$ 0,13 = 0,33 pb à 8 TeV et $\sigma = \sigma_b + \sigma_t = $ 0,6 $+$ 0,6 = 1,2 pb à 14 TeV)}
-\end{figure}
+\caption{\\ Ici, deux gluons produisent deux paires $t\bar{t}$ ou $b\bar{b}$. Une d'entre elles fusionne et produit un $H$. Il s'agit d'un processus mineur ($\sigma = \sigma_b + \sigma_t = $ 0,20 $+$ 0,13 = 0,33 pb à 8 TeV et $\sigma = \sigma_b + \sigma_t = $ 0,6 $+$ 0,6 = 1,2 pb à 14 TeV)}
 \end{fmffile}
-
+\end{subfigure}\hfill
+\begin{subfigure}{.45\textwidth}
 \begin{fmffile}{TF_2}
-\begin{figure}[H]
       \centering
-\begin{fmfgraph*}(175,125)
+\begin{fmfgraph*}(140,100)
 \fmfleft{i1,i2}
 \fmfright{o1,o2,o3,o4}
 
@@ -272,9 +274,11 @@ La section efficace totale pour ce processus est $\sigma = \sigma_W + \sigma_Z$ 
 \fmf{fermion}{v3,v2}
 \fmf{dashes}{v3,o2}
 \end{fmfgraph*}
-\caption{Un autre exemple de production $q\bar{q}H$ (ici $q\bar{q} \to b\bar{b}H$)}
-\end{figure}
+\caption{\\ Un autre exemple de production $q\bar{q}H$ (ici $q\bar{q} \to b\bar{b}H$)}
 \end{fmffile}
+\end{subfigure}
+\end{figure}
+
 
 Ces processus sont l'objet d'une attention particulière, malgré leur faible section efficace. En effet, ils introduisent un couplage direct entre $H$ et des quarks lourds. L'intensité de ce couplage étant proportionnelle à la masse des quarks, elle est très forte dans le cas des top. Etudier ces évènements permettrait donc une mesure directe du couplage $H$ - fermion à des masses élevées. \cite{yukawa_coupling}
 
@@ -357,9 +361,9 @@ La désintégration du Higgs en deux photons est une méthode d'observation priv
 
 
 
-\subsubsection{$H \to ZZ \to \ell \ell \ell \ell$}
+\subsubsection{$H \to ZZ* \to \ell \ell \ell \ell$}
 
-Une autre voie privilégiée est la désintégration successive d'un $H$ en une paire de $Z$ puis 4 leptons (4$e$, 4$\mu$ ou 2$e$2$\mu$). Bien que la section efficace totale d'un tel processus soit encore inférieure à celle de la voie $\gamma \gamma$ aux alentours de 125 GeV  (la probabilité qu'un Z se désintégrant en paire $ee$ ou $\mu \mu$ étant de 3,4 \% seulement), cette méthode est très intéressante en raison d'un excellent rapport signal/bruit et d'une précision correcte sur la masse reconstruite. De plus, dans l'hypothèse d'un Higgs lourd, les désintégrations d'un Higgs en paire de Z deviennent très probablent, et le bruit de fond très faible.
+Une autre voie privilégiée est la désintégration d'un $H$ en une paire de $ZZ*$ puis 4 leptons (4$e$, 4$\mu$ ou 2$e$2$\mu$). Bien que la section efficace totale d'un tel processus soit encore inférieure à celle de la voie $\gamma \gamma$ aux alentours de 125 GeV  (la probabilité qu'un Z se désintégrant en paire $ee$ ou $\mu \mu$ étant de 3,4 \% seulement), cette méthode est très intéressante en raison d'un excellent rapport signal/bruit et d'une précision correcte sur la masse reconstruite. De plus, dans l'hypothèse d'un Higgs lourd, les désintégrations d'un Higgs en paire de Z deviennent très probablent, et le bruit de fond très faible.
 
 \begin{figure}[H]
 \centering
@@ -376,7 +380,7 @@ Une autre voie privilégiée est la désintégration successive d'un $H$ en une 
    14 & 7,0 \\
   \hline
 \end{tabular}
-\caption{Sections efficaces associées à la désintégration d'un Higgs en $ZZ$ puis 4$\ell$, en fonction de l'énergie du faisceau.}
+\caption{Sections efficaces associées à la désintégration d'un Higgs en $ZZ*$ puis 4$\ell$, en fonction de l'énergie du faisceau.}
 \end{figure}
 
 \begin{figure}[H]
@@ -410,7 +414,8 @@ La désintégration d'un H en paire $\tau^+ \tau^-$ offre une autre voie d'obser
 
 \begin{figure}[H]
 \centering
-  \caption{\label{fig:atlas_detector}Schéma du détecteur Atlas}
+  \caption{Schéma du détecteur Atlas}
+\label{fig:atlas_detector}
  \includegraphics[width=0.9\textwidth]{../images/figures_AtlasDetectorLabelled.png}
 \end{figure}
 
@@ -476,7 +481,8 @@ TODO: $\pm$ peu pertinents (uniquement err fit) et valeurs en fct de $\eta$ peu 
 
 \begin{figure}[H]
 \centering
-  \caption{\label{fig:resolution_energie_photons} Les énergies des photons 'tight' (convertis ou non) reconstruits sont comparées aux photons réels. }
+  \caption{Les énergies des photons 'tight' (convertis ou non) reconstruits sont comparées aux photons réels. }
+\label{fig:resolution_energie_photons} 
  \resizebox{.9\linewidth}{!}{\input{../graphes/resolution_energie_globale+conv}}
 \end{figure}
 
@@ -657,7 +663,8 @@ On s'intéresse cette fois aux évènements comprenant une paire $e^+e^-$ (et de
 
 \begin{figure}[H]
 \centering
-  \caption{\label{fig:distribution_mee}Distribution $m_{ee}$ et fit sur un intervalle ou le signal domine (background plat).  }
+  \caption{Distribution $m_{ee}$ et fit sur un intervalle ou le signal domine (background plat).  }
+\label{fig:distribution_mee}
  \resizebox{.9\linewidth}{!}{\input{../graphes/mee_sample}}
 \end{figure}
 
@@ -686,7 +693,8 @@ La masse ainsi calculée est correcte. La largeur est bien plus importante que l
 En connaissant les sections efficaces et ratios de branche du Higgs en fonction de sa masse, et en extrapolant le fit de bruit de fond mesuré à des masses élevées, on peut estimer le ratio signal/bruit de fond pour des scénarios avec un boson de Higgs plus lourd. Cela permet de montrer que le canal $H \to \gamma \gamma$ n'est pas approprié à la détection de Higgs lourd. Sur la figure  \ref{fig:higgs_lourds_gg}, on peut en effet constater que le ratio S/B ne dépasse pas 0,01. De plus, le run 1 du LHC n'aurait produit qu'environ 8 évènements $H \to \gamma \gamma$ pour $m_H =$ 200 GeV (et aucun pour 300+GeV).
 \begin{figure}[H]
 \centering
-  \caption{\label{fig:higgs_lourds_gg} Pour $\sqrt{s}$ = 8 TeV, on calcule le rapport entre le signal attendu (monte-carlo) et le bruit de fond, pour $m_H =$200, 300, 400, 500 et 600 GeV.  }
+  \caption{Pour $\sqrt{s}$ = 8 TeV, on calcule le rapport entre le signal attendu (monte-carlo) et le bruit de fond, pour $m_H =$200, 300, 400, 500 et 600 GeV.  }
+\label{fig:higgs_lourds_gg} 
  \resizebox{.9\linewidth}{!}{\input{../graphes/higgs_lourds_gg}}
 \end{figure}
 
@@ -696,7 +704,8 @@ On souhaite vérifier qu'il n'existe aucune autre fluctuation significative du b
 
 \begin{figure}[H]
 \centering
-  \caption{\label{fig:pvalue}p-value associée à l'hypothèse signal nul. On observe un minimum aux alentours de 125 GeV (correspondant au Higgs). Aucune fluctuation significative n'est repérable pour d'autres masses.  }
+  \caption{p-value associée à l'hypothèse signal nul. On observe un minimum aux alentours de 125 GeV (correspondant au Higgs). Aucune fluctuation significative n'est repérable pour d'autres masses.  }
+\label{fig:pvalue}
  \resizebox{.9\linewidth}{!}{\input{../graphes/pvalue_resonances}}
 \end{figure}
 
