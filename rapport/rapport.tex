@@ -92,6 +92,7 @@
 %%% The "real" document content comes below...
 
 \title{Rapport de stage - LAPP}
+
 %\date{} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed 
 
@@ -105,17 +106,6 @@ partie personnelle : travail avec root : étude préliminaire sim MC, travail do
 partie générale : présentation LHC/atlas
 ...
 }
-
-\section{Le LHC}
-
-\subsection{Schedule}
-Run1, 2, .., HL...
-
-\begin{figure}[H]
-\centering
-  \caption{Statut du LHC et des faisceaux pour chaque expérience. \og Physics \fg signifie que l'expérience collecte actuellement des données qui seront utilisées dans l'analyse des résultats.  Le graphe représente l'énergie de fonctionnement du LHC ($\dfrac{\sqrt{s}}{2}$) et la luminosité des faisceaux. }
- \includegraphics[width=0.9\textwidth]{../images/lhc3.png}
-\end{figure}
 
 \section{Le modèle standard}
 
@@ -225,7 +215,7 @@ La section efficace totale pour ce processus est $\sigma = \sigma_W + \sigma_Z$ 
 
 
 \begin{figure}[H]
-\begin{subfigure}{.45\textwidth}
+\begin{subfigure}{.45\linewidth}
 \begin{fmffile}{TF}
       \centering
 \begin{fmfgraph*}(140,100)
@@ -251,7 +241,7 @@ La section efficace totale pour ce processus est $\sigma = \sigma_W + \sigma_Z$ 
 \caption{\\ Ici, deux gluons produisent deux paires $t\bar{t}$ ou $b\bar{b}$. Une d'entre elles fusionne et produit un $H$. Il s'agit d'un processus mineur ($\sigma = \sigma_b + \sigma_t = $ 0,20 $+$ 0,13 = 0,33 pb à 8 TeV et $\sigma = \sigma_b + \sigma_t = $ 0,6 $+$ 0,6 = 1,2 pb à 14 TeV)}
 \end{fmffile}
 \end{subfigure}\hfill
-\begin{subfigure}{.45\textwidth}
+\begin{subfigure}{.45\linewidth}
 \begin{fmffile}{TF_2}
       \centering
 \begin{fmfgraph*}(140,100)
@@ -361,15 +351,15 @@ La désintégration du Higgs en deux photons est une méthode d'observation priv
 
 
 
-\subsubsection{$H \to ZZ* \to \ell \ell \ell \ell$}
+\subsubsection{$H \to ZZ^* \to \ell \ell \ell \ell$}
 
-Une autre voie privilégiée est la désintégration d'un $H$ en une paire de $ZZ*$ puis 4 leptons (4$e$, 4$\mu$ ou 2$e$2$\mu$). Bien que la section efficace totale d'un tel processus soit encore inférieure à celle de la voie $\gamma \gamma$ aux alentours de 125 GeV  (la probabilité qu'un Z se désintégrant en paire $ee$ ou $\mu \mu$ étant de 3,4 \% seulement), cette méthode est très intéressante en raison d'un excellent rapport signal/bruit et d'une précision correcte sur la masse reconstruite. De plus, dans l'hypothèse d'un Higgs lourd, les désintégrations d'un Higgs en paire de Z deviennent très probablent, et le bruit de fond très faible.
+Une autre voie privilégiée est la désintégration d'un $H$ en une paire de $ZZ^*$ puis 4 leptons (4$e$, 4$\mu$ ou 2$e$2$\mu$). Bien que la section efficace totale d'un tel processus soit encore inférieure à celle de la voie $\gamma \gamma$ aux alentours de 125 GeV  (la probabilité qu'un Z se désintégrant en paire $ee$ ou $\mu \mu$ étant de 3,4 \% seulement), cette méthode est très intéressante en raison d'un excellent rapport signal/bruit et d'une précision correcte sur la masse reconstruite. De plus, dans l'hypothèse d'un Higgs lourd, les désintégrations d'un Higgs en paire de Z deviennent très probablent, et le bruit de fond très faible.
 
 \begin{figure}[H]
 \centering
 \begin{tabular}{|r|c|} 
    \hline
-   $\sqrt{s}$ (TeV) & $\sigma_{pp \to H \to ZZ* \to 4\ell}$ (fb) \\
+   $\sqrt{s}$ (TeV) & $\sigma_{pp \to H \to ZZ^* \to 4\ell}$ (fb) \\
     \hline
    7 &  2,2\\
 \hline
@@ -380,7 +370,7 @@ Une autre voie privilégiée est la désintégration d'un $H$ en une paire de $Z
    14 & 7,0 \\
   \hline
 \end{tabular}
-\caption{Sections efficaces associées à la désintégration d'un Higgs en $ZZ*$ puis 4$\ell$, en fonction de l'énergie du faisceau.}
+\caption{Sections efficaces associées à la désintégration d'un Higgs en $ZZ^*$ puis 4$\ell$, en fonction de l'énergie du faisceau.}
 \end{figure}
 
 \begin{figure}[H]
@@ -401,13 +391,22 @@ La désintégration d'un H en paire $\tau^+ \tau^-$ offre une autre voie d'obser
 
 % différentes voies, par importance et BR
 % expliquer contraintes de détections et pq H->yy privilégié malgré faible BR etc..
+%
+%\begin{figure}[H]
+%\centering
+%  \caption{Statut du LHC et des faisceaux pour chaque expérience. \og Physics \fg signifie que l'expérience collecte actuellement des données qui seront utilisées dans l'analyse des résultats.  Le graphe représente l'énergie de fonctionnement du LHC ($\dfrac{\sqrt{s}}{2}$) et la luminosité des faisceaux. }
+% \includegraphics[width=0.9\textwidth]{../images/lhc3.png}
+%\end{figure}
+
+
 
 
 \section{Atlas}
 
+\subsection{Généralités}
 
-
-\subsection{Objectifs de l'expérience}
+Atlas fait partie des 4 expériences principales situées sur le LHC (Large Hadron Collider) avec CMS, ALICE et LHCb.
+Elle étudie des collisions entre protons accélérés par le LHC à des énergies de centre de masse jusqu'à 14 TeV. Son objectif est de confirmer les dernières prédictions non testées du modèle standard (Higgs) ou encore la recherche de preuves de supersymétrie et de nouvelle physique. Avec CMS, cette expérience a effectivement permis la découverte du boson de Higgs en 2013.
 
 % à relier a ce qui a été dit précédemment sur H
 \subsection{Détecteurs}
@@ -456,44 +455,43 @@ Aux énergies qui nous intéressent (> 10 GeV), le bruit électronique est négl
 \dfrac{\sigma_E}{E} \sim \dfrac{a}{\sqrt{E}} \oplus c
 \end{equation}
 
-A l'aide des simulations Monte-Carlo, on estime la résolution en énergie en fonction de l'énergie des photons mesurés, afin de vérifier si ce comportement est bien reproduit. Pour cela, on compare les données vraies aux données telles qu'elles devraient être reconstruites par le détecteur. (fig. \ref{fig:resolution_energie_photons}).
+A l'aide des simulations Monte-Carlo, on estime la résolution en énergie en fonction de l'énergie des photons mesurés, afin de vérifier si ce comportement est bien reproduit. Pour cela, on compare les données vraies aux données telles qu'elles devraient être reconstruites par le détecteur. (figures \ref{fig:resolution_energie_photons_tab}, \ref{fig:resolution_energie_photons} et \ref{fig:resolution_energie_photons2}).
 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \begin{tabular}{|l|c|r|r|} 
    \hline
-   Photons convertis inclus &$\eta$ & $a$(GeV${ }^{1/2}$) & $c$ \\
+   Photons convertis inclus &$\eta$ & $a$(\% $\cdot$ GeV${ }^{1/2}$) & $c (\%)$ \\
     \hline
-   Oui & tous & 17,5 \% $\pm$ 0,8 \% &0,64 \% $\pm$ 0,04  \\
+   Oui & tous & 18  $\pm$ 1  &0,6  $\pm$ 0,1  \\
   \hline
-   Non & tous & 13,4 \% $\pm$ 0,8 \% &0,79 \% $\pm$ 0,04  \\
+   Non & tous & 13  $\pm$ 1  &0,8  $\pm$ 0,1  \\
   \hline
-   Oui &$|\eta| < $ 1 & 9,6 \% $\pm$ 0,6 \% &0,92 \% $\pm$ 0,04  \\
+   Oui &$|\eta| < $ 1 & 10  $\pm$ 1  &0,9  $\pm$ 0,1  \\
 \hline
-   Oui & $|\eta| >$ 1,5 & 12,6 \% $\pm$ 2,4 \% &1,8 \% $\pm$ 0,2  \\
+   Oui & $|\eta| >$ 1,5 & 13  $\pm$ 2  &1,8  $\pm$ 0,2  \\
 \hline
 \end{tabular}
+\caption{ Pour plusieurs bandes d'énergie, on calcule l'écart entre les données vraies et reconstruites à partir d'une simulation. On obtient les paramètres $a$ et $c$ après fit de $E \mapsto \sigma_E(E)$.  }
+\label{fig:resolution_energie_photons_tab} 
 \end{figure}
 
-TODO: $\pm$ peu pertinents (uniquement err fit) et valeurs en fct de $\eta$ peu pertinentes
-
-
-
 \begin{figure}[H]
+\begin{subfigure}[b]{.5\linewidth}
 \centering
-  \caption{Les énergies des photons 'tight' (convertis ou non) reconstruits sont comparées aux photons réels. }
+  \caption{Photons 'tight' }
 \label{fig:resolution_energie_photons} 
- \resizebox{.9\linewidth}{!}{\input{../graphes/resolution_energie_globale+conv}}
-\end{figure}
-
-\begin{figure}[H]
+ \resizebox{1.1\linewidth}{!}{\input{../graphes/resolution_energie_globale+conv}}
+\end{subfigure}
+\begin{subfigure}[b]{.5\linewidth}
 \centering
-  \caption{Les énergies des photons 'tight' non convertis reconstruits sont comparées aux photons réels. }
- \resizebox{.9\linewidth}{!}{\input{../graphes/resolution_energie_globale}}
+  \caption{Photons 'tight' non convertis} 
+ \resizebox{1.1\linewidth}{!}{\input{../graphes/resolution_energie_globale}}
+\end{subfigure}
 \end{figure}
 
 % efficacité (à relier aux schémas)
-\subsection{Efficacite reco $\gamma$}
+\subsection{Efficacité de reconstruction $\gamma\gamma$}
 
 Il est nécessaire de tester l'efficacité du détecteur (c'est-à-dire sa capacité à détecter et reconstruire des évènements) pour plusieurs raisons :
 
@@ -529,7 +527,7 @@ On compare donc (sur des données simulées) le taux d'évènements diphoton rec
 % \resizebox{.9\linewidth}{!}{\input{../graphes/efficacite_normalisee}}
 %\end{figure}
 
-\section{Données}
+\section{Etude des données d'Atlas du run 1}
 
 \subsection{Etude de données simulées}
 
@@ -557,7 +555,7 @@ m_{\gamma \gamma}^2 = 2 \left ( p_{\gamma_1} p_{\gamma_2} - \textbf{p}_{\gamma_1
 Soit, en travaillant en coordonnées $(\eta, \phi)$ :
 
 \begin{equation}
-m_{\gamma \gamma}^2 = 2 E_{\gamma_1} E_{\gamma_2} \left [ \cosh {\left( \eta_{\gamma_1} - \eta_{\gamma_1} \right)} - \cos{\left( \phi_{\gamma_1} - \phi_{\gamma_1} \right)} \right ]
+m_{\gamma \gamma}^2 = 2 E_{\gamma_1}^T E_{\gamma_2}^T \left [ \cosh {\left( \eta_{\gamma_1} - \eta_{\gamma_1} \right)} - \cos{\left( \phi_{\gamma_1} - \phi_{\gamma_1} \right)} \right ]
 \end{equation}
 
 Il s'agit alors de calculer cette masse pour tous les évènements contenant une paire de photons susceptible d'être issue d'un Higgs. 
@@ -567,7 +565,7 @@ Puisque cette relation est vraie y compris pour des particules massives à haute
 Afin  de déterminer l'impact de la limite en résolution énergétique et angulaire, on estime $\Delta m_{\gamma\gamma})$, en négligeant l'erreur sur $\phi$ :
 
 \begin{equation}
-\Delta m_{\gamma\gamma} \simeq m_{\gamma \gamma}\left( \dfrac{\sigma_{E_1}}{E_1} +  \dfrac{\sigma_{E_2}}{E_2}\right) + \dfrac{E_1E_2 \sinh {(\eta_1 - \eta_2)}}{m_{\gamma \gamma}} \left( \sigma_{\eta_1} + \sigma_{\eta_2} \right)
+\Delta m_{\gamma\gamma} \simeq m_{\gamma \gamma}\left( \dfrac{\sigma_{E_1}}{E_1} +  \dfrac{\sigma_{E_2}}{E_2}\right) + \dfrac{E_1E_2 \sinh {|\eta_1 - \eta_2|}}{m_{\gamma \gamma}} \left( \sigma_{\eta_1} + \sigma_{\eta_2} \right)
 \end{equation}
 
 Si un ordre de grandeur suffit :
@@ -576,7 +574,7 @@ Si un ordre de grandeur suffit :
 \Delta m_{\gamma\gamma} \sim 2m_{\gamma \gamma}\left ( \dfrac{\sigma_E}{E} +  \sigma_{\eta} \right )
 \end{equation}
 
-\subsection{Calcul en situation}
+\subsection{Calcul sur les évènements du Run 1}
 
 Parmi un échantillon de 310 000 évènements (constitués uniquement de paires de photons vérifiant le critère 'tight'), on calcule la distribution de masse invariante $m_{\gamma \gamma}$. On obtient le résultat suivant :
 
@@ -684,7 +682,7 @@ On trouve alors :
 \end{tabular}
 \end{figure}
 
-La masse ainsi calculée est correcte. La largeur est bien plus importante que la valeur théorique. On s'attend à une largeur de la forme $\Gamma_{exp} \sim \sqrt{(\Delta m_{\gamma \gamma})^2 + \Gamma_{SM}^2}$. Les performances de résolution en énergie et directions étant similaires pour les électrons et photons dans le cas $H \to \gamma \gamma$ et $Z\to e^+e^-$, on peut considérer que $\Delta m_{\gamma \gamma} $ vaut environ 1,3 GeV également, donc la valeur de $\Gamma_{exp}$ attendue est de 2,8 GeV ce qui est proche de la valeur trouvée (2,9 GeV).
+La masse ainsi calculée est correcte plutôt. La largeur est bien plus importante que la valeur théorique. On s'attend à une largeur de la forme $\Gamma_{exp} \sim \sqrt{(\Delta m_{\gamma \gamma})^2 + \Gamma_{SM}^2}$. Les performances de résolution en énergie et directions étant similaires pour les électrons et photons dans le cas $H \to \gamma \gamma$ et $Z\to e^+e^-$, on peut considérer que $\Delta m_{\gamma \gamma} $ vaut environ 1,3 GeV également, donc la valeur de $\Gamma_{exp}$ attendue est de 2,8 GeV ce qui est proche de la valeur trouvée (2,9 GeV).
 
 \subsection{Recherche de résonances à des masses supérieures }
 
