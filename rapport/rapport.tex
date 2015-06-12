@@ -44,8 +44,6 @@
 % \geometry{landscape} % set up the page for landscape
 %   read geometry.pdf for detailed page layout information
 
-\usepackage{graphicx} % support the \includegraphics command and options
-
 % \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
 
 %%% PACKAGES
@@ -75,6 +73,20 @@
 \renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
 
 %%% END Article customizations
+
+%% COMMANDS
+
+\newcommand{\dd}{ \mathop{}\mathopen{}\mathrm{d}}
+
+% opérateurs vectoriels
+\newcommand{\grad}{\vec{\nabla}}
+
+% bra ket
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\bra}[1]{\langle{#1}|}
+
+\newcommand{\sket}[1]{{#1}\rangle}
+\newcommand{\sbra}[1]{\langle{#1}}
 
 %%% The "real" document content comes below...
 
@@ -353,7 +365,7 @@ Une autre voie privilégiée est la désintégration successive d'un $H$ en une 
 \centering
 \begin{tabular}{|r|c|} 
    \hline
-   $\sqrt{s}$ (TeV) & $\sigma_{pp \to H \to 4 \ell}$ (fb) \\
+   $\sqrt{s}$ (TeV) & $\sigma_{pp \to H \to ZZ* \to 4\ell}$ (fb) \\
     \hline
    7 &  2,2\\
 \hline
@@ -398,29 +410,51 @@ La désintégration d'un H en paire $\tau^+ \tau^-$ offre une autre voie d'obser
 
 \begin{figure}[H]
 \centering
-  \caption{Schéma du détecteur Atlas}
+  \caption{\label{fig:atlas_detector}Schéma du détecteur Atlas}
  \includegraphics[width=0.9\textwidth]{../images/figures_AtlasDetectorLabelled.png}
 \end{figure}
 
-TODO: tableau : composant, fonction, fonctionnement.
+\subsubsection{Tracking, détermination de la charge et de l'impulsion}
 
-\subsection{Performance}
+Le détecteur intérieur (inner-detector), au plus proche des collisions, est constitué de trois sous-détecteurs : le \textbf{Pixel detector}, le \textbf{Semiconductor Detector} et le \textbf{Transition radiaton detector}. Dans les deux premiers détecteurs, le passage d'un photon ou d'une particule chargée crée des paires électrons-trous qui créent un courant mesurable sous l'influence d'un champ électrique. 
+Le \textbf{Transition radiaton detector} détecte le passage des particules par ionisation d'un gaz. Il permet de plus de détecter les photons émis par rayonnement de transition lorsqu'une particule traverse successivement des milieux d'indices différents, ce qui donne une mesure directe de son facteur de Lorentz $\gamma$.
+
+Le champ magnétique uniforme régnant dans le détecteur  intérieur  grâce au \textbf{Solenoid Magnet}courbe la trajectoire des particules chargées. En fonction des points de détection obtenus grâce à ces détecteurs il est possible de reconstruire les traces des particules et leur charge à partir du sens de la courbure ainsi que leur impulsion (à partir du rayon de courbure) :
+
+\begin{equation} 
+R_c = \dfrac{\gamma mv_{\perp}}{qB_0} = \dfrac{p_{T}}{qB_0}
+\end{equation}
+
+\subsubsection{Détermination de l'énergie}
+
+La mesure de l'énergie des particules se fait à l'aide de deux calorimètres : un calorimètre électromagnétique (\textbf{LAr Electromagnetic Calorimeter}), et le calorimètre hadronique. Les particules susceptibles d'intéragir avec ces calorimètres génèrent des "douches". Celles-ci sont reconstruites pour remonter à l'énergie et la direction de la particule d'origine.
+
+Les muons n'intéragissent pas avec ces détecteurs : ils sont mesurés à l'aide d'un dispositif externe (Muon spectrometer), qui repose en partie sur le tracking par rayon de courbure magnétique, à l'aide d'un champ intense mais complexe imposé par les \textbf{Toroid Magnets}.
+
+\subsection{Performances}
+
+La portée des résultats physiques de l'expérience repose entre autres sur les performances du détecteur. Ces performances concernent la qualité des données (résolution élevée, erreurs faibles) et de quantité (peu d'évènements "perdus"). Elles peuvent être évaluées expérimentalement ou anticipées grâce à des modèles. Ici, on utilise des données issues de simulation Monte-Carlo afin d'estimer quantitativement les performances des détecteurs qui sont importantes pour l'étude des évènements $H \to \gamma \gamma$.
+
 \subsubsection{Résolution en énergie du calorimètre EM}
 
-TODO: expliquer les facteurs limitant la résolution et justifier 
+Plusieurs facteurs limitent la résolution en énergie du calorimètre. Celle-ci peut être évaluée de la façon suivante :
 
 \begin{equation}
 \dfrac{\sigma_E}{E} \simeq \dfrac{a}{\sqrt{E}} \oplus \dfrac{b}{E} \oplus c
 \end{equation}
 
-Puisque $b \ll $ 10 GeV, aux énergies qui nous intéressent :
+Le terme $\propto a$ représente l'erreur d'origine statistique, $b$ le bruit électronique et $c$ les erreurs constantes de non-linéarité/calibration..
+
+Aux énergies qui nous intéressent (> 10 GeV), le bruit électronique est négligeable ($b \sim$ 100 MeV) et la résolution prend une forme :
 
 \begin{equation}
 \dfrac{\sigma_E}{E} \sim \dfrac{a}{\sqrt{E}} \oplus c
 \end{equation}
 
-A l'aide des simulations Monte-Carlo, on estime la résolution en énergie en fonction de l'énergie des photons mesurés, afin de vérifier si ce comportement est bien reproduit. (fig. \ref{fig:resolution_energie_photons}).
+A l'aide des simulations Monte-Carlo, on estime la résolution en énergie en fonction de l'énergie des photons mesurés, afin de vérifier si ce comportement est bien reproduit. Pour cela, on compare les données vraies aux données telles qu'elles devraient être reconstruites par le détecteur. (fig. \ref{fig:resolution_energie_photons}).
 
+\begin{figure}
+\centering
 \begin{tabular}{|l|c|r|r|} 
    \hline
    Photons convertis inclus &$\eta$ & $a$(GeV${ }^{1/2}$) & $c$ \\
@@ -434,6 +468,7 @@ A l'aide des simulations Monte-Carlo, on estime la résolution en énergie en fo
    Oui & $|\eta| >$ 1,5 & 12,6 \% $\pm$ 2,4 \% &1,8 \% $\pm$ 0,2  \\
 \hline
 \end{tabular}
+\end{figure}
 
 TODO: $\pm$ peu pertinents (uniquement err fit) et valeurs en fct de $\eta$ peu pertinentes
 
@@ -461,6 +496,7 @@ Il est nécessaire de tester l'efficacité du détecteur (c'est-à-dire sa capac
 \item{Cela peut renseigner sur l'influence de certains paramètres sur les performances des détecteurs et éventuellement de corriger des biais}
 \end{itemize}
 
+On compare donc (sur des données simulées) le taux d'évènements diphoton reconstruits et passant certains critères de qualité minimum. ('tight')
 
 \begin{figure}[H]
 \centering
@@ -525,13 +561,13 @@ Puisque cette relation est vraie y compris pour des particules massives à haute
 Afin  de déterminer l'impact de la limite en résolution énergétique et angulaire, on estime $\Delta m_{\gamma\gamma})$, en négligeant l'erreur sur $\phi$ :
 
 \begin{equation}
-\Delta m_{\gamma\gamma} \simeq \dfrac{1}{2}m_{\gamma \gamma}\left( \dfrac{\sigma_{E_1}}{E_1} +  \dfrac{\sigma_{E_2}}{E_2}\right) + \dfrac{E_1E_2 \sinh {(\eta_1 - \eta_2)}}{m_{\gamma \gamma}} \left( \sigma_{\eta_1} + \sigma_{\eta_2} \right)
+\Delta m_{\gamma\gamma} \simeq m_{\gamma \gamma}\left( \dfrac{\sigma_{E_1}}{E_1} +  \dfrac{\sigma_{E_2}}{E_2}\right) + \dfrac{E_1E_2 \sinh {(\eta_1 - \eta_2)}}{m_{\gamma \gamma}} \left( \sigma_{\eta_1} + \sigma_{\eta_2} \right)
 \end{equation}
 
 Si un ordre de grandeur suffit :
 
 \begin{equation}
-\Delta m_{\gamma\gamma} \sim m_{\gamma \gamma}\left ( \dfrac{\sigma_E}{E} +  \sigma_{\eta} \right )
+\Delta m_{\gamma\gamma} \sim 2m_{\gamma \gamma}\left ( \dfrac{\sigma_E}{E} +  \sigma_{\eta} \right )
 \end{equation}
 
 \subsection{Calcul en situation}
@@ -586,24 +622,27 @@ On obtient la figure suivante :
 
 On peut en déduire les paramètres physiquement intéressants suivants :
 
+\begin{figure}[H]
+\centering
 \begin{tabular}{|l|c|r|} 
    \hline
    Paramètre & Valeur & Erreur \\
     \hline
    $m_H$ & 126,3 GeV & 0,3 GeV\\
   \hline
-   $\sigma$ & 1,3 GeV & 0,4 GeV \\
+   $\Gamma_H$ & 1,3 GeV & 0,4 GeV \\
   \hline
 A & 180 GeV ${}^{-1}$ & 30\\
 
  \hline
-$N = \sqrt{2\pi} \sigma A$ & 586 & 200\\
+$N = \sqrt{2\pi} \Gamma_H A$ & 586 & 200\\
 \hline
 \end{tabular}
+\end{figure}
 
 La valeur $m_H$ est la masse du Higgs ainsi mesurée. La valeur $\sigma$ doit correspondre à la largeur du signal, mais elle est bien supérieure à la valeur théorique. Aux énergies considérées (environ 100 GeV), $\sigma_{\eta} \sim 0,3 \%$ \cite{resolution_position_photons} et $\sigma_{E} \sim 1,5 \%$, soit une incertitude $\Delta m_{\gamma\gamma}$ d'environ 2 GeV, du même ordre de grandeur que la largeur mesurée.
 
-On calcule d'autre part la significance statistique d'après ces fits : $\Delta \chi^2 = \chi^2_{\textrm{background}} - \chi^2_{\textrm{signal+background}} \simeq 155-107 \simeq 50$ soit une significance à $\sqrt{\Delta \chi^2} \ \sigma = 7 \sigma$
+%On calcule d'autre part la significance statistique d'après ces fits : $\Delta \chi^2 = \chi^2_{\textrm{background}} - \chi^2_{\textrm{signal+background}} \simeq 155-107 \simeq 50$ soit une significance à $\sqrt{\Delta \chi^2} \ \sigma = 7 \sigma$
 
 A partir de la quantité d'évènements $H \to \gamma \gamma$ détectés estimée, on peut calculer la luminosité intégrée associée :
 \begin{equation}
@@ -625,23 +664,26 @@ On s'intéresse cette fois aux évènements comprenant une paire $e^+e^-$ (et de
 
 On trouve alors :
 
+\begin{figure}[H]
+\centering
 \begin{tabular}{|l|c|r|} 
    \hline
    Paramètre & Valeur & Valeur attendue \\
     \hline
    $m_Z$ & 89,6 $\pm$ 0,3 GeV & 91,2 GeV\\
   \hline
-   $\sigma_Z$ & 2,9 $\pm$ 1,2 GeV & 2,5 GeV \\
+   $\Gamma_Z$ & 2,9 $\pm$ 1,2 GeV & 2,5 GeV \\
  \hline
 \end{tabular}
+\end{figure}
 
-La masse ainsi calculée est correcte. La largeur est bien plus importante que la valeur théorique. On s'attend à une largeur de la forme $\sigma_{exp} \sim \sqrt{(\Delta m_{\gamma \gamma})^2 + \sigma_{SM}^2}$. Les performances de résolution en énergie et directions étant similaires pour les électrons et photons dans le cas $H \to \gamma \gamma$ et $Z\to e^+e^-$, on peut considérer que $\Delta m_{\gamma \gamma} $ vaut environ 1,3 GeV également, donc la valeur de $\sigma_{exp}$ attendue est de 2,8 GeV ce qui est proche de la valeur trouvée (2,9 GeV).
+La masse ainsi calculée est correcte. La largeur est bien plus importante que la valeur théorique. On s'attend à une largeur de la forme $\Gamma_{exp} \sim \sqrt{(\Delta m_{\gamma \gamma})^2 + \Gamma_{SM}^2}$. Les performances de résolution en énergie et directions étant similaires pour les électrons et photons dans le cas $H \to \gamma \gamma$ et $Z\to e^+e^-$, on peut considérer que $\Delta m_{\gamma \gamma} $ vaut environ 1,3 GeV également, donc la valeur de $\Gamma_{exp}$ attendue est de 2,8 GeV ce qui est proche de la valeur trouvée (2,9 GeV).
 
 \subsection{Recherche de résonances à des masses supérieures }
 
 \subsubsection{Hypothèse $m_H >$ 125 GeV selon le modèle standard}
 
-En connaissant les sections efficaces et ratios de branche du Higgs en fonction de sa masse, et en extrapolant le fit de bruit de fond mesuré à des masses élevées, on peut estimer le ratio signal/bruit de fond pour des scénarios avec un boson de Higgs plus lourd. Cela permet de montrer que le canal $H \to \gamma \gamma$ n'est pas approprié à la détection de Higgs lourd. Sur la figure  \ref{higgs_lourds_gg}, on peut en effet constater que le ratio S/B ne dépasse pas 0,01. De plus, le run 1 du LHC n'aurait produit qu'environ 8 évènements $H \to \gamma \gamma$ pour $m_H =$ 200 GeV (et aucun pour 300+GeV).
+En connaissant les sections efficaces et ratios de branche du Higgs en fonction de sa masse, et en extrapolant le fit de bruit de fond mesuré à des masses élevées, on peut estimer le ratio signal/bruit de fond pour des scénarios avec un boson de Higgs plus lourd. Cela permet de montrer que le canal $H \to \gamma \gamma$ n'est pas approprié à la détection de Higgs lourd. Sur la figure  \ref{fig:higgs_lourds_gg}, on peut en effet constater que le ratio S/B ne dépasse pas 0,01. De plus, le run 1 du LHC n'aurait produit qu'environ 8 évènements $H \to \gamma \gamma$ pour $m_H =$ 200 GeV (et aucun pour 300+GeV).
 \begin{figure}[H]
 \centering
   \caption{\label{fig:higgs_lourds_gg} Pour $\sqrt{s}$ = 8 TeV, on calcule le rapport entre le signal attendu (monte-carlo) et le bruit de fond, pour $m_H =$200, 300, 400, 500 et 600 GeV.  }
@@ -650,9 +692,11 @@ En connaissant les sections efficaces et ratios de branche du Higgs en fonction 
 
 \subsubsection{Recherches de résonances supplémentaires}
 
+On souhaite vérifier qu'il n'existe aucune autre fluctuation significative du bruit pouvant correspondre à un signal pertinent. On recherche des résonances de faible largeur ($\Gamma \sim$ GeV), en comparant les fluctuations de $m_{\gamma\gamma}$ sur des fenêtres d'une largeur de $\pm 2 \Gamma$ au background. On en déduit la p-value associée à l'hypothèse d'une absence de signal (fig. \ref{fig:pvalue}).
+
 \begin{figure}[H]
 \centering
-  \caption{p-value associée à l'hypothèse signal nul. On observe un minimum aux alentours de 125 GeV (correspondant au Higgs). Aucune fluctuation significative n'est repérable pour d'autres masses.  }
+  \caption{\label{fig:pvalue}p-value associée à l'hypothèse signal nul. On observe un minimum aux alentours de 125 GeV (correspondant au Higgs). Aucune fluctuation significative n'est repérable pour d'autres masses.  }
  \resizebox{.9\linewidth}{!}{\input{../graphes/pvalue_resonances}}
 \end{figure}
 
