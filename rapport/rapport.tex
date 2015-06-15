@@ -11,7 +11,10 @@
 \usepackage{array}
 \usepackage{tikz}
 \usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
 \usepackage{url}
+\usepackage{3dplot} % http://www.heinjd.com/dev/latex/3dplot/3dplot.sty
 
 \usepackage{float}
 
@@ -89,6 +92,15 @@
 \newcommand{\sket}[1]{{#1}\rangle}
 \newcommand{\sbra}[1]{\langle{#1}}
 
+% frame
+\tdplotsetmaincoords{60}{110}
+
+%define polar coordinates for some vector
+%TODO: look into using 3d spherical coordinate system
+\pgfmathsetmacro{\rvec}{.8}
+\pgfmathsetmacro{\thetavec}{-30}
+\pgfmathsetmacro{\phivec}{-90}
+
 %%% The "real" document content comes below...
 
 \title{Rapport de stage - LAPP}
@@ -101,31 +113,51 @@
 \begin{document}
 \maketitle
 
-\section{Le modèle standard}
+\abstract{  }
+ 
+\section{Le LHC}
 
 \subsection{Généralités}
 
-Le modèle standard est une description des particules élémentaires et des interactions qui les régissent dans le cadre de la mécanique quantique et de la relativité restreinte. 
+Le LHC (Large Hadron Collider) est le plus grand accélérateur de particule au monde. Long de 27 km, il accélère des faisceaux de protons dans des directions opposées afin d'étudier les particules produites lors de leur collisier, et pouvant atteindre une énergie de centre de masse notée $\sqrt{s}$ de 14 TeV. 
+
+\subsection{Collisions}
+
+expliquer un minimum. introduire le barn.
+
+\subsection{Planning}
+
+Le premier \og run \fg du LHC a eu lieu entre 2011 et 2013. Suite à un incident, les prises de données se sont faites à moindre énergie (7 puis 8 TeV). Environ 30 fb${}^{ -1}$ de données ont été collectées.
+
+Le second run du LHC a démarré au mois de juin 2015. Les premières collisions ont eu lieu a une énergie de 13 TeV, et la luminosité doit augmenter pour dépasser 4 $\times 10^{34}$ cm${}^{-2}$s${}^{-1}$. Le LHC devrait atteindre son énergie nominale de 14 TeV. Un arrêt est prévu en 2018, puis une reprise pour entamer le Run 3 en 2020 jusque fin 2022. A la suite du Run 3, le LHC entamera la phase "Haute Luminosité" avec pour objectif une multiplication par un facteur $\lesssim 10$ 
+
+\section{Le Modèle Standard de la physique des particules}
+
+\subsection{Généralités}
+
+Le Modèle Standard est une description des particules élémentaires et des interactions qui les régissent dans le cadre de la mécanique quantique et de la relativité restreinte. 
 
 \begin{figure}[H]
 \centering
-  \caption{ Particules élémentaires du modèle standard. A gauche, les fermions (spin demi entier). A droite, les bosons (spin entier). }
+  \caption{ Particules élémentaires du Modèle Standard. A gauche, les fermions (spin demi entier). A droite, les bosons (spin entier). }
 \includegraphics[width=0.8\textwidth]{table_ms.pdf}
 
 \end{figure}
 
-Le photon est le boson vecteur de l'interaction électromagnétique. Les bosons $W$ et $Z$ sont les bosons vecteurs de l'interaction faible. Le gluon est le boson vecteur de l'interaction forte (à laquelle sont sensibles les quarks, et les hadrons, particules composées de quarks).
+Le photon ainsi que les bosons $W^\pm$ et $Z$ sont les vecteurs de l'interaction électrofaible.
+
+Le gluon est le boson vecteur de l'interaction forte (à laquelle sont sensibles les quarks, et les hadrons, particules composées de quarks).
 
 \section{Boson de Higgs}
 
 \subsection{Caractéristiques}
 
-Le boson de Higgs est une particule élémentaire du modèle standard de masse $\simeq$ 125 GeV et de spin nul et découverte grâce aux expériences CMS et Atlas.
-Son existence a été suggérée en 1964 afin de proposer une explication cohérente avec le modèle standard d'une masse non nulle pour les bosons de jauge $W^{\pm}$ et $Z$.
+Le boson de Higgs est une particule élémentaire du Modèle Standard de spin 0 découverte grâce aux expériences CMS et Atlas et dont la masse a été évaluée à  environ 125 GeV. 
+Son existence a été suggérée en 1964 afin de proposer une explication cohérente avec le Modèle Standard d'une masse non nulle pour les bosons de jauge $W^{\pm}$ et $Z$. Cette description implique que le couplage du Higgs avec une particule est proportionnel à la masse de cette particule.
 
-\subsection{Formation}
+\subsection{Production au LHC}
 
-Il existe de nombreux processus entrainant la production de boson de Higgs. En voici des exemples envisageables ainsi que leur section efficace associée dans les conditions du LHC (Run1, $\sqrt{s} = $ 8 TeV).
+Il existe de nombreux processus entrainant la production de boson de Higgs au LHC. En voici une liste, ainsi que les sections efficaces associées aux énergies de fonctionnement du LHC. 
 
 \subsubsection{Fusion gluon gluon ($gg \to H$)}
 
@@ -151,7 +183,7 @@ La section efficace totale du processus est de 19,23 pb à $\sqrt{s} =$ 8 TeV et
 \fmf{fermion}{v2,v3}
 \fmf{fermion}{v3,v1}
 \end{fmfgraph*}
-\caption{Formation d'un Higgs par fusion de gluons (avec apparition de quarks virtuels, préférentiellement lourds).  }
+\caption{Diagramme de Feynman de la production d'un Higgs par fusion de gluons (avec apparition de quarks virtuels, préférentiellement lourds).  }
 \end{figure}
 \end{fmffile}
 
@@ -179,7 +211,7 @@ La section efficace du processus VBF est de 1,58 pb à $\sqrt{s} =$ 8 TeV et 3,7
 \fmf{photon,label=$W,,Z$}{v3,v2}
 \fmf{dashes}{v3,o2}
 \end{fmfgraph*}
-\caption{Formation d'un Higgs par fusion de bosons $W$ ou $Z$ virtuels échangés entre deux fermions.  }
+\caption{Production d'un Higgs par fusion de bosons $W$ ou $Z$ virtuels échangés entre deux fermions.  }
 \end{figure}
 \end{fmffile}
 
@@ -267,6 +299,9 @@ La section efficace totale pour ce processus est $\sigma = \sigma_W + \sigma_Z$ 
 \end{subfigure}
 \end{figure}
 
+\begin{equation}
+\mathcal{M} \propto P_{gluon}(p_{g1}) P_{gluon}(p-p_{g1}) C_{gf}^2 P_q(p_{g1}-p_{\bar{q}}) P_q(p - p_{g1} - p_q)C_{hf} P_H(p-p_q-p_{\bar{q}})
+\end{equation}
 
 Ces processus sont l'objet d'une attention particulière, malgré leur faible section efficace. En effet, ils introduisent un couplage direct entre $H$ et des quarks lourds. L'intensité de ce couplage étant proportionnelle à la masse des quarks, elle est très forte dans le cas des top. Etudier ces évènements permettrait donc une mesure directe du couplage $H$ - fermion à des masses élevées. \cite{yukawa_coupling}
 
@@ -300,13 +335,13 @@ Ces processus sont l'objet d'une attention particulière, malgré leur faible se
     \hline
     H $\to$ fermions & $H \to b\bar{b} $ & 57,7 \% \\
     \cline{2-3} 
-        & $H \to \tau\bar{\tau} $ & 6,4 \% \\
+        & $H \to \tau^+\tau^-$ & 6,4 \% \\
    \cline{2-3} 
-        & $H \to \mu\bar{\mu}$ & 0,02 \%\\
+        & $H \to \mu^+\mu^-$ & 0,02 \%\\
     \hline
-  H $\to$ bosons de jauge & $H \to WW$ &21,5 \% \\
+  H $\to$ bosons de jauge & $H \to W^{\pm}W^{\mp*}$ &21,5 \% \\
    \cline{2-3}
-     & $H \to ZZ$ & 2,63 \% \\
+     & $H \to ZZ^*$ & 2,63 \% \\
    \cline{2-3}
       & $H \to \gamma \gamma$ & 0,23 \% \\
   \hline
@@ -316,11 +351,11 @@ Ces processus sont l'objet d'une attention particulière, malgré leur faible se
 
 \subsection{Produits de désintégration et choix de méthode d'observation}
 
-Pour détecter la présence d'un boson de Higgs parmi un évènement il faut étudier ses produits de désintégrations et vérifier qu'ils sont compatibles avec un $H$. Il faut pour cela que les particules produites soient détéctables et que l'on puisse mesurer leurs paramètres cinématiques avec suffisamment de précision.
+Pour rechercher le Higgs, on recherche des particules détectables issues de sa désintégration dont on peut mesurer avec une assez bonne précision les paramètres cinématiques. On peut alors déterminer la masse de la particule dont elles sont les produits à l'aide de ses paramètres, ou encore vérifier que la distribution des produits de désintégration correspond à celles attendues pour une masse du Higgs donnée dans le Modèle Standard.
 
 \begin{figure}[H]
 \centering
-  \caption{Résultats de l'expérience Atlas sur la détection du Higgs à travers sa désintégration par différents modes. Les signaux extraits sont comparés aux valeurs attendues selon le modèle standard. }
+  \caption{Résultats de l'expérience Atlas sur la détection du Higgs à travers sa désintégration par différents modes. Les signaux extraits sont comparés aux valeurs attendues selon le Modèle Standard. }
  \includegraphics[width=0.8\textwidth]{../images/fig_02.png}
 \end{figure}
 
@@ -328,6 +363,8 @@ Pour détecter la présence d'un boson de Higgs parmi un évènement il faut ét
 \subsubsection{$H \to \gamma \gamma$}
 
 La désintégration du Higgs en deux photons est une méthode d'observation privilégiée. Bien que le ratio associé à cette branche soit très faible (2 pour 1000), ce qui implique que peu de Higgs formés seront observables de cette façon, il est plus facile de détecter de tels photons avec une grande précision sur leur énergie et direction. La connaissance précise de l'impulsion de la paire de photons permet alors de remonter à la masse d'un Higgs dont ils seraient issus simplement (il s'agit de la masse invariante du système formé par la paire). Un inconvénient de ce canal est qu'il n'aurait pas permis de détecter un Higgs lourd (> 200 GeV).
+
+Puisque le photon est de masse nulle, il ne se couple pas directement au Higgs : la désintégration en deux photons nécessite donc une particule virtuelle intermédiaire.
 
 \begin{figure}[H]
 \centering
@@ -378,8 +415,9 @@ Une autre voie privilégiée est la désintégration d'un $H$ en une paire de $Z
 \end{figure}
 
 
-\subsubsection{$H \to W^+W^-$}
+\subsubsection{$H \to b\bar{b}$}
 
+Le canal $H \to b\bar{b}$ semble intéressant à première vue du fait d'un important ratio de branche. Cependant, ceux-ci sont détectés via les jets hadroniques qu'ils produisent, lesquels sont sujets à un important bruit de fond.
 
 \subsubsection{$H \to \tau^+\tau^- \to \ell\ell$, $\ell$-jet ou jet-jet}
 
@@ -403,8 +441,8 @@ La désintégration d'un H en paire $\tau^+ \tau^-$ offre une autre voie d'obser
 
 \subsection{Généralités}
 
-Atlas fait partie des 4 expériences principales situées sur le LHC (Large Hadron Collider) avec CMS, ALICE et LHCb.
-Elle étudie des collisions entre protons accélérés par le LHC à des énergies de centre de masse jusqu'à 14 TeV. Son objectif est de confirmer les dernières prédictions non testées du modèle standard (Higgs) ou encore la recherche de preuves de supersymétrie et de nouvelle physique. Avec CMS, cette expérience a effectivement permis la découverte du boson de Higgs en 2013.
+Atlas fait partie des expériences principales situées sur le LHC (Large Hadron Collider) aux côtés (entre autres) de CMS, ALICE et LHCb.
+Elle étudie les produits des collisions entre protons accélérés par le LHC à des énergies de centre de masse jusqu'à 14 TeV. Son objectif est de confirmer les dernières prédictions non testées du Modèle Standard (Higgs) ou encore la recherche de preuves de supersymétrie et de nouvelle physique. Avec CMS, cette expérience a effectivement permis la découverte du boson de Higgs en 2013.
 
 % à relier a ce qui a été dit précédemment sur H
 \subsection{Détecteurs}
@@ -413,15 +451,44 @@ Elle étudie des collisions entre protons accélérés par le LHC à des énergi
 \centering
   \caption{Schéma du détecteur Atlas}
 \label{fig:atlas_detector}
- \includegraphics[width=0.9\textwidth]{../images/figures_AtlasDetectorLabelled.png}
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (image) at (0,0) { \includegraphics[width=0.9\textwidth]{../images/figures_AtlasDetectorLabelled.png}};
+    \begin{scope}[x={(image.south east)},y={(image.north west)}]
+   %     \draw[red,ultra thick,rounded corners] (0.62,0.65) rectangle (0.78,0.75);
+\coordinate (O) at (0,0,0);
+\coordinate (P) at (0.59,0.52,0);
+%\tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec}
+
+%draw the main coordinate system axes
+\tdplotsetrotatedcoordsorigin{(P)}
+\tdplotsetrotatedcoords{40}{0}{0}
+%\tdplotsetrotatedthetaplanecoords{45}
+\draw[red,tdplot_rotated_coords,thick,->] (0,0,0) -- (1,0,0) node[anchor=north east]{$\mathbf{y}$};
+\draw[red,tdplot_rotated_coords,thick,->] (0,0,0) -- (0,1,0) node[anchor=north west]{$\mathbf{z}$};
+\draw[red,tdplot_rotated_coords,thick,->] (0,0,0) -- (0,0,1) node[anchor=south]{$\mathbf{x}$};
+
+    \end{scope}
+\end{tikzpicture}
+
 \end{figure}
+
+\subsubsection{Structure}
+
+Atlas est constitué de plusieurs sous structures principales disposées les unes autour des autres : le détecteur de trace, les calorimètres, et le dispositif de détection des muons. Divers aimants sont également disposés de sorte à pouvoir discriminer les particules dans le détecteur en fonction de leur charge.
+
+On définit le plan transverse comme le plan normal à l'axe des faisceaux de protons (axe z).
+De plus, pour un vecteur donné, on définit l'angle $\theta$ comme l'angle entre ce vecteur l'axe $z$,  l'angle $\phi$ comme l'angle entre la projection du vecteur dans le plan transverse et l'axe $x$ et enfin la pseudo rapidité $\eta$ :
+
+\begin{equation}
+\eta = -\ln \tan \left (\dfrac{\theta}{2} \right)
+\end{equation}
 
 \subsubsection{Tracking, détermination de la charge et de l'impulsion}
 
-Le détecteur intérieur (inner-detector), au plus proche des collisions, est constitué de trois sous-détecteurs : le \textbf{Pixel detector}, le \textbf{Semiconductor Detector} et le \textbf{Transition radiaton detector}. Dans les deux premiers détecteurs, le passage d'un photon ou d'une particule chargée crée des paires électrons-trous qui créent un courant mesurable sous l'influence d'un champ électrique. 
+Le détecteur de trace (inner-detector), au plus proche des collisions, est constitué de trois sous-détecteurs : le \textbf{Pixel detector}, le \textbf{Semiconductor Detector} et le \textbf{Transition radiaton detector}. Dans les deux premiers détecteurs, le passage d'une particule chargée crée des paires électrons-trous qui créent un courant mesurable sous l'influence d'un champ électrique. 
 Le \textbf{Transition radiaton detector} détecte le passage des particules par ionisation d'un gaz. Il permet de plus de détecter les photons émis par rayonnement de transition lorsqu'une particule traverse successivement des milieux d'indices différents, ce qui donne une mesure directe de son facteur de Lorentz $\gamma$.
 
-Le champ magnétique uniforme régnant dans le détecteur  intérieur  grâce au \textbf{Solenoid Magnet}courbe la trajectoire des particules chargées. En fonction des points de détection obtenus grâce à ces détecteurs il est possible de reconstruire les traces des particules et leur charge à partir du sens de la courbure ainsi que leur impulsion (à partir du rayon de courbure) :
+Le champ magnétique uniforme et normal au plan transverse régnant dans le détecteur  intérieur  grâce au \textbf{Solenoid Magnet} courbe la trajectoire des particules chargées. En fonction des points de détection obtenus grâce à ces détecteurs il est possible de reconstruire les traces des particules et leur charge à partir du sens de la courbure ainsi que leur impulsion (à partir du rayon de courbure) :
 
 \begin{equation} 
 R_c = \dfrac{\gamma mv_{\perp}}{qB_0} = \dfrac{p_{T}}{qB_0}
@@ -685,7 +752,7 @@ La masse ainsi calculée est correcte plutôt. La largeur est bien plus importan
 
 \subsection{Recherche de résonances à des masses supérieures }
 
-\subsubsection{Hypothèse $m_H >$ 125 GeV selon le modèle standard}
+\subsubsection{Hypothèse $m_H >$ 125 GeV selon le Modèle Standard}
 
 En connaissant les sections efficaces et ratios de branche du Higgs en fonction de sa masse, et en extrapolant le fit de bruit de fond mesuré à des masses élevées, on peut estimer le ratio signal/bruit de fond pour des scénarios avec un boson de Higgs plus lourd. Cela permet de montrer que le canal $H \to \gamma \gamma$ n'est pas approprié à la détection de Higgs lourd. Sur la figure  \ref{fig:higgs_lourds_gg}, on peut en effet constater que le ratio S/B ne dépasse pas 0,01. De plus, le run 1 du LHC n'aurait produit qu'environ 8 évènements $H \to \gamma \gamma$ pour $m_H =$ 200 GeV (et aucun pour 300+GeV).
 \begin{figure}[H]
@@ -704,6 +771,17 @@ On souhaite vérifier qu'il n'existe aucune autre fluctuation significative du b
   \caption{p-value associée à l'hypothèse signal nul. On observe un minimum aux alentours de 125 GeV (correspondant au Higgs). Aucune fluctuation significative n'est repérable pour d'autres masses.  }
 \label{fig:pvalue}
  \resizebox{.9\linewidth}{!}{\input{../graphes/pvalue_resonances}}
+\end{figure}
+
+Afin de vérifier qu'en dehors du signal du Higgs les écarts sont bien compatibles avec des fluctuations statistiques, on réalise une simulation avec l'algorithme précédent sur un background exponentiel sans signal mais comprenant des fluctuations statistiques.
+
+On trouve en autre que la probabilité d'observer au moins 4 p-value (dans les conditions précédentes) inférieures à 0,01 est de 10 \%. Les pics à 0,01 à 180, 200, 250 et 270 GeV sont donc compatibles avec des fluctuations statistiques.
+
+\begin{figure}[H]
+\centering
+  \caption{Probabilité d'obtenir une p-value $p_0$ inférieure à p  }
+\label{fig:pvalue}
+ \resizebox{.9\linewidth}{!}{\input{../graphes/p0_threshold}}
 \end{figure}
 
 

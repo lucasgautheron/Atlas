@@ -53,9 +53,9 @@
 
 \newcommand{\CommonElementTextFormat}[5]
 {
-  \begin{minipage}{3.5cm}
+  \begin{minipage}{3.4cm}
     \centering
-      {\ #3\hfill #1}%
+      {\ #3\hfill #1\ }%
       \linebreak
       {\ \hfill #2}
        \linebreak \linebreak
@@ -110,7 +110,7 @@
 }
 
 \begin{preview}
-\begin{tikzpicture}[font=\sffamily, scale=0.8, transform shape]
+\begin{tikzpicture}[font=\sffamily, scale=0.7, transform shape]
 
 %% Fill Color Styles
    \tikzstyle{ElementFill} = [fill=yellow!5]
@@ -120,7 +120,7 @@
   \tikzstyle{NeutrinosFill} = [fill=blue!25]
 %% Element Styles
   \tikzstyle{Element} = [draw=black, ElementFill,
-    minimum width=4cm, minimum height=4cm, node distance=4cm]
+    minimum width=3.7cm, minimum height=3.7cm, node distance=3.7cm]
   \tikzstyle{Quarks} = [Element, QuarksFill]
   \tikzstyle{Bosons} = [Element, BosonsFill]
   \tikzstyle{Leptons} = [Element, LeptonsFill]
@@ -128,8 +128,8 @@
   \tikzstyle{Dummy} = [Element,ElementFill,scale=0.8]
   \tikzstyle{PeriodLabel} = [font={\sffamily\LARGE}, node distance=2.0cm]
   \tikzstyle{GroupLabel} = [font={\sffamily\LARGE}, minimum width=2.5cm, node distance=2.5cm]
-  \tikzstyle{TitleLabel} = [font={\sffamily\Huge\bfseries}, node distance=7.0cm]
-  \tikzstyle{Empty} = [  minimum width=4cm, minimum height=4cm, node distance=4cm  ]
+  \tikzstyle{TitleLabel} = [font={\sffamily\LARGE\bfseries}, node distance=5.0cm]
+  \tikzstyle{Empty} = [  minimum width=3.7cm, minimum height=3.7cm, node distance=3.7cm  ]
 
 %% quarks
   \node[name=U, Quarks] {\NaturalElementTextFormat{+2/3}{1,5-4 MeV}{1/2}{u}{up}};
