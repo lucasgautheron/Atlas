@@ -56,7 +56,7 @@
 \usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
 \usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
 \usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
-\usepackage{endnotes}
+\usepackage{endnotes,refcount}
 % These packages are all incorporated in the memoir class to one degree or another...
 
 %%% HEADERS & FOOTERS
@@ -126,7 +126,7 @@ Le LHC (Large Hadron Collider) est le plus grand accélérateur de particule au 
 
 \subsection{Collisions}
 
-Les protons sont répartis en un maximum de $n = $2800 paquets qui contiennent chacun environ $N = 10^{11}$ protons. Ces paquets sont focalisés au point d'impact pour atteindre une dimension transverse $r$ de l'ordre de 50 $\mu$m. Les collisions sont réalisées à une fréquence de 40 MHz. A l'aide de ces paramètres, on peut définir la luminosité $L$ comme la grandeur vérifiant :
+Les protons sont répartis en un maximum de $n =$ 2800 paquets qui contiennent chacun environ $N = 10^{11}$ protons. Ces paquets sont focalisés au point d'impact pour atteindre une dimension transverse $r$ de l'ordre de 50 $\mu$m. Les collisions sont réalisées à une fréquence de 40 MHz. A l'aide de ces paramètres, on peut définir la luminosité $L$ comme la grandeur vérifiant :
 \begin{equation}
 L = \dfrac{\mbox{nombre d'évènements par seconde}}{\mbox{section efficace associée à ces évènements}}
 \end{equation}
@@ -144,7 +144,7 @@ Le nombre total d'évènements est obtenu en intégrant la luminosité sur la du
 
 \subsection{Planning}
 
-Le premier \og run \fg du LHC a eu lieu entre 2011 et 2013. Suite à un incident, les prises de données se sont faites à moindre énergie (7 puis 8 TeV). Environ 30 fb${}^{ -1}$ de données ont été collectées.
+Le premier \og run \fg du LHC a eu lieu entre 2011 et 2012. Suite à un incident, les prises de données se sont faites à moindre énergie (7 puis 8 TeV). Environ 30 fb${}^{ -1}$ de données ont été collectées.
 
 Le second run du LHC a démarré au mois de juin 2015. Les premières collisions ont eu lieu a une énergie de 13 TeV, et la luminosité doit augmenter pour dépasser 0,04 pb${}^{-1}$.s${}^{-1}$. Le LHC devrait atteindre son énergie nominale de 14 TeV. Un arrêt est prévu en 2018, puis une reprise pour entamer le Run 3 en 2020 jusque fin 2022. A la suite du Run 3, le LHC entamera la phase "Haute Luminosité" avec pour objectif une multiplication par un facteur $\lesssim 10$ de la luminosité instantanée.
 
@@ -157,7 +157,7 @@ Le Modèle Standard est une description des particules élémentaires et des int
 \begin{figure}[H]
 \centering
   \caption{ Particules élémentaires du Modèle Standard. A gauche, les fermions (spin demi entier). A droite, les bosons (spin entier). }
-\includegraphics[width=0.8\textwidth]{table_ms.pdf}
+\includegraphics[width=0.75\textwidth]{table_ms.pdf}
 
 \end{figure}
 
@@ -319,7 +319,9 @@ La section efficace totale pour ce processus est $\sigma = \sigma_W + \sigma_Z$ 
 
 Ces processus sont l'objet d'une attention particulière, malgré leur faible section efficace. En effet, ils introduisent un couplage direct entre $H$ et des quarks lourds. L'intensité de ce couplage étant proportionnelle à la masse des quarks, elle est très forte dans le cas des top. Etudier ces évènements permettrait donc une mesure directe du couplage $H$ - fermion à des masses élevées. \cite{yukawa_coupling}
 
-On peut penser \textit{a priori} que le processus du diagramme (\ref{fig:feynman_ggh}) présente le même intérêt, mais la présence d'une boucle virtuelle le rend moins précise la détermination des constantes de couplage.\endnote{Pour obtenir la probabilité de transition entre deux états, une étape est d'évaluer tous les chemins de transitions possibles ainsi que leur poids (leur contribution) respectif. Le poids d'un processus peut être évalué à l'aide des diagrammes de feynman. A chaque \og sommet \fg (vertex) reliant plusieurs particules, on associe un facteur de couplage. A chaque particule, on associe de plus un facteur de propagation (dont la forme dépend du type de la particule considérée). Dans les figures (\ref{fig:feynman_ggh}) et (\ref{fig:feynman_tth}), le poids des processus est toujours proportionnel au couplage entre le Higgs et le top et au carré du couplage gluon-top. La différence réside dans les propagateurs. Le propagateur pour un fermion d'impulsion $p^{\mu}$ est proportionnel à :
+On peut penser \textit{a priori} que le processus du diagramme (\ref{fig:feynman_ggh}) présente le même intérêt, mais la présence d'une boucle virtuelle le rend moins précise la détermination des constantes de couplage.
+
+\endnote{\label{note_virtual}Pour obtenir la probabilité de transition entre deux états, une étape est d'évaluer tous les chemins de transitions possibles ainsi que leur poids (leur contribution) respectif. Le poids d'un processus peut être évalué à l'aide des diagrammes de feynman. A chaque \og sommet \fg (vertex) reliant plusieurs particules, on associe un facteur de couplage. A chaque particule, on associe de plus un facteur de propagation (dont la forme dépend du type de la particule considérée). Dans les figures (\ref{fig:feynman_ggh}) et (\ref{fig:feynman_tth}), le poids des processus est toujours proportionnel au couplage entre le Higgs et le top et au carré du couplage gluon-top. La différence réside dans les propagateurs. Le propagateur pour un fermion d'impulsion $p^{\mu}$ est proportionnel à :
 \begin{equation}
 \dfrac{1}{p_{\mu}p^{\mu} - m^2 + i\epsilon}
 \end{equation}
@@ -381,16 +383,16 @@ Pour rechercher le Higgs, on recherche des particules détectables issues de sa 
 
 \begin{figure}[H]
 \centering
-  \caption{Résultats de l'expérience Atlas sur la détection du Higgs à travers sa désintégration par différents modes. Les signaux extraits sont comparés aux valeurs attendues selon le Modèle Standard. }
+  \caption{Résultats de l'expérience Atlas sur la détection du Higgs à travers sa désintégration par différents modes. Les signaux extraits sont comparés aux valeurs attendues selon le Modèle Standard.}
  \includegraphics[width=0.8\textwidth]{../images/fig_02.png}
 \end{figure}
 
 
 \subsubsection{$H \to \gamma \gamma$}
 
-La désintégration du Higgs en deux photons est une méthode d'observation privilégiée. Bien que le ratio associé à cette branche soit très faible (2 pour 1000), ce qui implique que peu de Higgs formés seront observables de cette façon, il est plus facile de détecter de tels photons avec une grande précision sur leur énergie et direction. La connaissance précise de l'impulsion de la paire de photons permet alors de remonter à la masse d'un Higgs dont ils seraient issus simplement (il s'agit de la masse invariante du système formé par la paire). Un inconvénient de ce canal est qu'il n'aurait pas permis de détecter un Higgs lourd (> 200 GeV).
+La désintégration du Higgs en deux photons est une méthode d'observation privilégiée. Bien que le ratio associé à cette branche soit très faible (2 pour 1000), ce qui implique que peu de Higgs formés seront observables de cette façon, il est plus facile de détecter de tels photons avec une grande précision sur leur énergie et direction. La connaissance précise de l'impulsion de la paire de photons permet alors de remonter à la masse d'un Higgs dont ils seraient issus simplement (il s'agit de la masse invariante du système formé par la paire). Un inconvénient de ce canal est qu'il n'aurait pas permis de détecter un Higgs lourd ($>$ 200 GeV).
 
-Puisque le photon est de masse nulle, il ne se couple pas directement au Higgs : la désintégration en deux photons nécessite donc une particule virtuelle intermédiaire.
+Puisque le photon est de masse nulle, il ne se couple pas directement au Higgs : la désintégration en deux photons nécessite donc une particule virtuelle intermédiaire, ce qui la défavorise devant d'autres processus\endnotemark[\getrefnumber{note_virtual}].
 
 \begin{figure}[H]
 \centering
@@ -436,7 +438,7 @@ Une autre voie privilégiée est la désintégration d'un $H$ en une paire de $Z
 
 \begin{figure}[H]
 \centering
-  \caption{Signal et bruit de fond attendus pour différentes masses du Higgs dans le canal $4\ell$}
+  \caption{Signal et bruit de fond attendus pour différentes masses du Higgs dans le canal $4\ell$. \cite{atlas_zz_llll}}
  \includegraphics[width=0.6\textwidth]{../images/atlas_llll_events.png}
 \end{figure}
 
@@ -580,6 +582,7 @@ A l'aide des simulations Monte-Carlo, on estime la résolution en énergie en fo
 \begin{subfigure}[b]{.5\linewidth}
 \centering
   \caption{Photons 'tight' non convertis} 
+\label{fig:resolution_energie_photons2} 
  \resizebox{1.1\linewidth}{!}{\input{../graphes/resolution_energie_globale}}
 \end{subfigure}
 \end{figure}
@@ -598,13 +601,13 @@ On compare donc (sur des données simulées) le taux d'évènements diphoton rec
 
 \begin{figure}[H]
 \centering
-  \caption{Efficacité de sélection des paires de photons 'tight' en fonction de $\eta$. La zone de \og crack \fg est bien apparente sur cette figure. }
+  \caption{Efficacité de sélection $\varepsilon$ des paires de photons 'tight' en fonction de $\eta$. La zone de \og crack \fg est bien apparente sur cette figure. }
  \resizebox{.9\linewidth}{!}{\input{../graphes/acceptance_eta_tight}}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-  \caption{Efficacité de sélection des photons enfonction de l'énergie transverse $E_t$.}
+  \caption{Efficacité de sélection $\varepsilon$ des photons enfonction de l'énergie transverse $E_t$.}
  \resizebox{.9\linewidth}{!}{\input{../graphes/acceptance_Et}}
 \end{figure}
 
@@ -614,6 +617,8 @@ On compare donc (sur des données simulées) le taux d'évènements diphoton rec
  \resizebox{.9\linewidth}{!}{\input{../graphes/acceptance_phi}}
   \caption{Efficacité de sélection des photons en fonction de $\phi$. On constate que celle ci est constante sur $[-\pi,\pi]$ ce qui est attendu pour des raisons de symétrie.}
 \end{figure}
+
+On trouve une efficacité de reconstruction des paires diphotons avec un critère tight $\varepsilon$ = 0,41.
 
 %\begin{figure}[H]
 %\centering
@@ -709,7 +714,7 @@ On obtient un échantillon de 310 000 évènements pour lequel on calcule la dis
 
 Afin d'extraire le signal correspondant au Higgs, on se restreint à la plage où il est attendu (100 - 150 GeV). Le 'background' y suit une forme exponentielle. On en réalise alors un fit sur une zone ou le signal est considéré nul : ici on a choisi [100;120] $\cup$  [130;150]. On obtient une fonction de la forme $\textrm{background} = m_{\gamma\gamma} \mapsto \exp(\xi + \epsilon m_{\gamma\gamma})$.
 
-Puis, sur la plage complète ([100, 150]), on réalise un fit des données à partir d'une fonction de la forme signal+background : $m_{\gamma\gamma} \mapsto  A \exp\left(-(m_{\gamma\gamma}-m_H)^2/2\sigma^2\right) + \exp(\xi + \epsilon m_{\gamma\gamma})$
+Puis, sur la plage complète ([100, 150]), on réalise un fit des données à partir d'une fonction de la forme signal+background : $m_{\gamma\gamma} \mapsto  A \exp\left(-(m_{\gamma\gamma}-m_H)^2/2\Gamma_H^2\right) + \exp(\xi + \epsilon m_{\gamma\gamma})$
 
 On obtient la figure suivante :
 
@@ -743,12 +748,20 @@ La valeur $m_H$ est la masse du Higgs ainsi mesurée. La valeur $\sigma$ doit co
 
 %On calcule d'autre part la significance statistique d'après ces fits : $\Delta \chi^2 = \chi^2_{\textrm{background}} - \chi^2_{\textrm{signal+background}} \simeq 155-107 \simeq 50$ soit une significance à $\sqrt{\Delta \chi^2} \ \sigma = 7 \sigma$
 
-A partir de la quantité d'évènements $H \to \gamma \gamma$ détectés estimée, on peut calculer la luminosité intégrée associée :
+Puisque l'on connait la luminosité intégrée ayant conduit à ces données, on peut estimer le nombre d'évènements $H \to \gamma\gamma$ attendus :
+
 \begin{equation}
-\int L dt = \dfrac{N}{\xi \sigma} = \dfrac{\mbox{586}}{\mbox{0,41} \times \mbox{51} \times \mbox{10} {}^{-15}} = \mbox{28,7} \pm 9,8 \mbox{  fb}{}^{-1}
+N_{att} = \varepsilon \sigma \int L dt = 0,41 \times 51 \times  \mbox{10} {}^{-15} \times 20,3 \times 10^{15} = 424
 \end{equation}
 
-Cette résultat est compatible avec la valeur réelle (20,3 fb ${}^{-1}$)
+Ceci est donc bien compatible avec le résultat expérimental $N =$ 586 $\pm$ 200.
+
+%A partir de la quantité d'évènements $H \to \gamma \gamma$ détectés estimée, on peut calculer la luminosité intégrée associée :
+%\begin{equation}
+%\int L dt = \dfrac{N}{\varepsilon \sigma} = \dfrac{\mbox{586}}{\mbox{0,41} \times \mbox{51} \times \mbox{10} {}^{-15}} = \mbox{28,7} \pm 9,8 \mbox{  fb}{}^{-1}
+%\end{equation}
+
+%Cette résultat est compatible avec la valeur réelle (20,3 fb ${}^{-1}$)
 
 \subsection{Masse du $Z$}
 
