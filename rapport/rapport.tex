@@ -56,6 +56,7 @@
 \usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
 \usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
 \usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+\usepackage{endnotes}
 % These packages are all incorporated in the memoir class to one degree or another...
 
 %%% HEADERS & FOOTERS
@@ -113,23 +114,39 @@
 \begin{document}
 \maketitle
 
+\tableofcontents
+
 \abstract{  }
  
 \section{Le LHC}
 
 \subsection{Généralités}
 
-Le LHC (Large Hadron Collider) est le plus grand accélérateur de particule au monde. Long de 27 km, il accélère des faisceaux de protons dans des directions opposées afin d'étudier les particules produites lors de leur collisier, et pouvant atteindre une énergie de centre de masse notée $\sqrt{s}$ de 14 TeV. 
+Le LHC (Large Hadron Collider) est le plus grand accélérateur de particule au monde. Long de 27 km, il accélère des faisceaux de protons dans des directions opposées afin d'étudier les particules produites lors de leur collisions, et pouvant atteindre une énergie de centre de masse notée $\sqrt{s}$ de 14 TeV. 
 
 \subsection{Collisions}
 
-expliquer un minimum. introduire le barn.
+Les protons sont répartis en un maximum de $n = $2800 paquets qui contiennent chacun environ $N = 10^{11}$ protons. Ces paquets sont focalisés au point d'impact pour atteindre une dimension transverse $r$ de l'ordre de 50 $\mu$m. Les collisions sont réalisées à une fréquence de 40 MHz. A l'aide de ces paramètres, on peut définir la luminosité $L$ comme la grandeur vérifiant :
+\begin{equation}
+L = \dfrac{\mbox{nombre d'évènements par seconde}}{\mbox{section efficace associée à ces évènements}}
+\end{equation}
+
+Elle est de la forme :
+
+\begin{equation}
+L \propto \dfrac{nN^2f}{r^2}
+\end{equation}
+
+Le facteur de proportionnalité dépend de la forme des paquets et de la qualité de la collimation.
+
+On exprime usuellement la luminosité en sous-unités du barn inverse (1 b${}^{-1}$ = $10^{24}$ cm${}^{-2}$ ).
+Le nombre total d'évènements est obtenu en intégrant la luminosité sur la durée de l'expérience.
 
 \subsection{Planning}
 
 Le premier \og run \fg du LHC a eu lieu entre 2011 et 2013. Suite à un incident, les prises de données se sont faites à moindre énergie (7 puis 8 TeV). Environ 30 fb${}^{ -1}$ de données ont été collectées.
 
-Le second run du LHC a démarré au mois de juin 2015. Les premières collisions ont eu lieu a une énergie de 13 TeV, et la luminosité doit augmenter pour dépasser 4 $\times 10^{34}$ cm${}^{-2}$s${}^{-1}$. Le LHC devrait atteindre son énergie nominale de 14 TeV. Un arrêt est prévu en 2018, puis une reprise pour entamer le Run 3 en 2020 jusque fin 2022. A la suite du Run 3, le LHC entamera la phase "Haute Luminosité" avec pour objectif une multiplication par un facteur $\lesssim 10$ 
+Le second run du LHC a démarré au mois de juin 2015. Les premières collisions ont eu lieu a une énergie de 13 TeV, et la luminosité doit augmenter pour dépasser 0,04 pb${}^{-1}$.s${}^{-1}$. Le LHC devrait atteindre son énergie nominale de 14 TeV. Un arrêt est prévu en 2018, puis une reprise pour entamer le Run 3 en 2020 jusque fin 2022. A la suite du Run 3, le LHC entamera la phase "Haute Luminosité" avec pour objectif une multiplication par un facteur $\lesssim 10$ de la luminosité instantanée.
 
 \section{Le Modèle Standard de la physique des particules}
 
@@ -183,7 +200,7 @@ La section efficace totale du processus est de 19,23 pb à $\sqrt{s} =$ 8 TeV et
 \fmf{fermion}{v2,v3}
 \fmf{fermion}{v3,v1}
 \end{fmfgraph*}
-\caption{Diagramme de Feynman de la production d'un Higgs par fusion de gluons (avec apparition de quarks virtuels, préférentiellement lourds).  }
+\caption{\label{fig:feynman_ggh}Diagramme de Feynman de la production d'un Higgs par fusion de gluons (avec apparition de quarks virtuels, préférentiellement lourds).  }
 \end{figure}
 \end{fmffile}
 
@@ -268,8 +285,9 @@ La section efficace totale pour ce processus est $\sigma = \sigma_W + \sigma_Z$ 
 
 \fmf{dashes}{v3,o2}
 \end{fmfgraph*}
-\caption{\\ Ici, deux gluons produisent deux paires $t\bar{t}$ ou $b\bar{b}$. Une d'entre elles fusionne et produit un $H$. Il s'agit d'un processus mineur ($\sigma = \sigma_b + \sigma_t = $ 0,20 $+$ 0,13 = 0,33 pb à 8 TeV et $\sigma = \sigma_b + \sigma_t = $ 0,6 $+$ 0,6 = 1,2 pb à 14 TeV)}
 \end{fmffile}
+
+\caption{\label{fig:feynman_tth}\\ Ici, deux gluons produisent deux paires $t\bar{t}$ ou $b\bar{b}$. Une d'entre elles fusionne et produit un $H$. Il s'agit d'un processus mineur ($\sigma = \sigma_b + \sigma_t = $ 0,20 $+$ 0,13 = 0,33 pb à 8 TeV et $\sigma = \sigma_b + \sigma_t = $ 0,6 $+$ 0,6 = 1,2 pb à 14 TeV)}
 \end{subfigure}\hfill
 \begin{subfigure}{.45\linewidth}
 \begin{fmffile}{TF_2}
@@ -299,11 +317,19 @@ La section efficace totale pour ce processus est $\sigma = \sigma_W + \sigma_Z$ 
 \end{subfigure}
 \end{figure}
 
+Ces processus sont l'objet d'une attention particulière, malgré leur faible section efficace. En effet, ils introduisent un couplage direct entre $H$ et des quarks lourds. L'intensité de ce couplage étant proportionnelle à la masse des quarks, elle est très forte dans le cas des top. Etudier ces évènements permettrait donc une mesure directe du couplage $H$ - fermion à des masses élevées. \cite{yukawa_coupling}
+
+On peut penser \textit{a priori} que le processus du diagramme (\ref{fig:feynman_ggh}) présente le même intérêt, mais la présence d'une boucle virtuelle le rend moins précise la détermination des constantes de couplage.\endnote{Pour obtenir la probabilité de transition entre deux états, une étape est d'évaluer tous les chemins de transitions possibles ainsi que leur poids (leur contribution) respectif. Le poids d'un processus peut être évalué à l'aide des diagrammes de feynman. A chaque \og sommet \fg (vertex) reliant plusieurs particules, on associe un facteur de couplage. A chaque particule, on associe de plus un facteur de propagation (dont la forme dépend du type de la particule considérée). Dans les figures (\ref{fig:feynman_ggh}) et (\ref{fig:feynman_tth}), le poids des processus est toujours proportionnel au couplage entre le Higgs et le top et au carré du couplage gluon-top. La différence réside dans les propagateurs. Le propagateur pour un fermion d'impulsion $p^{\mu}$ est proportionnel à :
 \begin{equation}
-\mathcal{M} \propto P_{gluon}(p_{g1}) P_{gluon}(p-p_{g1}) C_{gf}^2 P_q(p_{g1}-p_{\bar{q}}) P_q(p - p_{g1} - p_q)C_{hf} P_H(p-p_q-p_{\bar{q}})
+\dfrac{1}{p_{\mu}p^{\mu} - m^2 + i\epsilon}
 \end{equation}
 
-Ces processus sont l'objet d'une attention particulière, malgré leur faible section efficace. En effet, ils introduisent un couplage direct entre $H$ et des quarks lourds. L'intensité de ce couplage étant proportionnelle à la masse des quarks, elle est très forte dans le cas des top. Etudier ces évènements permettrait donc une mesure directe du couplage $H$ - fermion à des masses élevées. \cite{yukawa_coupling}
+Si, dans le diagramme (\ref{fig:feynman_tth}), l'impulsion $p$ des top intermédiaires est fixée par conservation à chaque vertex de l'impulsion, ce n'est pas le cas dans le diagramme  (\ref{fig:feynman_ggh}) où l'impulsion totale peut être répartie d'une infinité de façons au sein de la boucle. Il faut donc sommer sur toutes les valeurs possible de l'impulsion des quarks top virtuels, qui ne vérifient pas l'égalité $p_{\mu}p^{\mu} = m^2$. Or, les chemins pour lesquels cette égalité n'est pas vérifiée sont défavorisés (d'après la forme du propagateur pour un fermion).
+
+%\begin{equation}
+%\mathcal{M} \propto P_{gluon}(p_{g1}) P_{gluon}(p-p_{g1}) C_{gf}^2 P_q(p_{g1}-p_{\bar{q}}) P_q(p - p_{g1} - p_q)C_{hf} P_H(p-p_q-p_{\bar{q}})
+%\end{equation}
+}
 
 \subsubsection{Section efficace totale $pp \to H$}
 
@@ -319,7 +345,7 @@ Ces processus sont l'objet d'une attention particulière, malgré leur faible se
 \hline
    13 & 50,9  \\
 \hline
-   14 & 58.0 \\
+   14 & 58,0 \\
   \hline
 \end{tabular}
 \caption{Section efficace totale pour le processus $pp \to H$ en fonction de l'énergie des faisceaux. Augmenter l'énergie augmente $\sigma_H$ de façon significative.}
@@ -441,8 +467,7 @@ La désintégration d'un H en paire $\tau^+ \tau^-$ offre une autre voie d'obser
 
 \subsection{Généralités}
 
-Atlas fait partie des expériences principales situées sur le LHC (Large Hadron Collider) aux côtés (entre autres) de CMS, ALICE et LHCb.
-Elle étudie les produits des collisions entre protons accélérés par le LHC à des énergies de centre de masse jusqu'à 14 TeV. Son objectif est de confirmer les dernières prédictions non testées du Modèle Standard (Higgs) ou encore la recherche de preuves de supersymétrie et de nouvelle physique. Avec CMS, cette expérience a effectivement permis la découverte du boson de Higgs en 2013.
+Atlas fait partie des expériences principales situées sur le LHC aux côtés (entre autres) de CMS, ALICE et LHCb. Son objectif est de confirmer les dernières prédictions non testées du Modèle Standard (Higgs) ou encore la recherche de preuves de supersymétrie et de nouvelle physique. Avec CMS, cette expérience a effectivement permis la découverte du boson de Higgs en 2013.
 
 % à relier a ce qui a été dit précédemment sur H
 \subsection{Détecteurs}
@@ -456,12 +481,12 @@ Elle étudie les produits des collisions entre protons accélérés par le LHC �
     \begin{scope}[x={(image.south east)},y={(image.north west)}]
    %     \draw[red,ultra thick,rounded corners] (0.62,0.65) rectangle (0.78,0.75);
 \coordinate (O) at (0,0,0);
-\coordinate (P) at (0.59,0.52,0);
+\coordinate (P) at (0.1,0.6,0);
 %\tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec}
 
 %draw the main coordinate system axes
 \tdplotsetrotatedcoordsorigin{(P)}
-\tdplotsetrotatedcoords{40}{0}{0}
+\tdplotsetrotatedcoords{36}{0}{0}
 %\tdplotsetrotatedthetaplanecoords{45}
 \draw[red,tdplot_rotated_coords,thick,->] (0,0,0) -- (1,0,0) node[anchor=north east]{$\mathbf{y}$};
 \draw[red,tdplot_rotated_coords,thick,->] (0,0,0) -- (0,1,0) node[anchor=north west]{$\mathbf{z}$};
@@ -500,6 +525,8 @@ La mesure de l'énergie des particules se fait à l'aide de deux calorimètres :
 
 Les muons n'intéragissent pas avec ces détecteurs : ils sont mesurés à l'aide d'un dispositif externe (Muon spectrometer), qui repose en partie sur le tracking par rayon de courbure magnétique, à l'aide d'un champ intense mais complexe imposé par les \textbf{Toroid Magnets}.
 
+Enfin, la conception hermétique du détecteur lui donne la possibilité d'évaluer l'énergie transverse manquante associée à un évènement, ce qui permet d'assimiler cette énergie à des particules produites qui n'ont pas interagit avec les détecteurs (probablement des neutrinos).
+
 \subsection{Performances}
 
 La portée des résultats physiques de l'expérience repose entre autres sur les performances du détecteur. Ces performances concernent la qualité des données (résolution élevée, erreurs faibles) et de quantité (peu d'évènements "perdus"). Elles peuvent être évaluées expérimentalement ou anticipées grâce à des modèles. Ici, on utilise des données issues de simulation Monte-Carlo afin d'estimer quantitativement les performances des détecteurs qui sont importantes pour l'étude des évènements $H \to \gamma \gamma$.
@@ -512,9 +539,11 @@ Plusieurs facteurs limitent la résolution en énergie du calorimètre. Celle-ci
 \dfrac{\sigma_E}{E} \simeq \dfrac{a}{\sqrt{E}} \oplus \dfrac{b}{E} \oplus c
 \end{equation}
 
-Le terme $\propto a$ représente l'erreur d'origine statistique, $b$ le bruit électronique et $c$ les erreurs constantes de non-linéarité/calibration..
+Le terme $\propto a$ représente l'erreur d'origine statistique. Lorsque qu'une particule traverse le calorimètre et génère une gerbe, le nombre de dépots d'énergie relevés $N$ est proportionnel à l'énergie $E$. L'erreur d'origine aléatoire relative sur le nombre de dépots étant de l'ordre de $\sqrt{N}/N$, elle est répercutée en une erreur relative sur l'énergie de la forme $\sqrt{E}/E = 1/\sqrt{E}$.
 
-Aux énergies qui nous intéressent ($>$ 10 GeV), le bruit électronique est négligeable ($b \sim$ 100 MeV) et la résolution prend une forme :
+Le terme représente $b$ le bruit électronique et $c$ les erreurs constantes de non-linéarité/calibration.
+
+Aux énergies qui nous intéressent ($>$ 10 GeV), le bruit électronique est négligeable ($b \sim$ 100 MeV) et la résolution devient :
 
 \begin{equation}
 \dfrac{\sigma_E}{E} \sim \dfrac{a}{\sqrt{E}} \oplus c
@@ -611,7 +640,7 @@ En connaissant l'énergie des photons produits de la désintégration du Higgs s
 m_{\textrm{inv}}^2 = E^2 - \textbf{p}^2
 \end{equation}
 
-Pour deux photons,  ou par approximation pour des particules très énergétiques\footnote{Ici, les particules les plus massives utilisées dans les calculs de masse invariante sont les muons, or $m_\mu = $ 100 MeV $\ll $ 10 GeV, l'ordre de grandeur des énergies des particules considérées}, $E_{\gamma_1} = p_{\gamma_1}$ et $E_{\gamma_2} = p_{\gamma_2}$, et alors :
+Pour deux photons,  ou par approximation pour des particules très énergétiques\endnote{Ici, les particules les plus massives utilisées dans les calculs de masse invariante sont les muons, or $m_\mu = $ 100 MeV $\ll $ 10 GeV, l'ordre de grandeur des énergies des particules considérées}, $E_{\gamma_1} = p_{\gamma_1}$ et $E_{\gamma_2} = p_{\gamma_2}$, et alors :
 
 \begin{equation}
 m_{\gamma \gamma}^2 = 2 \left ( p_{\gamma_1} p_{\gamma_2} - \textbf{p}_{\gamma_1} \cdot \textbf{p}_{\gamma_2} \right )
@@ -710,7 +739,7 @@ $N = \sqrt{2\pi} \Gamma_H A$ & 586 & 200\\
 \end{tabular}
 \end{figure}
 
-La valeur $m_H$ est la masse du Higgs ainsi mesurée. La valeur $\sigma$ doit correspondre à la largeur du signal, mais elle est bien supérieure à la valeur théorique. Aux énergies considérées (environ 100 GeV), $\sigma_{\eta} \sim 0,3 \%$ \cite{resolution_position_photons} et $\sigma_{E} \sim 1,5 \%$, soit une incertitude $\Delta m_{\gamma\gamma}$ d'environ 2 GeV, du même ordre de grandeur que la largeur mesurée.
+La valeur $m_H$ est la masse du Higgs ainsi mesurée. La valeur $\sigma$ doit correspondre à la largeur du signal, mais elle est bien supérieure à la valeur théorique. Aux énergies considérées (environ 100 GeV), $\sigma_{\eta} \sim 0,3 \%$ \cite{resolution_position_photons} et $\sigma_{E} \sim 1,5 \%$, soit une incertitude $\Delta m_{\gamma\gamma}$ d'environ 2 GeV, du même ordre de grandeur que la largeur mesurée, qui peut donc être considérée comme égale à l'erreur $\Delta m_{\gamma\gamma}$.
 
 %On calcule d'autre part la significance statistique d'après ces fits : $\Delta \chi^2 = \chi^2_{\textrm{background}} - \chi^2_{\textrm{signal+background}} \simeq 155-107 \simeq 50$ soit une significance à $\sqrt{\Delta \chi^2} \ \sigma = 7 \sigma$
 
@@ -775,17 +804,18 @@ On souhaite vérifier qu'il n'existe aucune autre fluctuation significative du b
 
 Afin de vérifier qu'en dehors du signal du Higgs les écarts sont bien compatibles avec des fluctuations statistiques, on réalise une simulation avec l'algorithme précédent sur un background exponentiel sans signal mais comprenant des fluctuations statistiques.
 
-On trouve en autre que la probabilité d'observer au moins 4 p-value (dans les conditions précédentes) inférieures à 0,01 est de 10 \%. Les pics à 0,01 à 180, 200, 250 et 270 GeV sont donc compatibles avec des fluctuations statistiques.
+On trouve en autre que la probabilité d'observer au moins 4 p-value (dans les conditions précédentes) inférieures à 0,01 est de 11 \%. Les pics à 0,01 à 180, 200, 250 et 270 GeV sont donc compatibles avec des fluctuations statistiques.
 
 \begin{figure}[H]
 \centering
-  \caption{Probabilité d'obtenir une p-value $p_0$ inférieure à p  }
-\label{fig:pvalue}
+  \caption{Probabilité pour une p-value $p_0$ obtenue d'être inférieure à p  }
+\label{fig:p0_threshold}
  \resizebox{.9\linewidth}{!}{\input{../graphes/p0_threshold}}
 \end{figure}
 
 
 \bibliographystyle{plain}
 \bibliography{references}
+\theendnotes
 
 \end{document}
