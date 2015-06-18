@@ -14,6 +14,9 @@ float min_mass = 0, max_mass = 0;
 
 TH1F* h;
 
+double total_chi = 0;
+unsigned int n_d_f = 0;
+
 Double_t expon(Double_t  *x, Double_t  *p)
 {
     if(reject && x[0] > min_mass && x[0] < max_mass)
@@ -74,13 +77,19 @@ double scan_window(int k, float mass, float width)
    {
    
        float x = E_min + (E_max - E_min) * (float(j))/float(n);
-       if(x < min_window || x > max_window) continue;
+       if(x < mass-2*width || x > mass+2*width) continue;
        ++NDF;
        float y = exp(a+b*x);
        //printf("%.3f, %.3f %.3f\n", x, y, (float)h->GetBinContent(j));
        chi_bg += (h->GetBinContent(j)-y)*(h->GetBinContent(j)-y) / y;
+       total_chi += (h->GetBinContent(j)-y)*(h->GetBinContent(j)-y) / (y*y);
        y = exp(a+b*x) + c * exp(-(x-d)*(x-d) / (2*e*e));
        chi_tot += (h->GetBinContent(j)-y)*(h->GetBinContent(j)-y) / y;
+   }
+   
+   if(abs(mass-126) > 3)
+   {
+       n_d_f += r->Ndf();
    }
    
    printf("%.7f %.3f %.3f %.3f %d %.3f %.3f \n", (float)ROOT::Math::chisquared_cdf_c(chi_bg, double((int)NDF -1)), (float)chi_bg, (float)fit->GetNDF(), (float)r->Chi2(), r->Ndf(), expected_ndf, float(NDF));
@@ -177,7 +186,8 @@ void fluctuations()
   
   for(int j = 0; j < essais; ++j)
   {
-      double m = (350-109.2) * float(j)/float(essais) + 109.2;
+      //double m = (350-109.2) * float(j)/float(essais) + 109.2;
+      double m = (350-110) * float(j)/float(essais) + 110;
       printf("fit for mass %.3f\n", float(m));
       deltachi[j] = scan_window(j, m, 1.4);
       masses[j] = m;
@@ -194,7 +204,7 @@ void fluctuations()
   gr->Draw("ACP");
   c1->Update();
   
-
+printf("%.3f (%.3f %d)", (float)(total_chi/double(n_d_f)), float(total_chi), n_d_f);
      /*  h->SetMarkerStyle(20);
        h->SetMarkerSize(1);
     h->Draw("E");*/

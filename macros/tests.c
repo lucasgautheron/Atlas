@@ -39,8 +39,8 @@ void tests()
   tree->SetBranchAddress("mgg", &m); 
   tree->SetBranchAddress("mee", &me); 
   
-  const int n = 40;
-  float E_min = 160, E_max = 200;
+  const int n = 50;
+  float E_min = 100, E_max = 150;
   TH1F* h = new TH1F("h", "m_{\\gamma\\gamma} \\mbox{ distribution};m_{\\gamma\\gamma} \\mbox{ (GeV)};\\mbox{Ev/GeV}", n, E_min, E_max); // create a histogram : 500 bins ranging from 100 to 600 GeV.
   //TH1F* h2 = new TH1F("h2", "invariant mass gamma gamma", 500, 50, 250); // create a histogram : 500 bins ranging from 100 to 600 GeV.
   //h2->SetLineColor(kRed);
@@ -61,12 +61,12 @@ void tests()
     {
         if(p1.tight && p2.tight)
         {
-            /*vec imp1, imp2;
+            vec imp1, imp2;
             imp1.pr2c(p1.E, p1.phi, p1.eta);
             imp2.pr2c(p2.E, p2.phi, p2.eta);
             imp1.add(imp2);
             float p = imp1.norm();
-            imp1.c2pr(imp1.x, imp1.y, imp1.z);*/
+            //imp1.c2pr(imp1.x, imp1.y, imp1.z);
             /*float px = p1.true_E * TMath::Cos(p1.true_phi) + p2.true_E * TMath::Cos(p2.true_phi);
             float py = p1.true_E * TMath::Sin(p1.true_phi) + p2.true_E * TMath::Sin(p2.true_phi);
             float pz = p1.true_E * TMath::SinH(p1.true_eta) + p2.true_E * TMath::SinH(p2.true_eta) ;
@@ -78,7 +78,7 @@ void tests()
             //printf("%.2f\n", imp1.z - eta);
             //float theta = 2*atan(exp(-imp1.z));
             
-            if(p1.E > 0 && p2.E > 0) h->Fill(invMass(p1,p2));
+            if(p1.E > 0 && p2.E > 0 && p < 300) h->Fill(invMass(p1,p2));
             //h->Fill(invMass(p1, p2));
 
         }
@@ -122,7 +122,7 @@ void tests()
     //f1->SetParLimits(3,120,130);
     f1->SetParameters(a,b,100,expected_mass,1.8);
     //f1->SetParLimits(4,0.5,2*2.0);
-    f1->SetParLimits(4,2.0, 2.0);
+    f1->SetParLimits(4,0.0, 2.5);
     f1->SetParLimits(0, a, a);
     f1->SetParLimits(1, b, b);
 

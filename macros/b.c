@@ -18,20 +18,21 @@ Double_t expon(Double_t  *x, Double_t  *p)
     return p[0];
 }
 
-void z()
+void b()
 {
-  double expected_mass = 91.2;
-   //TFile* f = TFile::Open("Hgg_Moriond2013-Y2012_merge_200804_216432_NoMassCut.root");  // open the file
+  double expected_mass = 90;
+   TFile* f = TFile::Open("Hgg_Moriond2013-Y2012_merge_200804_216432_NoMassCut.root");  // open the file
  // TFile* f = TFile::Open("Hgg_Moriond2013-Y2012_ZH600_Pythia_NoMassCut.root");
-    //TFile* f = TFile::Open("Hgg_Moriond2013-Y2012_merge_200804_216432_Presel_1lepton.root");
-    TFile* f = TFile::Open("small.root");  // open the file
+  //  TFile* f = TFile::Open("Hgg_Moriond2013-Y2012_merge_200804_216432_Presel_1lepton.root");
+  //  TFile* f = TFile::Open("small.root");  // open the file
   TTree* tree = (TTree*)f->Get("tree");
 
   float m, me;
   photon p1, p2;
   electron e1, e2;
   muon m1, m2;
-  bool dielectron = 0, dimuon = 0;
+  jet j1, j2, j3, j4;
+  bool dielectron = 0;
   
   bind_attributes(tree, p1, p2, e1, e2, m1, m2);
 
@@ -40,11 +41,11 @@ void z()
   tree->SetBranchAddress("mgg", &m); 
   tree->SetBranchAddress("mee", &me); 
   tree->SetBranchAddress("isDielectron", &dielectron);
-  tree->SetBranchAddress("isMuon", &dimuon);
   
-  const int n = 34;
-  float E_min = 70, E_max = 105;
-  TH1F* h = new TH1F("h", "m_{\\mu\\mu} \\mbox{ distribution};m_{\\mu\\mu} \\mbox{ (GeV)};\\mbox{Ev/GeV}", n, E_min, E_max); // create a histogram : 500 bins ranging from 100 to 600 GeV.
+  const int n = 100;
+  float E_min = 50, E_max = 500;
+//  TH1F* h = new TH1F("h", "m_{jj} \\mbox{ distribution};m_{jj} \\mbox{ (GeV)};\\mbox{Ev/GeV}", n, E_min, E_max); // create a histogram : 500 bins
+  TH1F* h = new TH1F("h", "jj", n, E_min, E_max);
   //TH1F* h2 = new TH1F("h2", "invariant mass gamma gamma", 500, 50, 250); // create a histogram : 500 bins ranging from 100 to 600 GeV.
   //h2->SetLineColor(kRed);
   
@@ -81,22 +82,22 @@ void z()
             //printf("%.2f\n", imp1.z - eta);
             //float theta = 2*atan(exp(-imp1.z));
             
-            double lepton_mass = -1;
-            electron z;
-            vec imp1, imp2;
+            if(j1.p > 0 && j2.p > 0)
+            {
+                j1.E = j1.p;
+                j2.E = j2.p;
+                h->Fill(invMass(j1,j2));
+            }
             
-            /*double dip = invMass(p1,p2);
             
-            if(dip < 100) continue;*/
-            
-            if(e1.p > 0 && e2.p > 0 /*&& dimuon*/)
+            /*if(e1.p > 0 && e2.p > 0 && dielectron)
             {
                 e1.E = e1.p;
                 e2.E = e2.p;
-                lepton_mass = invMass(e1,e2);
-                h->Fill(lepton_mass);
+                h->Fill(invMass(e1,e2));
+            }*/
+            //h->Fill(invMass(p1, p2));
 
-            }
         }
     }
     /*if(m1.p > 0 && m2.p > 0)
@@ -121,7 +122,7 @@ void z()
   /*TGraph *gr = new TGraph(n,x,y);
   gr->Draw("ACP");*/
   
-   TF1 *fitexpo = new TF1("fitexpo", expon, E_min, E_max, 2);
+  /* TF1 *fitexpo = new TF1("fitexpo", expon, E_min, E_max, 2);
     fitexpo->SetLineStyle(2);
     reject = true;
    h->Fit(fitexpo);
@@ -138,7 +139,7 @@ void z()
     //f1->SetParLimits(3,120,130);
     f1->SetParameters(a,50,expected_mass,2);
     //f1->SetParLimits(4,0.5,2*2.0);
-    f1->SetParLimits(3,3.0, 10.0);
+    f1->SetParLimits(3,1.0, 10.0);
     f1->SetParLimits(0, a, a);
 
     h->Fit("f1");
@@ -159,11 +160,11 @@ void z()
    
    printf("%.3f %.3f %.3f %.3f\n", chi_bg, chi_bg/float(n-1), chi_tot, chi_tot/float(n-1));
     
-      printf("%.3f %.3f\n",  fit->GetChisquare(), fit->GetChisquare()/fit->GetNDF());
+      printf("%.3f %.3f\n",  fit->GetChisquare(), fit->GetChisquare()/fit->GetNDF());*/
        h->SetMarkerStyle(20);
        h->SetMarkerSize(1.5);
     h->Draw("E");
-   fitexpo->Draw("same");
+   //fitexpo->Draw("same");
  // h->Draw(); // plot the histogram
   //h2->Draw();
 }

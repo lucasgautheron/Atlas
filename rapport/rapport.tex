@@ -122,7 +122,7 @@
 
 \subsection{Généralités}
 
-Le LHC (Large Hadron Collider) est le plus grand accélérateur de particule au monde. Long de 27 km, il accélère des faisceaux de protons dans des directions opposées afin d'étudier les particules produites lors de leur collisions, et pouvant atteindre une énergie de centre de masse notée $\sqrt{s}$ de 14 TeV. 
+Le LHC (Large Hadron Collider) est le plus grand accélérateur de particule au monde. Long de 27 km, il accélère des faisceaux de protons dans des directions opposées afin d'étudier les particules produites lors de leur collisions, et pouvant atteindre une énergie de centre de masse notée $\sqrt{s}$ de 14 TeV. L'objectif a sa construction était d'atteindre des énergies de collisions les plus hautes possibles afin de repousser les limites de la physique des particules.
 
 \subsection{Collisions}
 
@@ -134,7 +134,7 @@ L = \dfrac{\mbox{nombre d'évènements par seconde}}{\mbox{section efficace asso
 Elle est de la forme :
 
 \begin{equation}
-L \propto \dfrac{nN^2f}{r^2}
+L \propto \dfrac{nN^2f}{r^2} \sim
 \end{equation}
 
 Le facteur de proportionnalité dépend de la forme des paquets et de la qualité de la collimation.
@@ -146,7 +146,7 @@ Le nombre total d'évènements est obtenu en intégrant la luminosité sur la du
 
 Le premier \og run \fg du LHC a eu lieu entre 2011 et 2012. Suite à un incident, les prises de données se sont faites à moindre énergie (7 puis 8 TeV). Environ 30 fb${}^{ -1}$ de données ont été collectées.
 
-Le second run du LHC a démarré au mois de juin 2015. Les premières collisions ont eu lieu a une énergie de 13 TeV, et la luminosité doit augmenter pour dépasser 0,04 pb${}^{-1}$.s${}^{-1}$. Le LHC devrait atteindre son énergie nominale de 14 TeV. Un arrêt est prévu en 2018, puis une reprise pour entamer le Run 3 en 2020 jusque fin 2022. A la suite du Run 3, le LHC entamera la phase "Haute Luminosité" avec pour objectif une multiplication par un facteur $\lesssim 10$ de la luminosité instantanée.
+Le second run du LHC a démarré au mois de juin 2015. Les premières collisions ont eu lieu a une énergie de 13 TeV, et la luminosité doit augmenter pour dépasser 0,04 pb${}^{-1}$.s${}^{-1}$. Le LHC devrait atteindre son énergie nominale de 14 TeV. Un arrêt est prévu en 2018, puis une reprise pour entamer le Run 3 en 2020 jusque fin 2022, au terme duquel le but est d'accumuler 300 fb${}^{-1}$ de données. A la suite du Run 3, le LHC entamera la phase "Haute Luminosité" avec pour objectif une multiplication par un facteur $\lesssim 10$ de la luminosité instantanée.
 
 \section{Le Modèle Standard de la physique des particules}
 
@@ -161,7 +161,7 @@ Le Modèle Standard est une description des particules élémentaires et des int
 
 \end{figure}
 
-Le photon ainsi que les bosons $W^\pm$ et $Z$ sont les vecteurs de l'interaction électrofaible.
+Le photon ainsi que les bosons $W^\pm$ et $Z$ sont les vecteurs de l'interaction électrofaible (unification des interactions électromagnétique et faible).
 
 Le gluon est le boson vecteur de l'interaction forte (à laquelle sont sensibles les quarks, et les hadrons, particules composées de quarks).
 
@@ -335,6 +335,8 @@ Si, dans le diagramme (\ref{fig:feynman_tth}), l'impulsion $p$ des top interméd
 
 \subsubsection{Section efficace totale $pp \to H$}
 
+Le calcul de la section efficace totale de production de Higgs permet d'estimer si oui ou non celui-ci peut être produit dans les conditions de fonctionnement du LHC. Le tableau \ref{fig:xs_h} donne la  section efficace $pp\to H$ en fonction de $\sqrt{s}$. Pour une même quantité de collisions, on produit davantage de Higgs à plus haute énergie.
+
 \begin{figure}[H]
       \centering
 \begin{tabular}{|r|c|} 
@@ -350,10 +352,16 @@ Si, dans le diagramme (\ref{fig:feynman_tth}), l'impulsion $p$ des top interméd
    14 & 58,0 \\
   \hline
 \end{tabular}
+\label{fig:xs_h}
 \caption{Section efficace totale pour le processus $pp \to H$ en fonction de l'énergie des faisceaux. Augmenter l'énergie augmente $\sigma_H$ de façon significative.}
 \end{figure}
 
 \subsection{Désintégration}
+
+
+\subsection{Produits de désintégration et choix de méthode d'observation}
+
+Pour rechercher le Higgs, on recherche des particules détectables issues de sa désintégration dont on peut mesurer avec une assez bonne précision les paramètres cinématiques. On peut alors déterminer la masse de la particule dont elles sont les produits à l'aide de ses paramètres, ou encore vérifier que la distribution des produits de désintégration correspond à celles attendues pour une masse du Higgs donnée dans le Modèle Standard.
 
 \begin{figure}[H]
 \centering
@@ -377,9 +385,6 @@ Si, dans le diagramme (\ref{fig:feynman_tth}), l'impulsion $p$ des top interméd
 \caption{Différents modes de désintégration possibles pour le Higgs, ainsi que leur probabilité respective. }
 \end{figure}
 
-\subsection{Produits de désintégration et choix de méthode d'observation}
-
-Pour rechercher le Higgs, on recherche des particules détectables issues de sa désintégration dont on peut mesurer avec une assez bonne précision les paramètres cinématiques. On peut alors déterminer la masse de la particule dont elles sont les produits à l'aide de ses paramètres, ou encore vérifier que la distribution des produits de désintégration correspond à celles attendues pour une masse du Higgs donnée dans le Modèle Standard.
 
 \begin{figure}[H]
 \centering
@@ -388,11 +393,11 @@ Pour rechercher le Higgs, on recherche des particules détectables issues de sa 
 \end{figure}
 
 
+
 \subsubsection{$H \to \gamma \gamma$}
 
-La désintégration du Higgs en deux photons est une méthode d'observation privilégiée. Bien que le ratio associé à cette branche soit très faible (2 pour 1000), ce qui implique que peu de Higgs formés seront observables de cette façon, il est plus facile de détecter de tels photons avec une grande précision sur leur énergie et direction. La connaissance précise de l'impulsion de la paire de photons permet alors de remonter à la masse d'un Higgs dont ils seraient issus simplement (il s'agit de la masse invariante du système formé par la paire). Un inconvénient de ce canal est qu'il n'aurait pas permis de détecter un Higgs lourd ($>$ 200 GeV).
-
-Puisque le photon est de masse nulle, il ne se couple pas directement au Higgs : la désintégration en deux photons nécessite donc une particule virtuelle intermédiaire, ce qui la défavorise devant d'autres processus\endnotemark[\getrefnumber{note_virtual}].
+Puisque le photon est de masse nulle, il ne se couple pas directement au Higgs : la désintégration en deux photons nécessite donc une particule virtuelle intermédiaire, ce qui la défavorise devant d'autres processus\endnotemark[\getrefnumber{note_virtual}]. Ainsi, le ratio associé à cette branche est très faible (2 pour 1000), ce qui implique que peu de Higgs formés seront observables de cette façon. D'autre part, le bruit est important.
+Cependant il est plus facile de détecter de tels photons avec une grande précision sur leur énergie et direction. La connaissance précise de l'impulsion de la paire de photons permet alors de remonter à la masse d'un Higgs dont ils seraient issus simplement (il s'agit de la masse invariante du système formé par la paire). Un inconvénient de ce canal est qu'il n'aurait pas permis de détecter un Higgs lourd ($>$ 200 GeV).
 
 \begin{figure}[H]
 \centering
@@ -501,7 +506,7 @@ Atlas fait partie des expériences principales situées sur le LHC aux côtés (
 
 \subsubsection{Structure}
 
-Atlas est constitué de plusieurs sous structures principales disposées les unes autour des autres : le détecteur de trace, les calorimètres, et le dispositif de détection des muons. Divers aimants sont également disposés de sorte à pouvoir discriminer les particules dans le détecteur en fonction de leur charge.
+Atlas est constitué de plusieurs sous structures principales disposées les unes autour des autres : le détecteur de trace, les calorimètres, et le dispositif de détection des muons.
 
 On définit le plan transverse comme le plan normal à l'axe des faisceaux de protons (axe z).
 De plus, pour un vecteur donné, on définit l'angle $\theta$ comme l'angle entre ce vecteur l'axe $z$,  l'angle $\phi$ comme l'angle entre la projection du vecteur dans le plan transverse et l'axe $x$ et enfin la pseudo rapidité $\eta$ :
@@ -510,7 +515,9 @@ De plus, pour un vecteur donné, on définit l'angle $\theta$ comme l'angle entr
 \eta = -\ln \tan \left (\dfrac{\theta}{2} \right)
 \end{equation}
 
-\subsubsection{Tracking, détermination de la charge et de l'impulsion}
+Le rôle du détecteur est d'identifier les particules détectées et  leurs paramètres cinématiques, au moyen de plusieurs mesures successives complémentaires.
+
+\subsubsection{Tracking, détermination de la charge et de l'impulsion des particules chargées}
 
 Le détecteur de trace (inner-detector), au plus proche des collisions, est constitué de trois sous-détecteurs : le \textbf{Pixel detector}, le \textbf{Semiconductor Detector} et le \textbf{Transition radiaton detector}. Dans les deux premiers détecteurs, le passage d'une particule chargée crée des paires électrons-trous qui créent un courant mesurable sous l'influence d'un champ électrique. 
 Le \textbf{Transition radiaton detector} détecte le passage des particules par ionisation d'un gaz. Il permet de plus de détecter les photons émis par rayonnement de transition lorsqu'une particule traverse successivement des milieux d'indices différents, ce qui donne une mesure directe de son facteur de Lorentz $\gamma$.
@@ -521,9 +528,9 @@ Le champ magnétique uniforme et normal au plan transverse régnant dans le dét
 R_c = \dfrac{\gamma mv_{\perp}}{qB_0} = \dfrac{p_{T}}{qB_0}
 \end{equation}
 
-\subsubsection{Détermination de l'énergie et de la nature des particules}
+\subsubsection{Détermination de l'énergie et de la nature leptonique/hadronique des particules}
 
-La mesure de l'énergie des particules se fait à l'aide de deux calorimètres : un calorimètre électromagnétique (\textbf{LAr Electromagnetic Calorimeter}), et le calorimètre hadronique. Les particules susceptibles d'intéragir avec ces calorimètres génèrent des "douches". Celles-ci sont reconstruites pour remonter à l'énergie et la direction de la particule d'origine.
+La mesure de l'énergie des particules se fait à l'aide de deux calorimètres : un calorimètre électromagnétique (\textbf{LAr Electromagnetic Calorimeter}), et le calorimètre hadronique. Les particules susceptibles d'intéragir avec ces calorimètres génèrent des "gerbes". Celles-ci sont reconstruites pour remonter à l'énergie et la direction de la particule d'origine.
 
 Les muons n'intéragissent pas avec ces détecteurs : ils sont mesurés à l'aide d'un dispositif externe (Muon spectrometer), qui repose en partie sur le tracking par rayon de courbure magnétique, à l'aide d'un champ intense mais complexe imposé par les \textbf{Toroid Magnets}.
 
@@ -531,7 +538,7 @@ Enfin, la conception hermétique du détecteur lui donne la possibilité d'éval
 
 \subsection{Performances}
 
-La portée des résultats physiques de l'expérience repose entre autres sur les performances du détecteur. Ces performances concernent la qualité des données (résolution élevée, erreurs faibles) et de quantité (peu d'évènements "perdus"). Elles peuvent être évaluées expérimentalement ou anticipées grâce à des modèles. Ici, on utilise des données issues de simulation Monte-Carlo afin d'estimer quantitativement les performances des détecteurs qui sont importantes pour l'étude des évènements $H \to \gamma \gamma$.
+La portée des résultats physiques de l'expérience repose entre autres sur les performances du détecteur. Ces performances concernent la qualité des données (résolution élevée, peu d'erreurs d'identification) et l'efficacité de sélection. Elles peuvent être évaluées expérimentalement ou anticipées grâce à des modèles. Ici, on utilise des données issues de simulation Monte-Carlo afin d'estimer quantitativement les performances des détecteurs qui sont importantes pour l'étude des évènements $H \to \gamma \gamma$.
 
 \subsubsection{Résolution en énergie du calorimètre EM}
 
@@ -543,7 +550,7 @@ Plusieurs facteurs limitent la résolution en énergie du calorimètre. Celle-ci
 
 Le terme $\propto a$ représente l'erreur d'origine statistique. Lorsque qu'une particule traverse le calorimètre et génère une gerbe, le nombre de dépots d'énergie relevés $N$ est proportionnel à l'énergie $E$. L'erreur d'origine aléatoire relative sur le nombre de dépots étant de l'ordre de $\sqrt{N}/N$, elle est répercutée en une erreur relative sur l'énergie de la forme $\sqrt{E}/E = 1/\sqrt{E}$.
 
-Le terme représente $b$ le bruit électronique et $c$ les erreurs constantes de non-linéarité/calibration.
+Le terme représente $b$ le bruit électronique et $c$ les erreurs constantes de calibration et de non linéarité.
 
 Aux énergies qui nous intéressent ($>$ 10 GeV), le bruit électronique est négligeable ($b \sim$ 100 MeV) et la résolution devient :
 
@@ -551,7 +558,7 @@ Aux énergies qui nous intéressent ($>$ 10 GeV), le bruit électronique est né
 \dfrac{\sigma_E}{E} \sim \dfrac{a}{\sqrt{E}} \oplus c
 \end{equation}
 
-A l'aide des simulations Monte-Carlo, on estime la résolution en énergie en fonction de l'énergie des photons mesurés, afin de vérifier si ce comportement est bien reproduit. Pour cela, on compare les données vraies aux données telles qu'elles devraient être reconstruites par le détecteur. (figures \ref{fig:resolution_energie_photons_tab}, \ref{fig:resolution_energie_photons} et \ref{fig:resolution_energie_photons2}).
+A l'aide des simulations Monte-Carlo, on estime la résolution en énergie en fonction de l'énergie des photons mesurés, afin de vérifier si ce comportement y est bien reproduit. Pour cela, on compare les données vraies aux données telles qu'elles devraient être reconstruites par le détecteur. (figures \ref{fig:resolution_energie_photons_tab}, \ref{fig:resolution_energie_photons} et \ref{fig:resolution_energie_photons2}).
 
 \begin{figure}[H]
 \centering
@@ -597,7 +604,10 @@ Il est nécessaire de tester l'efficacité du détecteur (c'est-à-dire sa capac
 \item{Cela peut renseigner sur l'influence de certains paramètres sur les performances des détecteurs et éventuellement de corriger des biais}
 \end{itemize}
 
-On compare donc (sur des données simulées) le taux d'évènements diphoton reconstruits et passant certains critères de qualité minimum. ('tight')
+
+L'étude qui va suivre s'intéresse à des canaux de désintégration en paires de photons et de leptons.
+
+On compare donc (sur des données simulées) le taux d'évènements diphoton reconstruits et passant certains critères de qualité minimum. ('tight')\endnote{Plusieurs niveaux de critères existent, \og tight \fg signifiant des critères plutôt restrictifs comme une énergie minimale de 25 GeV pour des photons}
 
 \begin{figure}[H]
 \centering
@@ -605,11 +615,11 @@ On compare donc (sur des données simulées) le taux d'évènements diphoton rec
  \resizebox{.9\linewidth}{!}{\input{../graphes/acceptance_eta_tight}}
 \end{figure}
 
-\begin{figure}[H]
-\centering
-  \caption{Efficacité de sélection $\varepsilon$ des photons enfonction de l'énergie transverse $E_t$.}
- \resizebox{.9\linewidth}{!}{\input{../graphes/acceptance_Et}}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%  \caption{Efficacité de sélection $\varepsilon$ des photons enfonction de l'énergie transverse $E_t$.}
+% \resizebox{.9\linewidth}{!}{\input{../graphes/acceptance_Et}}
+%\end{figure}
 
 \begin{figure}[H]
 \centering
@@ -618,7 +628,8 @@ On compare donc (sur des données simulées) le taux d'évènements diphoton rec
   \caption{Efficacité de sélection des photons en fonction de $\phi$. On constate que celle ci est constante sur $[-\pi,\pi]$ ce qui est attendu pour des raisons de symétrie.}
 \end{figure}
 
-On trouve une efficacité de reconstruction des paires diphotons avec un critère tight $\varepsilon$ = 0,41.
+On trouve une efficacité de reconstruction des paires diphotons avec un critère tight $\varepsilon_{\gamma\gamma}$ = 0,41.
+Pour les électrons, on trouve une efficacité de reconstruction des paires $\varepsilon_{e^+e^-} =$ 0,18, et pour les muons $\varepsilon_{\mu^+\mu^-} =$ 0,21.
 
 %\begin{figure}[H]
 %\centering
@@ -627,6 +638,8 @@ On trouve une efficacité de reconstruction des paires diphotons avec un critèr
 %\end{figure}
 
 \section{Etude des données d'Atlas du run 1}
+
+On souhaite étudier le processus $pp\to ZH$ en l'observant dans le canal $H\to\gamma\gamma$ et $Z\to l^+l^-$ où $l=\mu,e$.
 
 \subsection{Etude de données simulées}
 
@@ -674,6 +687,8 @@ Si un ordre de grandeur suffit :
 \end{equation}
 
 \subsection{Calcul sur les évènements du Run 1}
+
+\subsubsection{Recherche de $H \to \gamma\gamma$}
 
 On sélectionne les évènements contenant des paires de photons 'tight' d'énergie supérieure à 25 GeV lors de la phase à 8 TeV du run 1 ($\int L dt$ = 20,3 fb$^{-1}$).
 On obtient un échantillon de 310 000 évènements pour lequel on calcule la distribution de masse invariante $m_{\gamma \gamma}$. On obtient le résultat suivant :
@@ -751,7 +766,7 @@ La valeur $m_H$ est la masse du Higgs ainsi mesurée. La valeur $\sigma$ doit co
 Puisque l'on connait la luminosité intégrée ayant conduit à ces données, on peut estimer le nombre d'évènements $H \to \gamma\gamma$ attendus :
 
 \begin{equation}
-N_{att} = \varepsilon \sigma \int L dt = 0,41 \times 51 \times  \mbox{10} {}^{-15} \times 20,3 \times 10^{15} = 424
+N_{att} = \varepsilon_{\gamma\gamma} \sigma \int L dt = 0,41 \times 51 \times  \mbox{10} {}^{-15} \times 20,3 \times 10^{15} = 424
 \end{equation}
 
 Ceci est donc bien compatible avec le résultat expérimental $N =$ 586 $\pm$ 200.
@@ -763,7 +778,41 @@ Ceci est donc bien compatible avec le résultat expérimental $N =$ 586 $\pm$ 20
 
 %Cette résultat est compatible avec la valeur réelle (20,3 fb ${}^{-1}$)
 
-\subsection{Masse du $Z$}
+\subsubsection{Recherche de résonances à des masses supérieures }
+
+\textbf{Hypothèse $m_H >$ 125 GeV selon le Modèle Standard}
+
+En connaissant les sections efficaces et ratios de branche du Higgs en fonction de sa masse, et en extrapolant le fit de bruit de fond mesuré à des masses élevées, on peut estimer le ratio signal/bruit de fond pour des scénarios avec un boson de Higgs plus lourd. Cela permet de montrer que le canal $H \to \gamma \gamma$ n'est pas approprié à la détection de Higgs lourd. Sur la figure  \ref{fig:higgs_lourds_gg}, on peut en effet constater que le ratio S/B ne dépasse pas 0,01. De plus, le run 1 du LHC n'aurait produit qu'environ 8 évènements $H \to \gamma \gamma$ pour $m_H =$ 200 GeV (et aucun pour 300+GeV).
+\begin{figure}[H]
+\centering
+  \caption{Pour $\sqrt{s}$ = 8 TeV, on calcule le rapport entre le signal attendu (monte-carlo) et le bruit de fond, pour $m_H =$200, 300, 400, 500 et 600 GeV.  }
+\label{fig:higgs_lourds_gg} 
+ \resizebox{.9\linewidth}{!}{\input{../graphes/higgs_lourds_gg}}
+\end{figure}
+
+\textbf{Recherches de résonances supplémentaires}
+
+On souhaite vérifier qu'il n'existe aucune autre fluctuation significative du bruit pouvant correspondre à un signal pertinent. On recherche des résonances de faible largeur ($\Gamma \sim$ GeV), en comparant les fluctuations de $m_{\gamma\gamma}$ sur des fenêtres d'une largeur de $\pm 2 \Gamma$ au background. On en déduit la p-value associée à l'hypothèse d'une absence de signal (fig. \ref{fig:pvalue}).
+
+\begin{figure}[H]
+\centering
+  \caption{p-value associée à l'hypothèse signal nul. On observe un minimum aux alentours de 125 GeV (correspondant au Higgs). Aucune fluctuation significative n'est repérable pour d'autres masses.  }
+\label{fig:pvalue}
+ \resizebox{.9\linewidth}{!}{\input{../graphes/pvalue_resonances}}
+\end{figure}
+
+Afin de vérifier qu'en dehors du signal du Higgs les écarts sont bien compatibles avec des fluctuations statistiques, on réalise une simulation avec l'algorithme précédent sur un background exponentiel sans signal mais comprenant des fluctuations statistiques.
+
+On trouve en autre que la probabilité d'observer au moins 4 p-value (dans les conditions précédentes) inférieures à 0,01 est de 11 \%. Les pics à 0,01 à 180, 200, 250 et 270 GeV sont donc compatibles avec des fluctuations statistiques.
+
+\begin{figure}[H]
+\centering
+  \caption{Probabilité pour une p-value $p_0$ obtenue d'être inférieure à p  }
+\label{fig:p0_threshold}
+ \resizebox{.9\linewidth}{!}{\input{../graphes/p0_threshold}}
+\end{figure}
+
+\subsubsection{Recherche de $Z\to l^+ l^-$}
 
 On s'intéresse cette fois aux évènements comprenant une paire $e^+e^-$ (et deux photons 'loose'). On calcule la masse invariante de la paire d'électrons et on obtient le graphe \ref{fig:distribution_mee}, après un fit du signal sous forme gaussienne et un bruit uniforme. 
 
@@ -789,42 +838,49 @@ On trouve alors $m_Z =$  89,6 $\pm$ 0,3 GeV alors que la valeur attendue est de 
 %\end{tabular}
 %\end{figure}
 
+Une explication de la différence de masse est apportée par le bremsstrahlung qui diminue l'énergie des électrons (et donc entraine une sous estimation de la masse du $Z$).
+
 On peut expliquer la différence entre la largeur théorique et la largeur mesurée. On s'attend à une largeur de la forme $\Gamma_{exp} \sim \sqrt{(\Delta m_{\gamma \gamma})^2 + \Gamma_{SM}^2}$. Les performances de résolution en énergie et directions étant similaires pour les électrons et photons dans le cas $H \to \gamma \gamma$ et $Z\to e^+e^-$, on peut considérer que $\Delta m_{\gamma \gamma} $ vaut environ 1,3 GeV également, donc la valeur de $\Gamma_{exp}$ attendue est de 2,8 GeV ce qui est proche de la valeur trouvée (2,9 GeV).
 
-\subsection{Recherche de résonances à des masses supérieures }
-
-\subsubsection{Hypothèse $m_H >$ 125 GeV selon le Modèle Standard}
-
-En connaissant les sections efficaces et ratios de branche du Higgs en fonction de sa masse, et en extrapolant le fit de bruit de fond mesuré à des masses élevées, on peut estimer le ratio signal/bruit de fond pour des scénarios avec un boson de Higgs plus lourd. Cela permet de montrer que le canal $H \to \gamma \gamma$ n'est pas approprié à la détection de Higgs lourd. Sur la figure  \ref{fig:higgs_lourds_gg}, on peut en effet constater que le ratio S/B ne dépasse pas 0,01. De plus, le run 1 du LHC n'aurait produit qu'environ 8 évènements $H \to \gamma \gamma$ pour $m_H =$ 200 GeV (et aucun pour 300+GeV).
 \begin{figure}[H]
 \centering
-  \caption{Pour $\sqrt{s}$ = 8 TeV, on calcule le rapport entre le signal attendu (monte-carlo) et le bruit de fond, pour $m_H =$200, 300, 400, 500 et 600 GeV.  }
-\label{fig:higgs_lourds_gg} 
- \resizebox{.9\linewidth}{!}{\input{../graphes/higgs_lourds_gg}}
+  \caption{Distribution $m_{\mu\mu}$ et fit sur un intervalle ou le signal domine (background plat).  }
+\label{fig:distribution_mmumu}
+ \resizebox{.9\linewidth}{!}{\input{../graphes/mmumu_sample}}
 \end{figure}
 
-\subsubsection{Recherches de résonances supplémentaires}
+On trouve cette fois $m_Z =$  90,3 $\pm$ 0,8 GeV et $\Gamma_Z =$ 6,5 $\pm$ 2,8 GeV. 
 
-On souhaite vérifier qu'il n'existe aucune autre fluctuation significative du bruit pouvant correspondre à un signal pertinent. On recherche des résonances de faible largeur ($\Gamma \sim$ GeV), en comparant les fluctuations de $m_{\gamma\gamma}$ sur des fenêtres d'une largeur de $\pm 2 \Gamma$ au background. On en déduit la p-value associée à l'hypothèse d'une absence de signal (fig. \ref{fig:pvalue}).
+\subsubsection{Recherche de $ZH \to ll\gamma\gamma$}
+
+Avant toute chose on estime le nombre d'évènements produits attendus ainsi que le nombre d'évènements détectés attendus :
+
+\begin{equation}
+N_{prod} = \sigma_{pp\to ZH} \left( \mbox{BR}(Z\to e^+e^- ) + \mbox{BR}(Z\to\mu^+\mu^- )\right) \mbox{BR}(H\to\gamma\gamma) \int L dt \simeq 1,3 
+\end{equation}
+
+Et le nombre d'évènements détectés attendus est alors, l'efficacité de sélection $\varepsilon$ ayant été estimée à 0,16 d'après la simulation Monte-Carlo :
+
+\begin{equation}
+N_{att} =\varepsilon N_{prod} \simeq 0,2
+\end{equation}
+
+Les figures (\ref{fig:mzh_mc}) et (\ref{fig:mzh_data}) montrent les résultats dans le cas de la simulation puis des données. 
 
 \begin{figure}[H]
+\begin{subfigure}[b]{.5\linewidth}
 \centering
-  \caption{p-value associée à l'hypothèse signal nul. On observe un minimum aux alentours de 125 GeV (correspondant au Higgs). Aucune fluctuation significative n'est repérable pour d'autres masses.  }
-\label{fig:pvalue}
- \resizebox{.9\linewidth}{!}{\input{../graphes/pvalue_resonances}}
-\end{figure}
-
-Afin de vérifier qu'en dehors du signal du Higgs les écarts sont bien compatibles avec des fluctuations statistiques, on réalise une simulation avec l'algorithme précédent sur un background exponentiel sans signal mais comprenant des fluctuations statistiques.
-
-On trouve en autre que la probabilité d'observer au moins 4 p-value (dans les conditions précédentes) inférieures à 0,01 est de 11 \%. Les pics à 0,01 à 180, 200, 250 et 270 GeV sont donc compatibles avec des fluctuations statistiques.
-
-\begin{figure}[H]
+  \caption{$ZH$ dans le canal $l^+l^-\gamma\gamma$ (Monte Carlo). Les évènements sont en noir. Les évènements pour lesquels la masse du $Z$ ou du $H$ seul est éloignée de plus de 5 GeV de la masse réelle sont en rouge.}
+\label{fig:mzh_mc} 
+ \resizebox{1.1\linewidth}{!}{\input{../graphes/mzh_mc}}
+\end{subfigure}
+\begin{subfigure}[b]{.5\linewidth}
 \centering
-  \caption{Probabilité pour une p-value $p_0$ obtenue d'être inférieure à p  }
-\label{fig:p0_threshold}
- \resizebox{.9\linewidth}{!}{\input{../graphes/p0_threshold}}
+  \caption{$ZH$ dans le canal $l^+l^-\gamma\gamma$ (Données). Les évènements sont en noir. Les évènements pour lesquels la masse du $Z$ ou du $H$ seul est éloignée de plus de 5 GeV de la masse réelle sont en rouge.} 
+\label{fig:mzh_data} 
+ \resizebox{1.1\linewidth}{!}{\input{../graphes/mzh_data}}
+\end{subfigure}
 \end{figure}
-
 
 \bibliographystyle{plain}
 \bibliography{references}
