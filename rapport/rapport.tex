@@ -335,7 +335,7 @@ Si, dans le diagramme (\ref{fig:feynman_tth}), l'impulsion $p$ des top interméd
 
 \subsubsection{Section efficace totale $pp \to H$}
 
-Le calcul de la section efficace totale de production de Higgs permet d'estimer si oui ou non celui-ci peut être produit dans les conditions de fonctionnement du LHC. Le tableau \ref{fig:xs_h} donne la  section efficace $pp\to H$ en fonction de $\sqrt{s}$. Pour une même quantité de collisions, on produit davantage de Higgs à plus haute énergie.
+Le calcul de la section efficace totale de production de Higgs permet d'estimer si oui ou non celui-ci peut être produit dans les conditions de fonctionnement du LHC. Le tableau (\ref{fig:xs_h}) donne la section efficace $pp\to H$ en fonction de $\sqrt{s}$. Pour une même quantité de collisions, on produit davantage de Higgs à plus haute énergie.
 
 \begin{figure}[H]
       \centering
@@ -352,8 +352,8 @@ Le calcul de la section efficace totale de production de Higgs permet d'estimer 
    14 & 58,0 \\
   \hline
 \end{tabular}
-\label{fig:xs_h}
-\caption{Section efficace totale pour le processus $pp \to H$ en fonction de l'énergie des faisceaux. Augmenter l'énergie augmente $\sigma_H$ de façon significative.}
+
+\caption{\label{fig:xs_h}Section efficace totale pour le processus $pp \to H$ en fonction de l'énergie des faisceaux. Augmenter l'énergie augmente $\sigma_H$ de façon significative.}
 \end{figure}
 
 \subsection{Désintégration}
@@ -361,7 +361,7 @@ Le calcul de la section efficace totale de production de Higgs permet d'estimer 
 
 \subsection{Produits de désintégration et choix de méthode d'observation}
 
-Pour rechercher le Higgs, on recherche des particules détectables issues de sa désintégration dont on peut mesurer avec une assez bonne précision les paramètres cinématiques. On peut alors déterminer la masse de la particule dont elles sont les produits à l'aide de ses paramètres, ou encore vérifier que la distribution des produits de désintégration correspond à celles attendues pour une masse du Higgs donnée dans le Modèle Standard.
+Pour rechercher le Higgs, on recherche des particules détectables issues de sa désintégration dont on peut mesurer avec une assez bonne précision les paramètres cinématiques. On peut alors déterminer la masse de la particule dont elles sont les produits à l'aide de ses paramètres, ou encore vérifier que la distribution des produits de désintégration et les sections efficaces de productions correspondent aux prédictions du modèle standard. Le tableau (\ref{fig:decay_modes}) regroupe quelques canaux de désintégration du Higgs selon le modèle standard pour une masse de 125 GeV. Le tableau (\ref{fig:signal_strength}) compare la force des signaux du Higgs obtenus dans différents canaux de désintégration à celle prédite par le Modèle Standard.
 
 \begin{figure}[H]
 \centering
@@ -382,22 +382,43 @@ Pour rechercher le Higgs, on recherche des particules détectables issues de sa 
       & $H \to \gamma \gamma$ & 0,23 \% \\
   \hline
 \end{tabular}
-\caption{Différents modes de désintégration possibles pour le Higgs, ainsi que leur probabilité respective. }
+\caption{\label{fig:decay_modes}Différents modes de désintégration possibles pour le Higgs, ainsi que leur probabilité respective. }
 \end{figure}
 
 
 \begin{figure}[H]
 \centering
   \caption{Résultats de l'expérience Atlas sur la détection du Higgs à travers sa désintégration par différents modes. Les signaux extraits sont comparés aux valeurs attendues selon le Modèle Standard.}
- \includegraphics[width=0.8\textwidth]{../images/fig_02.png}
+\label{fig:signal_strength}
+ \includegraphics[width=0.75\textwidth]{../images/fig_02.png}
 \end{figure}
 
 
 
 \subsubsection{$H \to \gamma \gamma$}
 
-Puisque le photon est de masse nulle, il ne se couple pas directement au Higgs : la désintégration en deux photons nécessite donc une particule virtuelle intermédiaire, ce qui la défavorise devant d'autres processus\endnotemark[\getrefnumber{note_virtual}]. Ainsi, le ratio associé à cette branche est très faible (2 pour 1000), ce qui implique que peu de Higgs formés seront observables de cette façon. D'autre part, le bruit est important.
+Puisque le photon est de masse nulle, il ne se couple pas directement au Higgs : la désintégration en deux photons nécessite donc une particule virtuelle intermédiaire (voir figure (\ref{fig:feynman_hgg})), ce qui la défavorise devant d'autres processus\endnotemark[\getrefnumber{note_virtual}]. Ainsi, le ratio associé à cette branche est très faible (2 pour 1000), ce qui implique que peu de Higgs formés seront observables de cette façon. D'autre part, le bruit est important.
 Cependant il est plus facile de détecter de tels photons avec une grande précision sur leur énergie et direction. La connaissance précise de l'impulsion de la paire de photons permet alors de remonter à la masse d'un Higgs dont ils seraient issus simplement (il s'agit de la masse invariante du système formé par la paire). Un inconvénient de ce canal est qu'il n'aurait pas permis de détecter un Higgs lourd ($>$ 200 GeV).
+
+\begin{fmffile}{H_gg}
+\begin{figure}[H]
+      \centering
+\begin{fmfgraph*}(140,100)
+\fmfleft{i1}
+\fmfright{o1,o2}
+
+\fmflabel{$H$}{i1}
+\fmflabel{$\gamma$}{o1}
+\fmflabel{$\gamma$}{o2}
+
+\fmf{dashes}{i1,v1}
+\fmf{photon,left,tension=0.4,label=$W$}{v1,v2,v1}
+\fmf{photon}{v2,o1}
+\fmf{photon}{v2,o2}
+\end{fmfgraph*}
+\caption{\label{fig:feynman_hgg}Diagramme de Feynman de désintégration d'un Higgs en deux photons via une boucle $W$.  }
+\end{figure}
+\end{fmffile}
 
 \begin{figure}[H]
 \centering
@@ -484,7 +505,7 @@ Atlas fait partie des expériences principales situées sur le LHC aux côtés (
   \caption{Schéma du détecteur Atlas}
 \label{fig:atlas_detector}
 \begin{tikzpicture}
-    \node[anchor=south west,inner sep=0] (image) at (0,0) { \includegraphics[width=0.9\textwidth]{../images/figures_AtlasDetectorLabelled.png}};
+    \node[anchor=south west,inner sep=0] (image) at (0,0) { \includegraphics[width=\textwidth]{../images/figures_AtlasDetectorLabelled.png}};
     \begin{scope}[x={(image.south east)},y={(image.north west)}]
    %     \draw[red,ultra thick,rounded corners] (0.62,0.65) rectangle (0.78,0.75);
 \coordinate (O) at (0,0,0);
@@ -519,7 +540,8 @@ Le rôle du détecteur est d'identifier les particules détectées et  leurs par
 
 \subsubsection{Tracking, détermination de la charge et de l'impulsion des particules chargées}
 
-Le détecteur de trace (inner-detector), au plus proche des collisions, est constitué de trois sous-détecteurs : le \textbf{Pixel detector}, le \textbf{Semiconductor Detector} et le \textbf{Transition radiaton detector}. Dans les deux premiers détecteurs, le passage d'une particule chargée crée des paires électrons-trous qui créent un courant mesurable sous l'influence d'un champ électrique. 
+Le détecteur de trace (inner-detector), au plus proche des collisions, est constitué de trois sous-détecteurs : le \textbf{Pixel detector}, le \textbf{Semiconductor Detector} et le \textbf{Transition radiaton detector}. Dans les deux premiers détecteurs, le passage d'une particule chargée crée des paires électrons-trous qui créent un courant mesurable sous l'influence d'un champ électrique. Leur partie cylindre est constituée de 4 couches enroulées les unes autour des autres.
+
 Le \textbf{Transition radiaton detector} détecte le passage des particules par ionisation d'un gaz. Il permet de plus de détecter les photons émis par rayonnement de transition lorsqu'une particule traverse successivement des milieux d'indices différents, ce qui donne une mesure directe de son facteur de Lorentz $\gamma$.
 
 Le champ magnétique uniforme et normal au plan transverse régnant dans le détecteur  intérieur  grâce au \textbf{Solenoid Magnet} courbe la trajectoire des particules chargées. En fonction des points de détection obtenus grâce à ces détecteurs il est possible de reconstruire les traces des particules et leur charge à partir du sens de la courbure ainsi que leur impulsion (à partir du rayon de courbure) :
@@ -527,6 +549,16 @@ Le champ magnétique uniforme et normal au plan transverse régnant dans le dét
 \begin{equation} 
 R_c = \dfrac{\gamma mv_{\perp}}{qB_0} = \dfrac{p_{T}}{qB_0}
 \end{equation}
+
+La figure (\ref{fig:atlas_event}) donne un aperçu d'un évènement reconstruit par ces détecteurs de trace. Les traces des particules sont représentées en bleu. A gauche, sur la vue transverse, les détecteurs ayant été traversés par une particule chargée sont représentés en points de couleurs.  (Les 4 anneaux intérieurs correspondent au Pixel detector, les anneaux extérieurs correspondant au  Semiconductor Detector). A droite, sur la vue longitudinale, on peut constater que plusieurs évènements se sont produits (et \og empilés \fg) sur une longueur de quelques centimètre (pile up).
+
+\begin{figure}[H]
+\centering
+  \caption{Vue d'un évènement dans le détecteur de trace.}
+\label{fig:atlas_event}
+\includegraphics[width=0.8\textwidth]{../images/event.jpg}
+\end{figure}
+
 
 \subsubsection{Détermination de l'énergie et de la nature leptonique/hadronique des particules}
 
