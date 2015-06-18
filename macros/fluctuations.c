@@ -27,10 +27,101 @@ Double_t expon(Double_t  *x, Double_t  *p)
     return exp(p[0] + p[1] * x[0]);
 }
 
+double poly(Double_t a, Double_t b, Double_t c, Double_t d, Double_t e, Double_t x)
+{
+    return a + b*x + c*x*x + d*x*x*x + e*x*x*x*x;
+}
+
+Double_t polyn(Double_t  *x, Double_t  *p)
+{
+    if(reject && x[0] > min_mass && x[0] < max_mass)
+    {
+        TF1::RejectPoint();
+        return 0;
+    }
+    return poly(p[0],p[1],p[2],p[3],p[4],x[0]);
+}
+
 const int essais = 103;
 double deltachi[essais];
+double deltachi_poly[essais];
 double masses[essais];
 TF1 *fitexpo[essais];
+
+double scan_window_poly(int k, float mass, float width)
+{
+
+   min_mass = mass-2*width;
+   max_mass = mass+2*width;
+   
+   float min_window = mass-8*width;
+   float max_window = mass+8*width;
+   
+   float expected_ndf = float(n) * ((max_window-min_window) - (max_mass-min_mass))/(E_max-E_min);
+   
+   fitexpo[k] = new TF1("fitexpo", /*expon*/polyn, min_window, max_window, /*2*/5);
+    reject = true;
+   TFitResultPtr r = h->Fit(fitexpo[k], "QRS");
+   reject = false;
+   
+   //printf("%.3f %.3f\n",  fitexpo->GetChisquare(), fitexpo->GetChisquare()/fitexpo->GetNDF());
+   
+   float a = fitexpo[k]->GetParameter(0);
+   float b = fitexpo[k]->GetParameter(1);
+   
+   float c = fitexpo[k]->GetParameter(2);
+   float d = fitexpo[k]->GetParameter(3);
+   float e = fitexpo[k]->GetParameter(4);
+   
+    char fname[5] = "";
+    sprintf(fname, "f%d", k);
+   
+  
+//    TF1 *f1 = new TF1(fname,"exp([0]+[1]*x)+[2] * exp(-(x-[3])^2 / (2*[4]*[4]))", mass-4*width, mass+4*width);
+    TF1 *f1 = new TF1(fname,"[0] + [1]*x + [2]*x*x + [3]*x*x*x + [4]*x*x*x*x+[5] * exp(-(x-[6])^2 / (2*[7]*[7]))", mass-4*width, mass+4*width);
+    //f1->SetParLimits(3,120,130);
+//    f1->SetParameters(a,b,1,mass,1.8);
+    f1->SetParameters(a,b,c,d,e,1,mass,1.8);
+    f1->SetParLimits(2+3,0,5000);
+    f1->SetParLimits(3+3,mass,mass);
+    f1->SetParLimits(4+3,0, 3*width);
+    f1->SetParLimits(0, a, a);
+    f1->SetParLimits(1, b, b);
+    f1->SetParLimits(2, c, c);
+    f1->SetParLimits(3, d, d);
+    f1->SetParLimits(4, e, e);
+    
+
+    h->Fit(fname, "QR");
+    TF1 *fit = h->GetFunction(fname);
+    float ac = fit->GetParameter(2), ad = fit->GetParameter(3), ae = fit->GetParameter(4);
+    
+   float chi_bg = 0, chi_tot = 0;
+   int NDF = 0;
+   for(int j = 1; j <= n; ++j)
+   {
+   
+       float x = E_min + (E_max - E_min) * (float(j))/float(n);
+       if(x < mass-2*width || x > mass+2*width) continue;
+       ++NDF;
+       //float y = exp(a+b*x);
+       float y = poly(a,b,c,d,e,x);
+       //printf("%.3f, %.3f %.3f\n", x, y, (float)h->GetBinContent(j));
+       chi_bg += (h->GetBinContent(j)-y)*(h->GetBinContent(j)-y) / y;
+       total_chi += (h->GetBinContent(j)-y)*(h->GetBinContent(j)-y) / (y*y);
+       y = exp(a+b*x) + ac * exp(-(x-ad)*(x-ad) / (2*ae*ae));
+       chi_tot += (h->GetBinContent(j)-y)*(h->GetBinContent(j)-y) / y;
+   }
+   
+   if(abs(mass-126) > 3)
+   {
+       n_d_f += r->Ndf();
+   }
+   
+   printf("%.7f %.3f %.3f %.3f %d %.3f %.3f \n", (float)ROOT::Math::chisquared_cdf_c(chi_bg, double((int)NDF -1)), (float)chi_bg, (float)fit->GetNDF(), (float)r->Chi2(), r->Ndf(), expected_ndf, float(NDF));
+   
+   return ROOT::Math::chisquared_cdf_c(chi_bg, double((int)NDF -1));
+}
 
 double scan_window(int k, float mass, float width)
 {
@@ -53,12 +144,17 @@ double scan_window(int k, float mass, float width)
    float a = fitexpo[k]->GetParameter(0);
    float b = fitexpo[k]->GetParameter(1);
    
+   /*float c = fitexpo[k]->GetParameter(2);
+   float d = fitexpo[k]->GetParameter(3);
+   float e = fitexpo[k]->GetParameter(4);*/
+   
     char fname[5] = "";
     sprintf(fname, "f%d", k);
    
   
     TF1 *f1 = new TF1(fname,"exp([0]+[1]*x)+[2] * exp(-(x-[3])^2 / (2*[4]*[4]))", mass-4*width, mass+4*width);
     //f1->SetParLimits(3,120,130);
+//    f1->SetParameters(a,b,1,mass,1.8);
     f1->SetParameters(a,b,1,mass,1.8);
     f1->SetParLimits(2,0,5000);
     f1->SetParLimits(3,mass,mass);
@@ -69,7 +165,7 @@ double scan_window(int k, float mass, float width)
 
     h->Fit(fname, "QR");
     TF1 *fit = h->GetFunction(fname);
-    float c = fit->GetParameter(2), d = fit->GetParameter(3), e = fit->GetParameter(4);
+    float ac = fit->GetParameter(2), ad = fit->GetParameter(3), ae = fit->GetParameter(4);
     
    float chi_bg = 0, chi_tot = 0;
    int NDF = 0;
@@ -83,7 +179,7 @@ double scan_window(int k, float mass, float width)
        //printf("%.3f, %.3f %.3f\n", x, y, (float)h->GetBinContent(j));
        chi_bg += (h->GetBinContent(j)-y)*(h->GetBinContent(j)-y) / y;
        total_chi += (h->GetBinContent(j)-y)*(h->GetBinContent(j)-y) / (y*y);
-       y = exp(a+b*x) + c * exp(-(x-d)*(x-d) / (2*e*e));
+       y = exp(a+b*x) + ac * exp(-(x-ad)*(x-ad) / (2*ae*ae));
        chi_tot += (h->GetBinContent(j)-y)*(h->GetBinContent(j)-y) / y;
    }
    
@@ -96,6 +192,7 @@ double scan_window(int k, float mass, float width)
    
    return ROOT::Math::chisquared_cdf_c(chi_bg, double((int)NDF -1));
 }
+
 
 void fluctuations()
 {
@@ -188,10 +285,10 @@ void fluctuations()
   {
       //double m = (350-109.2) * float(j)/float(essais) + 109.2;
       double m = (350-110) * float(j)/float(essais) + 110;
-      printf("fit for mass %.3f\n", float(m));
       deltachi[j] = scan_window(j, m, 1.4);
+      deltachi_poly[j] = scan_window_poly(j, m, 1.4);
       masses[j] = m;
-      printf("%.3f %.3f\n", float(m), float(deltachi[j]));
+      printf("%.3f %.3f %.3f\n", float(m), float(deltachi[j]), float(deltachi_poly[j]));
   }
   
    TCanvas *c1 = new TCanvas("c1","",200,10,700,500);
@@ -202,6 +299,15 @@ void fluctuations()
   gr->SetTitle("\\log \\mbox{ p-value};m_{\\gamma\\gamma}\\mbox{ (GeV)};\\log p_{0}");
   gr->SetMarkerStyle(2);
   gr->Draw("ACP");
+  
+        TGraph *gr_poly = new TGraph(essais,masses,deltachi_poly);
+  gr_poly->SetTitle("\\log \\mbox{ p-value};m_{\\gamma\\gamma}\\mbox{ (GeV)};\\log p_{0}");
+  gr_poly->SetMarkerStyle(2);
+  gr_poly->SetMarkerColor(kBlue);
+  gr_poly->SetLineStyle(2);
+  gr_poly->SetLineColor(kBlue);
+  gr_poly->Draw("CP");
+ 
   c1->Update();
   
 printf("%.3f (%.3f %d)", (float)(total_chi/double(n_d_f)), float(total_chi), n_d_f);

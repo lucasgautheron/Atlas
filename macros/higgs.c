@@ -14,14 +14,33 @@ bool keep_photon(photon &p)
 
 void higgs()
 {
-//  TFile* f = TFile::Open("small.root");  // open the file
+  TFile* f = TFile::Open("Hgg_Moriond2013-Y2012_merge_200804_216432_NoMassCut.root");  // open the file
 //    TFile* f = TFile::Open("Hgg_Moriond2013-Y2012_merge_200804_216432_Presel_1lepton.root");
   //  TFile* f = TFile::Open("Hgg_Moriond2013-Y2012_ZH900_Pythia_NoMassCut.root");  // open the file
- // TTree* tree = (TTree*)f->Get("tree");
+  TTree* bg_tree = (TTree*)f->Get("tree");
 
   photon p1, p2;
   electron e1, e2;
   muon m1, m2;
+  
+  bind_attributes(bg_tree, p1, p2, e1, e2, m1, m2);
+  
+  const int n = 50;
+ 
+ 
+  TH1D *h = new TH1D("h", "\\log{S/B};m_{\\gamma\\gamma}\\mbox{ (GeV)};\\log{S/B}", n, E_min, E_max);
+  TH1D *h_background = new TH1D("hb", "", n, E_min, E_max);
+  
+  for (unsigned int i = 0; i < bg_tree->GetEntries(); i++)
+  {
+      bg_tree->GetEntry(i);
+      if(p1.E > 0 && p2.E > 0 && p1.tight && p2.tight)
+      {
+          h_background->Fill(invMass(p1,p2));
+      }
+  }
+   
+  //h_background->Scale(float(E_max-E_min) / float(n));
  
   const int N = 5;
   TFile *files[N];
@@ -37,10 +56,6 @@ void higgs()
   
   double cross_sections[N] = { 8.19759 * 5.51e-5, 4.082711*1.25e-5, 3.191034*2.65e-6, 1.4391*3.11e-7, 0.61988*5e-8 };
   
-  const int n = 50;
-  
-  TH1D *h = new TH1D("h", "\\log{S/B};m_{\\gamma\\gamma}\\mbox{ (GeV)};\\log{S/B}", n, E_min, E_max);
-  
   for(int k = 0; k < N; ++k)
   {
       char filename[128] = "";
@@ -53,7 +68,7 @@ void higgs()
       char h_name[5] = ""; sprintf(h_name, "h_%d", k);
       histograms[k] = new TH1D(h_name, "\\log{S/B};m_{\\gamma\\gamma}\\mbox{ (GeV)};\\log{S/B}", n, E_min, E_max);
       
-      cross_sections[k] = 900 * cross_sections[k] / (22.3*2.3e-3);
+      cross_sections[k] = 580 * cross_sections[k] / (22.3*2.3e-3);
   }
   
   char formula[64] = "";
@@ -81,22 +96,22 @@ void higgs()
 	  }
    }
    
-   //background->Draw();
+  //h_background->Draw();
    
   for (unsigned a = 0; a < N; ++a)
   {
   
       printf("factor: %e\n",cross_sections[a]/histograms[a]->Integral());
       histograms[a]->Scale( cross_sections[a]/histograms[a]->Integral());
-      histograms[a]->Divide(h);
+      histograms[a]->Divide(h_background);
       printf("factor: %e\n",histograms[a]->Integral());
       
       //histograms[a]->Add(h);
       switch(a)
       {
           case 0: histograms[a]->SetFillColor(kRed); break;
-          case 1: histograms[a]->SetFillColor(kGreen); break;
-          case 2: histograms[a]->SetFillColor(kYellow); break;
+          case 1: histograms[a]->SetFillColor(kYellow); break;
+          case 2: histograms[a]->SetFillColor(kGreen); break;
           case 3: histograms[a]->SetFillColor(kOrange); break;
           case 4: histograms[a]->SetFillColor(kBlue); break;
           case 5: histograms[a]->SetFillColor(kPink); break;

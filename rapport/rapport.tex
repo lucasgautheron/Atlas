@@ -44,7 +44,7 @@
 %%% PAGE DIMENSIONS
 \usepackage{geometry} % to change the page dimensions
 \geometry{a4paper} % or letterpaper (US) or a5paper or....
-\geometry{margin=1in} % for example, change the margins to 2 inches all round
+\geometry{margin=0.9in} % for example, change the margins to 2 inches all round
 % \geometry{landscape} % set up the page for landscape
 %   read geometry.pdf for detailed page layout information
 
@@ -582,13 +582,13 @@ A l'aide des simulations Monte-Carlo, on estime la résolution en énergie en fo
 \begin{figure}[H]
 \begin{subfigure}[b]{.5\linewidth}
 \centering
-  \caption{Photons 'tight' }
+  \subcaption{Photons 'tight' }
 \label{fig:resolution_energie_photons} 
  \resizebox{1.1\linewidth}{!}{\input{../graphes/resolution_energie_globale+conv}}
-\end{subfigure}
+\end{subfigure}%
 \begin{subfigure}[b]{.5\linewidth}
 \centering
-  \caption{Photons 'tight' non convertis} 
+  \subcaption{Photons 'tight' non convertis} 
 \label{fig:resolution_energie_photons2} 
  \resizebox{1.1\linewidth}{!}{\input{../graphes/resolution_energie_globale}}
 \end{subfigure}
@@ -612,7 +612,7 @@ On compare donc (sur des données simulées) le taux d'évènements diphoton rec
 \begin{figure}[H]
 \centering
   \caption{Efficacité de sélection $\varepsilon$ des paires de photons 'tight' en fonction de $\eta$. La zone de \og crack \fg est bien apparente sur cette figure. }
- \resizebox{.9\linewidth}{!}{\input{../graphes/acceptance_eta_tight}}
+ \resizebox{.8\linewidth}{!}{\input{../graphes/acceptance_eta_tight}}
 \end{figure}
 
 %\begin{figure}[H]
@@ -624,7 +624,7 @@ On compare donc (sur des données simulées) le taux d'évènements diphoton rec
 \begin{figure}[H]
 \centering
   \caption{}
- \resizebox{.9\linewidth}{!}{\input{../graphes/acceptance_phi}}
+ \resizebox{.8\linewidth}{!}{\input{../graphes/acceptance_phi}}
   \caption{Efficacité de sélection des photons en fonction de $\phi$. On constate que celle ci est constante sur $[-\pi,\pi]$ ce qui est attendu pour des raisons de symétrie.}
 \end{figure}
 
@@ -696,7 +696,7 @@ On obtient un échantillon de 310 000 évènements pour lequel on calcule la dis
 \begin{figure}[H]
 \centering
   \caption{Distribution m$_{\gamma \gamma}$. On observe un bruit important avec un pic aux alentours de 90 GeV (Z). Le signal correspondant au Higgs est à première vue difficilement distinguable. ($\sqrt{s} =$ 8 TeV,  $\int L dt$ = 20,3 fb$^{-1}$) }
- \resizebox{.9\linewidth}{!}{\input{../graphes/mgg_medium}}
+ \resizebox{.8\linewidth}{!}{\input{../graphes/mgg_medium}}
 \end{figure}
 
 %Afin d'extraire le signal correspondant au Higgs, on se restreint à la plage où il est attendu (110 - 140 GeV). Le 'background' y suit une forme exponentielle. On en réalise alors un fit sur une zone ou le signal est considéré nul : ici on a choisi [110;120] $\cup$  [130;140]. On obtient une fonction de la forme $\textrm{background} = E \mapsto \exp(\xi + \epsilon E)$.
@@ -736,7 +736,7 @@ On obtient la figure suivante :
 \begin{figure}[H]
 \centering
   \caption{Distribution $m_{\gamma \gamma}$ et fit background+signal. ($\sqrt{s} =$ 8 TeV,  $\int L dt$ = 20,3 fb$^{-1}$) }
- \resizebox{.9\linewidth}{!}{\input{../graphes/mgg_50GeV}}
+ \resizebox{.8\linewidth}{!}{\input{../graphes/mgg_50GeV}}
 \end{figure}
 
 On peut en déduire les paramètres physiquement intéressants suivants :
@@ -782,23 +782,30 @@ Ceci est donc bien compatible avec le résultat expérimental $N =$ 586 $\pm$ 20
 
 \textbf{Hypothèse $m_H >$ 125 GeV selon le Modèle Standard}
 
-En connaissant les sections efficaces et ratios de branche du Higgs en fonction de sa masse, et en extrapolant le fit de bruit de fond mesuré à des masses élevées, on peut estimer le ratio signal/bruit de fond pour des scénarios avec un boson de Higgs plus lourd. Cela permet de montrer que le canal $H \to \gamma \gamma$ n'est pas approprié à la détection de Higgs lourd. Sur la figure  \ref{fig:higgs_lourds_gg}, on peut en effet constater que le ratio S/B ne dépasse pas 0,01. De plus, le run 1 du LHC n'aurait produit qu'environ 8 évènements $H \to \gamma \gamma$ pour $m_H =$ 200 GeV (et aucun pour 300+GeV).
+En connaissant les sections efficaces et ratios de branche du Higgs en fonction de sa masse, et en extrapolant le fit de bruit de fond mesuré à des masses élevées, on peut estimer le ratio signal/bruit de fond pour des scénarios avec un boson de Higgs plus lourd. Cela permet de montrer que le canal $H \to \gamma \gamma$ n'est pas approprié à la détection de Higgs lourd. Sur la figure  (\ref{fig:higgs_lourds_gg}), on peut en effet constater que le ratio S/B ne dépasse pas 0,001. De plus, le run 1 du LHC n'aurait produit qu'environ 8 évènements $H \to \gamma \gamma$ pour $m_H =$ 200 GeV (et probablement aucun au delà).(\ref{fig:higgs_lourds_gg_events})
 \begin{figure}[H]
+\begin{subfigure}[b]{.5\linewidth}
 \centering
-  \caption{Pour $\sqrt{s}$ = 8 TeV, on calcule le rapport entre le signal attendu (monte-carlo) et le bruit de fond, pour $m_H =$200, 300, 400, 500 et 600 GeV.  }
-\label{fig:higgs_lourds_gg} 
- \resizebox{.9\linewidth}{!}{\input{../graphes/higgs_lourds_gg}}
+  \subcaption{\label{fig:higgs_lourds_gg_events} Nombre de Higgs "modèle standard" attendus dans le canal $\gamma\gamma$.  }
+ \resizebox{1.1\linewidth}{!}{\input{../graphes/expected_mh}}
+\end{subfigure}%
+\begin{subfigure}[b]{.5\linewidth}
+\centering
+  \subcaption{\label{fig:higgs_lourds_gg} Signal/background pour $m_H =$200, 300, 400, 500 et 600 GeV.  }
+ \resizebox{1.1\linewidth}{!}{\input{../graphes/higgs_lourds_gg}}
+\end{subfigure}
+\caption{Signal et signal/bruit en $H\to\gamma\gamma$ pour différentes masses de Higgs attendus selon le modèle standard pour $\sqrt{s}$ = 8 TeV et $\int Ldt =$ 20,3 fb${}^{-1}$ }
 \end{figure}
 
 \textbf{Recherches de résonances supplémentaires}
 
-On souhaite vérifier qu'il n'existe aucune autre fluctuation significative du bruit pouvant correspondre à un signal pertinent. On recherche des résonances de faible largeur ($\Gamma \sim$ GeV), en comparant les fluctuations de $m_{\gamma\gamma}$ sur des fenêtres d'une largeur de $\pm 2 \Gamma$ au background. On en déduit la p-value associée à l'hypothèse d'une absence de signal (fig. \ref{fig:pvalue}).
+On souhaite vérifier qu'il n'existe aucune autre fluctuation significative du bruit pouvant correspondre à un signal pertinent. On recherche des résonances de faible largeur ($\Gamma \sim$ GeV), en comparant les fluctuations de $m_{\gamma\gamma}$ sur des fenêtres d'une largeur de $\pm 2 \Gamma$ au background. On en déduit la p-value associée à l'hypothèse d'une absence de signal (fig. \ref{fig:pvalue}). On observe un minimum aux alentours de 125 GeV (correspondant au Higgs). Aucune fluctuation significative n'est repérable pour d'autres masses.
 
 \begin{figure}[H]
 \centering
-  \caption{p-value associée à l'hypothèse signal nul. On observe un minimum aux alentours de 125 GeV (correspondant au Higgs). Aucune fluctuation significative n'est repérable pour d'autres masses.  }
+  \caption{p-value associée à l'hypothèse signal nul. La courbe noire correspond à un fit exponentiel et la courbe bleue pointillée à un fit polynomial de degré 4. }
 \label{fig:pvalue}
- \resizebox{.9\linewidth}{!}{\input{../graphes/pvalue_resonances}}
+ \resizebox{.8\linewidth}{!}{\input{../graphes/pvalue_resonances}}
 \end{figure}
 
 Afin de vérifier qu'en dehors du signal du Higgs les écarts sont bien compatibles avec des fluctuations statistiques, on réalise une simulation avec l'algorithme précédent sur un background exponentiel sans signal mais comprenant des fluctuations statistiques.
@@ -809,7 +816,7 @@ On trouve en autre que la probabilité d'observer au moins 4 p-value (dans les c
 \centering
   \caption{Probabilité pour une p-value $p_0$ obtenue d'être inférieure à p  }
 \label{fig:p0_threshold}
- \resizebox{.9\linewidth}{!}{\input{../graphes/p0_threshold}}
+ \resizebox{.8\linewidth}{!}{\input{../graphes/p0_threshold}}
 \end{figure}
 
 \subsubsection{Recherche de $Z\to l^+ l^-$}
@@ -820,7 +827,7 @@ On s'intéresse cette fois aux évènements comprenant une paire $e^+e^-$ (et de
 \centering
   \caption{Distribution $m_{ee}$ et fit sur un intervalle ou le signal domine (background plat).  }
 \label{fig:distribution_mee}
- \resizebox{.9\linewidth}{!}{\input{../graphes/mee_sample}}
+ \resizebox{.8\linewidth}{!}{\input{../graphes/mee_sample}}
 \end{figure}
 
 On trouve alors $m_Z =$  89,6 $\pm$ 0,3 GeV alors que la valeur attendue est de 91,2 GeV et $\Gamma_Z =$ 2,9 $\pm$ à comparer à la valeur théorique $\Gamma_{SM}^2 =$ 2,5 GeV.
@@ -846,7 +853,7 @@ On peut expliquer la différence entre la largeur théorique et la largeur mesur
 \centering
   \caption{Distribution $m_{\mu\mu}$ et fit sur un intervalle ou le signal domine (background plat).  }
 \label{fig:distribution_mmumu}
- \resizebox{.9\linewidth}{!}{\input{../graphes/mmumu_sample}}
+ \resizebox{.8\linewidth}{!}{\input{../graphes/mmumu_sample}}
 \end{figure}
 
 On trouve cette fois $m_Z =$  90,3 $\pm$ 0,8 GeV et $\Gamma_Z =$ 6,5 $\pm$ 2,8 GeV. 
@@ -869,17 +876,17 @@ Les figures (\ref{fig:mzh_mc}) et (\ref{fig:mzh_data}) montrent les résultats d
 
 \begin{figure}[H]
 \begin{subfigure}[b]{.5\linewidth}
-\centering
-  \caption{$ZH$ dans le canal $l^+l^-\gamma\gamma$ (Monte Carlo). Les évènements sont en noir. Les évènements pour lesquels la masse du $Z$ ou du $H$ seul est éloignée de plus de 5 GeV de la masse réelle sont en rouge.}
+  \subcaption{Simulation Monte Carlo.}
 \label{fig:mzh_mc} 
  \resizebox{1.1\linewidth}{!}{\input{../graphes/mzh_mc}}
-\end{subfigure}
+\end{subfigure}%
 \begin{subfigure}[b]{.5\linewidth}
-\centering
-  \caption{$ZH$ dans le canal $l^+l^-\gamma\gamma$ (Données). Les évènements sont en noir. Les évènements pour lesquels la masse du $Z$ ou du $H$ seul est éloignée de plus de 5 GeV de la masse réelle sont en rouge.} 
+\raggedright
+  \subcaption{Données du Run 1.} 
 \label{fig:mzh_data} 
  \resizebox{1.1\linewidth}{!}{\input{../graphes/mzh_data}}
 \end{subfigure}
+\caption{$ZH$ dans le canal $l^+l^-\gamma\gamma$. Les évènements sont en noir. Les évènements pour lesquels la masse du $Z$ ou du $H$ seul est éloignée de plus de 5 GeV de la masse réelle sont en rouge.}
 \end{figure}
 
 \bibliographystyle{plain}
