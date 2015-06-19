@@ -551,13 +551,6 @@ R_c = \dfrac{\gamma mv_{\perp}}{qB_0} = \dfrac{p_{T}}{qB_0}
 
 La figure (\ref{fig:atlas_event}) donne un aperçu d'un évènement reconstruit par ces détecteurs de trace. Les traces des particules sont représentées en bleu. A gauche, sur la vue transverse, les détecteurs ayant été traversés par une particule chargée sont représentés en points de couleurs.  (Les 4 anneaux intérieurs correspondent au Pixel detector, les anneaux extérieurs correspondant au  Semiconductor Detector). A droite, sur la vue longitudinale, on peut constater que plusieurs évènements se sont produits (et \og empilés \fg) sur une longueur de quelques centimètre (pile up).
 
-\begin{figure}[H]
-\centering
-  \caption{Vue d'un évènement dans le détecteur de trace.}
-\label{fig:atlas_event}
-\includegraphics[width=0.6\textwidth]{../images/event.jpg}
-\end{figure}
-
 
 \subsubsection{Détermination de l'énergie et de la nature leptonique/hadronique des particules}
 
@@ -571,9 +564,20 @@ La figure (\ref{fig:atlas_event2}) donne un aperçu d'un évènement vu dans le 
 
 \begin{figure}[H]
 \centering
-  \caption{Vue d'un évènement dans les détecteurs (intérieurs, calorimètres et muoniques).}
-\label{fig:atlas_event2}
-\includegraphics[width=0.6\textwidth]{../images/event2.jpg}
+\begin{subfigure}[b]{.5\linewidth}
+\centering
+  \subcaption{\label{fig:atlas_event}Détecteurs intérieurs} 
+\includegraphics[width=0.9\textwidth]{../images/event.jpg}
+\end{subfigure}%
+\begin{subfigure}[b]{.5\linewidth}
+\centering
+  \subcaption{\label{fig:atlas_event2}Calorimètres et détecteurs à muons} 
+\includegraphics[width=0.9\textwidth]{../images/event2.jpg}
+\end{subfigure}
+%\centering
+ \caption{Vue d'un évènement dans les détecteurs (intérieurs, calorimètres et muoniques).}
+%\label{fig:atlas_event2}
+%\includegraphics[width=0.6\textwidth]{../images/event2.jpg}
 \end{figure}
 
 \subsection{Performances}
