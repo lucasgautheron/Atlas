@@ -291,8 +291,8 @@ void radiation_2()
     r->compute_plan();
     
     Rectangle *support = new Rectangle();
-    support->width = 40 * MM;
-    support->length = 100 * MM;
+    support->width = 25 * MM;
+    support->length = 55 * MM;
     support->power = 0;
     support->A = *new TVector3(-support->width/2.0, -r->length/2.0, -support->length/2.0);
     support->B = *new TVector3(support->width/2.0, -r->length/2.0, -support->length/2.0);
@@ -308,7 +308,7 @@ void radiation_2()
     c->radius = 75 * MM;
     c->length = 500 * MM;
     c->emissivity = 1;
-    c->temperature = 273.15 + 26;
+    c->temperature = 273.15 + 27;
     calculate_power(c, r);
     //calculate_power(c, support);
     printf("recv = %e W, approx = %e W, loss = %e W\n", r->power/1e6, 2 * SIGMA * pow(c->temperature, 4) * r->width * r->length / 1e6, 2 * SIGMA * pow(r->temperature, 4) * r->width * r->length / 1e6);
